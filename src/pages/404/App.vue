@@ -1,6 +1,5 @@
 <template>
-  hello
-  <RouterView />
+  Not Found
 </template>
 
 <script setup lang="ts">
