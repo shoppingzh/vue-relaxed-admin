@@ -10,9 +10,12 @@ const pages = readdirSync(path.resolve(__dirname, './src/pages'), { withFileType
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    alias: {
+    alias: pages.reduce((map, o) => {
+      map[`@p-${o}`] = path.resolve(__dirname, `./src/pages/${o}`)
+      return map
+    }, {
       '@': path.resolve(__dirname, './src')
-    }
+    })
   },
   plugins: [vue()],
   build: {

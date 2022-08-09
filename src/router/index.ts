@@ -1,9 +1,15 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import routes from './routes'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
+
+export function addRoutes(routes: RouteRecordRaw[]) {
+  routes.forEach(route => {
+    router.addRoute(route)
+  })
+}
 
 export default router
