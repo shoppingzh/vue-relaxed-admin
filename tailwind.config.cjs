@@ -5,6 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // 品牌色 b表brand(品牌)
         'b-primary': '#4872FF',
         'b-info': '#1DB8E3',
         'b-success': '#67C23A',
