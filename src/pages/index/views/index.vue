@@ -1,4 +1,7 @@
 <template>
+  <div>
+    {{ appName }}
+  </div>
   <div class="text-b-link hover:cursor-pointer text-lg" @click="toDev">
     去开发页
   </div>
@@ -10,6 +13,10 @@
 <script setup lang="ts">
 import { hello } from '@/api/hello'
 import { ref } from 'vue'
+import useApp from '@/store/app'
+import { storeToRefs } from 'pinia'
+
+const { name: appName } = storeToRefs(useApp())
 
 const result = ref(null)
 const toDev = () => {
