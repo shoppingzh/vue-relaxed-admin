@@ -2,3 +2,6 @@ html {
   @apply text-base;
 }
 
+html, body, #app {
+  @apply h-full;
+}
