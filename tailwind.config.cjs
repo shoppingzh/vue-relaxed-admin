@@ -34,5 +34,8 @@ module.exports = {
   },
   plugins: [
     '@tailwindcss/aspect-ratio'
-  ]
+  ],
+  corePlugins: {
+    preflight: false,
+  }
 }

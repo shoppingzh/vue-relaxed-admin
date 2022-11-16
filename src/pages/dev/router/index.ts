@@ -1,4 +1,4 @@
-import router,  { addRoutes } from '@/router'
+import router, { addRoutes } from '@/router'
 
 addRoutes([{
   path: '/',

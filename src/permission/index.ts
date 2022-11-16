@@ -1,12 +1,5 @@
 import router from '@/router'
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
-
-NProgress.configure({
-  showSpinner: false,
-  trickleSpeed: 100,
-  minimum: 0.1
-})
+import NProgress from '@/plugins/nprogress'
 
 router.beforeEach((to, from, next) => {
 
