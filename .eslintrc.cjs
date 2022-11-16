@@ -17,5 +17,6 @@ module.exports = {
   rules: {
     'array-bracket-newline': [0],
     'function-paren-newline': [0],
+    'id-blacklist': [0]
   },
 }

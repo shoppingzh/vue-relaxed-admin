@@ -20,11 +20,14 @@ export default defineConfig({
     })
   },
   server: {
+    port: 5173,
+    open: true,
     proxy: {
-      '/data': {
-        target: 'http://localhost:5173/data',
+      '/api/': {
+        target: 'http://localhost:3000/',
         changeOrigin: true,
-        ws: true
+        ws: true,
+        rewrite: path => path.replace(/^\/api/, '')
       }
     }
   },

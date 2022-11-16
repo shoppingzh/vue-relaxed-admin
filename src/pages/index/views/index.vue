@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { hello } from '@/api/hello'
+import * as userApi from '@/api/user'
 import { ref } from 'vue'
 import useApp from '@/store/app'
 import { storeToRefs } from 'pinia'
@@ -23,8 +23,8 @@ const toDev = () => {
   location.href = 'dev.html'
 }
 const load = async() => {
-  const response = await hello()
-  result.value = response.data
+  const response = await userApi.list()
+  result.value = response
 }
 
 load()

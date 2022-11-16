@@ -1,8 +1,8 @@
 import service from '@/service'
 
-export function hello() {
+export function list() {
   return service({
-    url: '/hello.json',
+    url: 'users',
     method: 'get'
   })
 }
