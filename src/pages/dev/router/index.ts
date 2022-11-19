@@ -6,6 +6,9 @@ addRoutes([{
 }, {
   path: '/ui',
   component: import('@p-dev/views/ui.vue')
+}, {
+  path: '/icon',
+  component: import('@p-dev/views/icon.vue')
 }])
 
 export default router

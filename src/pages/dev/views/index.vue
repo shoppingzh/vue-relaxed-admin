@@ -1,5 +1,8 @@
 <template>
-  <router-link to="/ui" custom v-slot="{ navigate, href, route }">
-    <div class="text-b-link hover:cursor-pointer" @click="navigate">{{ 'UI规范' }}</div>
-  </router-link>
+  <div>
+    <router-link to="/ui">UI规范</router-link>
+  </div>
+  <div>
+    <router-link to="/icon">图标</router-link>
+  </div>
 </template>
