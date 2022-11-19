@@ -40,9 +40,12 @@ instance.interceptors.response.use(
     if (!result) return result
     if (typeof result !== 'object') return result
     const { code, msg, data } = result
-    const err: ResultError = new Error(msg)
-    err.result = result
-    if (code !== 0) return Promise.reject(err)
+    if (code !== 0) {
+      showErrorMessage(msg || '未知错误')
+      const err: ResultError = new Error(msg)
+      err.result = result
+      return Promise.reject(err)
+    }
     return data
   },
   error => {
@@ -51,16 +54,5 @@ instance.interceptors.response.use(
   }
 )
 
-// 捕捉业务错误
-instance.interceptors.response.use(
-  data => {
-    return data
-  },
-  error => {
-    const message = typeof error === 'string' ? error : (error.result ? error.result.msg : error)
-    showErrorMessage(message || '未知错误')
-    return Promise.reject(error)
-  }
-)
 
 export default instance
