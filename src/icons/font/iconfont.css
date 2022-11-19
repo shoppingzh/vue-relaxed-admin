@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3781277 */
+  src: url('iconfont.woff2?t=1668869331783') format('woff2'),
+       url('iconfont.woff?t=1668869331783') format('woff'),
+       url('iconfont.ttf?t=1668869331783') format('truetype');
+}
+
+[class^="icon-"] {
+  font-family: "iconfont" !important;
+  /* font-size: 1em; */
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+  content: "\e6b8";
+}
+

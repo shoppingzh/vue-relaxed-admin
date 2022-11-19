@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import { readdirSync } from 'fs'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 const pages = readdirSync(path.resolve(__dirname, './src/pages'), { withFileTypes: true })
   .filter(o => o.isDirectory() && !/^[._]/.test(o.name))
@@ -34,7 +35,13 @@ export default defineConfig({
 
 
   // 构建相关
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    createSvgIconsPlugin({
+      iconDirs: [path.resolve(__dirname, 'src/icons/svg')],
+      symbolId: 'svg-icon/[name]',
+    })
+  ],
   build: {
     rollupOptions: {
       input: pages.reduce((map, name) => {
