@@ -5,8 +5,10 @@ import App from './App.vue'
 import './styles/index.scss'
 import '@/permission'
 import { createPinia } from 'pinia'
+import ElementPlus from '@/plugins/element-plus'
 
 createApp(App)
   .use(router)
   .use(createPinia())
+  .use(ElementPlus)
   .mount('#app')
