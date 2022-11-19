@@ -2,6 +2,7 @@
   <div>
     {{ appName }}
   </div>
+  <el-icon><Service /></el-icon>
   <el-button type="primary" @click="load">查询</el-button>
   <!-- <div class="text-b-link hover:cursor-pointer text-lg" @click="toDev">
     去开发页
