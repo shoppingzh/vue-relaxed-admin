@@ -15,8 +15,9 @@ module.exports = {
     'plugin:@typescript-eslint/recommended'
   ],
   rules: {
+    'semi': [2, 'always'],
     'array-bracket-newline': [0],
     'function-paren-newline': [0],
     'id-blacklist': [0]
   },
-}
+};

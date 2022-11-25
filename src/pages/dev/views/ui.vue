@@ -49,7 +49,7 @@ const colors = [
   ['text-b-warn', '警告色'],
   ['text-b-danger', '危险色'],
   ['text-b-link', '链接色'],
-]
+];
 const bgColors = [
   ['bg-b-primary', '品牌色'],
   ['bg-b-info', '信息色'],
@@ -57,5 +57,5 @@ const bgColors = [
   ['bg-b-warn', '警告色'],
   ['bg-b-danger', '危险色'],
   ['bg-b-link', '链接色'],
-]
+];
 </script>

@@ -1,4 +1,4 @@
-import router, { addRoutes } from '@/router'
+import router, { addRoutes } from '@/router';
 
 addRoutes([{
   path: '/',
@@ -9,6 +9,6 @@ addRoutes([{
 }, {
   path: '/icon',
   component: import('@p-dev/views/icon.vue')
-}])
+}]);
 
-export default router
+export default router;

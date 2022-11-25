@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["src/**/*.{html,vue,jsx,js,ts,tsx}", "index.html"],
+  content: ['src/**/*.{html,vue,jsx,js,ts,tsx}', 'index.html'],
   darkMode: 'class',
   theme: {
     extend: {
@@ -38,4 +38,4 @@ module.exports = {
   corePlugins: {
     preflight: false,
   }
-}
+};

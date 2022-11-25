@@ -18,6 +18,6 @@
 </template>
 
 <script setup lang="ts">
-import homeSvg from '@/icons/svg/home.svg?raw'
-console.log(homeSvg)
+import homeSvg from '@/icons/svg/home.svg?raw';
+console.log(homeSvg);
 </script>
