@@ -29,7 +29,10 @@ function showErrorMessage(message: string): void{
 instance.interceptors.request.use(
   config => {
     // 根据需要，携带一些应用级的公共信息到服务端，避免在URL或请求体中反复携带
-    config.headers['_appId'] = useApp().id
+    if (config.headers) {
+      // eslint-disable-next-line no-param-reassign
+      config.headers['_appId'] = useApp().id
+    }
     return config
   }
 )
