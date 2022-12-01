@@ -19,7 +19,6 @@ function readPages(srcDir: string): Page[] {
     }];
   }
 
-
   return pages;
 }
 
