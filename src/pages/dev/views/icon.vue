@@ -25,7 +25,7 @@
     v-for="cls in sizes"
     :key="cls"
     :class="[cls]"
-    class="mb-1">
+    class="leading-loose">
     我是一个SVG图标 <svg-icon name="home" />
   </div>
 
@@ -35,7 +35,7 @@
     v-for="cls in sizes"
     :key="cls"
     :class="[cls]"
-    class="mb-1">
+    class="leading-loose">
     我是一个字体图标 <i class="icon-home" />
   </div>
 

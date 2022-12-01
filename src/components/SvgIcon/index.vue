@@ -1,10 +1,10 @@
 <template>
-  <span v-if="name" class="svg-icon inline-block">
+  <i v-if="name" class="svg-icon inline-block">
     <svg aria-hidden="true">
       <use :xlink:href="symbolId" />
     </svg>
-  </span>
-  <span v-else v-html="inline" class="svg-icon inline-block"></span>
+  </i>
+  <i v-else v-html="inline" class="svg-icon inline-block"></i>
 </template>
 
 <script setup lang="ts">
@@ -20,7 +20,8 @@ const symbolId = computed(() => `#svg-icon/${props.name}`);
 
 <style lang="scss" scoped>
 .svg-icon {
-  @apply inline-flex items-center justify-center w-[1em] h-[1em];
+  // 为什么往下偏移12.5%？请参考ant-design的图标方案
+  @apply inline-flex items-center justify-center w-[1em] h-[1em] align-[-0.125em];
   :deep(svg) {
     @apply w-[1em] h-[1em] fill-current;
   }
