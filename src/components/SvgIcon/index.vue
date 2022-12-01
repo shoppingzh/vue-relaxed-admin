@@ -20,6 +20,7 @@ const symbolId = computed(() => `#svg-icon/${props.name}`);
 
 <style lang="scss" scoped>
 .svg-icon {
+  @apply inline-flex items-center justify-center w-[1em] h-[1em];
   :deep(svg) {
     @apply w-[1em] h-[1em] fill-current;
   }

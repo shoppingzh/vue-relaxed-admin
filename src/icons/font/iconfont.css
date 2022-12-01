@@ -1,13 +1,14 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3781277 */
-  src: url('iconfont.woff2?t=1668869331783') format('woff2'),
-       url('iconfont.woff?t=1668869331783') format('woff'),
-       url('iconfont.ttf?t=1668869331783') format('truetype');
+  src: url('iconfont.woff2?t=1669884719818') format('woff2'),
+       url('iconfont.woff?t=1669884719818') format('woff'),
+       url('iconfont.ttf?t=1669884719818') format('truetype'),
+       url('iconfont.svg?t=1669884719818#iconfont') format('svg');
 }
 
-[class^="icon-"] {
+.iconfont {
   font-family: "iconfont" !important;
-  /* font-size: 1em; */
+  font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
