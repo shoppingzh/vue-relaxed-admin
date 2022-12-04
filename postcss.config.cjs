@@ -6,7 +6,7 @@ module.exports = {
     // 适配
     'postcss-px-to-viewport': {
       unitToConvert: 'px',
-      viewportWidth: 720,
+      viewportWidth: 375,
       unitPrecision: 5,
       viewportUnit: 'vw',
       fontViewportUnit: 'vw',
