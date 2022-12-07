@@ -8,7 +8,6 @@ import components from '@/components';
 import pageComponents from './components';
 
 import '@/styles/index.scss';
-import '@/icons/font/iconfont.css';
 
 createApp(App)
   .use(router)

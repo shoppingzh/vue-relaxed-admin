@@ -9,10 +9,6 @@
       <svg-icon name="home" class="text-blue-500" />
     </div>
     <div>
-      字体图标：
-      <i class="icon-home text-blue-500" />
-    </div>
-    <div>
       内联SVG图标：
       <svg-icon :inline="homeSvg" class="text-blue-500" />
     </div>
@@ -29,15 +25,6 @@
     我是一个SVG图标 <svg-icon name="home" />
   </div>
 
-  <div class="my-6 h-[1px] bg-gray-300"></div>
-
-  <div
-    v-for="cls in sizes"
-    :key="cls"
-    :class="[cls]"
-    class="leading-relaxed">
-    我是一个字体图标 <i class="icon-home" />
-  </div>
 
 </template>
 

@@ -8,7 +8,6 @@ import ElementPlus from '@/plugins/element-plus';
 import components from '@/components';
 
 import './styles/index.scss';
-import '@/icons/font/iconfont.css';
 
 createApp(App)
   .use(router)
