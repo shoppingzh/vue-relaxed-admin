@@ -7,6 +7,16 @@
     </div>
   </Example>
 
+  <Example title="类名复用">
+    <div class="block center">block</div>
+    <div class="mt-1 block center">block</div>
+    <div>
+      .block {
+        @apply w-[200px] h-[120px] bg-cyan-100;
+      }
+    </div>
+  </Example>
+
   <Example title="响应式">
     <div class="center w-[210px] h-[100px] md:w-[500px] md:h-[200px] bg-pink-100">
       w-[210px] h-[100px] md:w-[500px] md:h-[200px]
@@ -33,5 +43,8 @@ const { darkMode } = storeToRefs(usePrefs());
 <style>
 .center {
   @apply flex justify-center items-center;
+}
+.block {
+  @apply w-[200px] h-[120px] bg-cyan-100;
 }
 </style>
