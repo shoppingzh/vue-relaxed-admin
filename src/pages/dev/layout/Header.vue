@@ -1,10 +1,12 @@
 <template>
   <header class="flex items-center h-[50px] px-[20px]">
     <div class="flex-1 w-0">
-      <div class="flex items-center">
-        <svg-icon :inline="logo" class="text-h3" />
-        <span class="ml-3 text-h5">开发规范</span>
-      </div>
+      <RouterLink to="/" custom v-slot="{ navigate }">
+        <div class="flex items-center cursor-pointer" @click="navigate()">
+          <svg-icon :inline="logo" class="text-h3" />
+          <span class="ml-3 text-h5">开发规范</span>
+        </div>
+      </RouterLink>
     </div>
     <div class="px-[10px]">
       <el-icon
