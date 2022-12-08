@@ -9,12 +9,22 @@
       </RouterLink>
     </div>
     <div class="px-[10px]">
-      <el-icon
-        class="text-h4 text-gray-800 dark:text-gray-400 hover:text-b-primary-hover cursor-pointer"
-        @click="prefs.toggleDarkMode()">
-        <Sunny v-if="!darkMode" />
-        <Moon v-else />
-      </el-icon>
+
+      <div class="flex items-center">
+        <el-link :underline="false" class="text-h4">
+          <el-icon
+            @click="prefs.toggleDarkMode()">
+            <Sunny v-if="!darkMode" />
+            <Moon v-else />
+          </el-icon>
+        </el-link>
+
+        <el-link :underline="false" class="ml-[10px] text-h5">
+          <el-icon
+            @click="prefs.toggleFullscreen()"><FullScreen /></el-icon>
+        </el-link>
+  
+      </div>
     </div>
   </header>
 </template>
