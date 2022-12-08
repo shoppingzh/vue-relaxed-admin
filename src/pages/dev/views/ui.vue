@@ -1,12 +1,24 @@
 <template>
+
+  <el-alert class="mb-5" type="warning">
+    注：所有带有复制标记的文本点击都可点击复制。
+  </el-alert>
+
   <Example title="色彩">
     <div
-      v-for="[color, name] in bgColors"
-      :key="color"
-      class="px-4 py-3 flex text-white text-sm font-semibold w-[600px]"
-      :class="color">
-      <div class="flex-1 w-0">{{ color }}</div>
-      <div>{{ name }}</div>
+      v-for="[colors, name] in bgColors"
+      :key="name"
+      class="mb-4 flex w-[600px]">
+      <div class="flex">
+        <div
+          v-for="color in colors"
+          :key="color">
+          <div class="w-[150px] h-[50px]" :class="color" />
+          <div class="mt-1 text-sm">
+            <Copy :text="color" />
+          </div>
+        </div>
+      </div>
     </div>
   </Example>
   
@@ -19,11 +31,9 @@
       <div
         v-for="[color] in colors"
         :key="color"
-        class="flex text-white text-md font-semibold w-[600px]"
+        class="flex text-white text-h1 leading-relaxed font-semibold w-[600px]"
         :class="color">
-        {{ color }}
-        <!-- <div class="flex-1 w-0">{{ color }}</div> -->
-        <!-- <div>{{ name }}</div> -->
+        <Copy :text="color" />
       </div>
     </div>
 
@@ -33,9 +43,9 @@
         <div
           v-for="cls in ['border-b-primary', 'border-b-info', 'border-b-success', 'border-b-warn', 'border-b-danger']"
           :key="cls"
-          class="w-[150px] mr-2 border-2">
+          class="w-[160px] mr-2 border-2">
           <div class="flex items-center justify-center h-[100px] border-solid text-regular font-semibold" :class="cls">
-            {{ cls }}
+            <Copy :text="cls" />
           </div>
         </div>
       </div>
@@ -49,7 +59,7 @@
       :key="cls"
       class="text-gray-600 font-semibold"
       :class="cls">
-      {{ name }}（{{ size }}px）
+      {{ name }} <Copy :text="cls" />（{{ size }}px）
     </div>
     <el-alert title="备注" :closable="false" class="mt-2">
       <div>默认文本大小：常规</div>
@@ -65,7 +75,7 @@
         :class="cls">
         <div class="h-[100px] bg-current" />
         <div class="p-2 text-h1">
-          <div>{{ cls }}</div>
+          <div><Copy :text="cls" /></div>
           <div>{{ name }}</div>
         </div>
       </div>
@@ -82,7 +92,7 @@
         :key="cls">
         <div class="w-[150px] h-[100px] mr-2" :class="cls" />
         <div class="mt-2 text-regular text-h1">
-          <div>{{ cls }}</div>
+          <div><Copy :text="cls" /></div>
           <div>{{ name }}</div>
         </div>
       </div>
@@ -96,7 +106,7 @@
         :key="cls">
         <div class="w-[150px] h-[100px] mr-4 bg-blue-100" :class="cls" />
         <div class="mt-2 text-regular text-h1">
-          <div>{{ cls }}</div>
+          <div><Copy :text="cls" /></div>
           <div>{{ name }}</div>
         </div>
       </div>
@@ -106,21 +116,33 @@
 </template>
 
 <script setup lang="ts">
+const bgColors = [
+  [['bg-b-primary', 'bg-b-primary-hover', 'bg-b-primary-active', 'bg-b-primary-disabled'], '品牌色'],
+  // [['bg-b-info', 'bg-b-info-hover', 'bg-b-info-active', 'bg-b-info-disabled'], '信息色'],
+  [['bg-b-success', 'bg-b-success-hover', 'bg-b-success-active', 'bg-b-success-disabled'], '成功色'],
+  [['bg-b-warn', 'bg-b-warn-hover', 'bg-b-warn-active', 'bg-b-warn-disabled'], '警告色'],
+  [['bg-b-danger', 'bg-b-danger-hover', 'bg-b-danger-active', 'bg-b-danger-disabled'], '危险色'],
+  // ['text-b-link', 'text-b-primary-hover', 'text-b-primary-active', 'text-b-primary-disabled', '链接色'],
+];
 const colors = [
   ['text-b-primary', '品牌色'],
+  ['text-b-primary-hover', '品牌色'],
+  ['text-b-primary-active', '品牌色'],
+  ['text-b-primary-disabled', '品牌色'],
   ['text-b-info', '信息色'],
   ['text-b-success', '成功色'],
+  ['text-b-success-hover', '成功色'],
+  ['text-b-success-active', '成功色'],
+  ['text-b-success-disabled', '成功色'],
   ['text-b-warn', '警告色'],
+  ['text-b-warn-hover', '警告色'],
+  ['text-b-warn-active', '警告色'],
+  ['text-b-warn-disabled', '警告色'],
   ['text-b-danger', '危险色'],
-  ['text-b-link', '链接色'],
-];
-const bgColors = [
-  ['bg-b-primary', '品牌色'],
-  ['bg-b-info', '信息色'],
-  ['bg-b-success', '成功色'],
-  ['bg-b-warn', '警告色'],
-  ['bg-b-danger', '危险色'],
-  ['bg-b-link', '链接色'],
+  ['text-b-danger-hover', '危险色'],
+  ['text-b-danger-active', '危险色'],
+  ['text-b-danger-disabled', '危险色'],
+  // ['text-b-link', '链接色'],
 ];
 
 const textSizes = [
