@@ -1,14 +1,22 @@
 import router, { addRoutes } from '@/router';
+import Layout from '@p-dev/layout/index.vue';
 
 addRoutes([{
   path: '/',
-  component: import('@p-dev/views/index.vue')
-}, {
-  path: '/ui',
-  component: import('@p-dev/views/ui.vue')
-}, {
-  path: '/icon',
-  component: import('@p-dev/views/icon.vue')
+  component: Layout,
+  children: [{
+    path: '/',
+    component: import('@p-dev/views/index.vue')
+  }, {
+    path: '/ui',
+    component: import('@p-dev/views/ui.vue')
+  }, {
+    path: '/icon',
+    component: import('@p-dev/views/icon.vue')
+  }, {
+    path: 'global-style',
+    component: import('@p-dev/views/global-style.vue')
+  }],
 }]);
 
 export default router;
