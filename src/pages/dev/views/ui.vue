@@ -129,7 +129,7 @@ const colors = [
   ['text-b-primary-hover', '品牌色'],
   ['text-b-primary-active', '品牌色'],
   ['text-b-primary-disabled', '品牌色'],
-  ['text-b-info', '信息色'],
+  // ['text-b-info', '信息色'],
   ['text-b-success', '成功色'],
   ['text-b-success-hover', '成功色'],
   ['text-b-success-active', '成功色'],
