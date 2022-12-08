@@ -1,6 +1,6 @@
 
 html {
-  @apply text-base text-regular;
+  @apply text-base text-regular dark:text-gray-200;
 }
 
 h1 {
