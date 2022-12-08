@@ -4,15 +4,16 @@ import Layout from '@p-dev/layout/index.vue';
 addRoutes([{
   path: '/',
   component: Layout,
+  redirect: '/ui',
   meta: { root: true },
   children: [{
-    path: 'global-style',
-    component: import('@p-dev/views/global-style.vue'),
-    meta: { menu: true, title: '全局样式' },
-  }, {
     path: 'ui',
     component: import('@p-dev/views/ui.vue'),
     meta: { menu: true, title: 'UI规范' },
+  }, {
+    path: 'global-style',
+    component: import('@p-dev/views/global-style.vue'),
+    meta: { menu: true, title: '全局样式' },
   }, {
     path: 'icon',
     component: import('@p-dev/views/icon.vue'),
