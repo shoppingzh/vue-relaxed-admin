@@ -19,7 +19,7 @@
           </el-icon>
         </el-link>
 
-        <el-link :underline="false" class="ml-[10px] text-h5">
+        <el-link :underline="false" class="ml-[15px] text-h5">
           <el-icon
             @click="prefs.toggleFullscreen()"><FullScreen /></el-icon>
         </el-link>
