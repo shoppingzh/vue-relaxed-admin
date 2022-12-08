@@ -16,7 +16,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const routes = router.getRoutes();
-const menus = computed(() => routes.map(o => ({
+const menus = computed(() => routes.filter(o => o.meta && o.meta.menu).map(o => ({
   name: o.meta.title,
   to: o.path,
 })));
