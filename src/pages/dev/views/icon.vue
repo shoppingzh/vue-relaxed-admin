@@ -1,5 +1,5 @@
 <template>
-  <div class="text-h2 leading-relaxed">
+  <div class="text-h4 leading-relaxed">
     <div>
       Element-plus 图标：
       <el-icon class="text-blue-500"><House /></el-icon>
@@ -32,5 +32,5 @@
 import homeSvg from '@/icons/svg/home.svg?raw';
 console.log(homeSvg);
 
-const sizes = ['text-xs', 'text-sm', 'text-base', 'text-h1', 'text-h2', 'text-h3', 'text-h4', 'text-h5', 'text-h6'];
+const sizes = ['text-xs', 'text-sm', 'text-base', 'text-h6', 'text-h5', 'text-h4', 'text-h3', 'text-h2', 'text-h1'];
 </script>

@@ -8,12 +8,12 @@ module.exports = {
       { name: 'sm', size: 12 },
       { name: 'msm', size: 13 },
       { name: 'base', size: 14 },
-      { name: 'h1', size: 16 },
-      { name: 'h2', size: 20 },
-      { name: 'h3', size: 24 },
-      { name: 'h4', size: 36 },
-      { name: 'h5', size: 48 },
-      { name: 'h6', size: 56 },
+      { name: 'h6', size: 16 },
+      { name: 'h5', size: 20 },
+      { name: 'h4', size: 24 },
+      { name: 'h3', size: 36 },
+      { name: 'h2', size: 48 },
+      { name: 'h1', size: 56 },
     ].reduce((sizes, o) => {
       sizes[o.name] = [`${o.size}px`, { lineHeight: `${Math.round(o.size * 1.5)}px` }];
       return sizes;

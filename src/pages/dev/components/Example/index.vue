@@ -1,6 +1,6 @@
 <template>
   <div class="mb-10">
-    <div class="mb-2 relative text-h3 font-semibold pl-4">
+    <div class="mb-2 relative text-h4 font-semibold pl-4">
       <div class="absolute w-[5px] left-0 top-[20%] bottom-[20%] bg-b-primary rounded-md" />
       {{ title }}
     </div>

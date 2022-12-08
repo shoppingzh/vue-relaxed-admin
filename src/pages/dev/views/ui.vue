@@ -27,18 +27,18 @@
       默认色彩是可以用于任何可以加颜色的地方的（如文本、边框、背景等）
     </el-alert>
     <div class="mt-5">
-      <div class="text-h1 font-semibold">文字</div>
+      <div class="text-h6 font-semibold">文字</div>
       <div
         v-for="[color] in colors"
         :key="color"
-        class="flex text-white text-h1 leading-relaxed font-semibold w-[600px]"
+        class="flex text-white text-h5 leading-relaxed font-semibold w-[600px]"
         :class="color">
         <Copy :text="color" />
       </div>
     </div>
 
     <div class="mt-5">
-      <div class="text-h1 mb-2 font-semibold">边框</div>
+      <div class="text-h6 mb-2 font-semibold">边框</div>
       <div class="flex">
         <div
           v-for="cls in ['border-b-primary', 'border-b-info', 'border-b-success', 'border-b-warn', 'border-b-danger']"
@@ -55,11 +55,11 @@
 
   <Example title="文字大小">
     <div
-      v-for="[cls, name, size] in textSizes"
+      v-for="[cls, name] in textSizes"
       :key="cls"
       class="text-gray-600 font-semibold"
       :class="cls">
-      {{ name }} <Copy :text="cls" />（{{ size }}px）
+      {{ name }} <Copy :text="cls" />
     </div>
     <el-alert title="备注" :closable="false" class="mt-2">
       <div>默认文本大小：常规</div>
@@ -74,7 +74,7 @@
         class="w-[150px]"
         :class="cls">
         <div class="h-[100px] bg-current" />
-        <div class="p-2 text-h1">
+        <div class="p-2 text-h6">
           <div><Copy :text="cls" /></div>
           <div>{{ name }}</div>
         </div>
@@ -91,7 +91,7 @@
         v-for="[cls, name] in shadows"
         :key="cls">
         <div class="w-[150px] h-[100px] mr-2" :class="cls" />
-        <div class="mt-2 text-regular text-h1">
+        <div class="mt-2 text-regular text-h6">
           <div><Copy :text="cls" /></div>
           <div>{{ name }}</div>
         </div>
@@ -105,7 +105,7 @@
         v-for="[cls, name] in radius"
         :key="cls">
         <div class="w-[150px] h-[100px] mr-4 bg-blue-100" :class="cls" />
-        <div class="mt-2 text-regular text-h1">
+        <div class="mt-2 text-regular text-h6">
           <div><Copy :text="cls" /></div>
           <div>{{ name }}</div>
         </div>
@@ -146,16 +146,16 @@ const colors = [
 ];
 
 const textSizes = [
-  ['text-xs', '超小', 10],
-  ['text-sm', '小的', 12],
-  ['text-msm', '中小', 13],
-  ['text-base', '常规', 14],
-  ['text-h1', '标题一', 16],
-  ['text-h2', '标题二', 20],
-  ['text-h3', '标题三', 24],
-  ['text-h4', '标题四', 36],
-  ['text-h5', '标题五', 48],
-  ['text-h6', '标题六', 56],
+  ['text-h1', '标题一'],
+  ['text-h2', '标题二'],
+  ['text-h3', '标题三'],
+  ['text-h4', '标题四'],
+  ['text-h5', '标题五'],
+  ['text-h6', '标题六'],
+  ['text-base', '常规'],
+  ['text-msm', '中小'],
+  ['text-sm', '小的'],
+  ['text-xs', '超小'],
 ];
 
 const textColors = [

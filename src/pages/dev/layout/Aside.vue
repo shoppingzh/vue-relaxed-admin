@@ -2,7 +2,7 @@
   <aside>
     <div class="flex items-center p-3 border-b border-gray-200 border-solid border-l-0 border-t-0 border-r-0">
       <svg-icon :inline="logo" class="text-h3" />
-      <span class="ml-3 text-h2">开发规范</span>
+      <span class="ml-3 text-h5">开发规范</span>
     </div>
     <el-menu class="menu h-full w-[168px]" router collapse :default-active="$route.path">
       <el-menu-item
