@@ -40,7 +40,7 @@ const { darkMode } = storeToRefs(usePrefs());
 
 </script>
 
-<style>
+<style scoped>
 .center {
   @apply flex justify-center items-center;
 }

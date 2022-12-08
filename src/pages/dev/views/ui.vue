@@ -175,5 +175,6 @@ const radius = [
   ['rounded-xs', '超小圆角'],
   ['rounded-sm', '小圆角'],
   ['rounded-md', '中等圆角'],
+  ['rounded-full', '圆'],
 ];
 </script>
