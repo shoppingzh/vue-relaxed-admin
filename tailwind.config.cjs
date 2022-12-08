@@ -33,12 +33,39 @@ module.exports = {
     extend: {
       colors: {
         // 品牌色 b表brand(品牌)
-        'b-primary': '#165DFF',
-        'b-info': '#1DB8E3',
-        'b-success': '#00B42A',
-        'b-warn': '#FF7D00',
-        'b-danger': '#F53F3F',
-        'b-link': '#395BCC',
+        'b-primary': {
+          DEFAULT: '#165DFF',
+          hover: '#4080FF',
+          active: '#0E42D2',
+          disabled: '#94BFFF',
+        },
+        'b-info': {
+          DEFAULT: '#1DB8E3',
+          hover: '#1DB8E3',
+          active: '#1DB8E3',
+          disabled: '#1DB8E3',
+        },
+        'b-success': {
+          DEFAULT: '#00B42A',
+          hover: '#23C343',
+          active: '#009A29',
+          disabled: '#7BE188',
+        },
+        'b-warn': {
+          DEFAULT: '#FF7D00',
+          hover: '#FF9A2E',
+          active: '#D25F00',
+          disabled: '#FFCF8B',
+        },
+        'b-danger': {
+          DEFAULT: '#F53F3F',
+          hover: '#F76560',
+          active: '#CB2634',
+          disabled: '#FBACA3',
+        },
+        // 'b-link': {
+        //   DEFAULT: '#395BCC'
+        // },
       },
       textColor: {
         primary: '#1D2129',
