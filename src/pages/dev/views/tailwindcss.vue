@@ -9,12 +9,13 @@
 
   <Example title="响应式">
     <div class="center w-[210px] h-[100px] md:w-[500px] md:h-[200px] bg-pink-100">
-      将屏幕缩放到手机大小，看看上面内容的变化！
+      w-[210px] h-[100px] md:w-[500px] md:h-[200px]
     </div>
+    将屏幕缩放到手机大小，看看上面内容的变化！
   </Example>
 
   <Example title="暗黑模式">
-    <div class="w-[300px] h-[150px] bg-green-100 dark:bg-green-600"></div>
+    <div class="center w-[300px] h-[150px] bg-green-100 dark:bg-green-600">bg-green-100 dark:bg-green-600</div>
     <div class="mt-2">
       切换暗黑模式：<el-switch v-model="darkMode" />
     </div>
