@@ -26,6 +26,9 @@ const menus = [{
 }, {
   name: '图标方案',
   to: '/icon'
+}, {
+  name: 'TailwindCSS技巧',
+  to: '/tailwindcss'
 }];
 </script>
 

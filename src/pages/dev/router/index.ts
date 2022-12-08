@@ -16,6 +16,9 @@ addRoutes([{
   }, {
     path: 'global-style',
     component: import('@p-dev/views/global-style.vue')
+  }, {
+    path: 'tailwindcss',
+    component: import('@p-dev/views/tailwindcss.vue')
   }],
 }]);
 
