@@ -6,7 +6,7 @@ module.exports = {
   darkMode: 'class',
   theme: {
     // 规则：以4px为倍数递进
-    spacing: new Array(20).fill(null).reduce((conf, _, index) => {
+    spacing: new Array(21).fill(null).reduce((conf, _, index) => {
       conf[index] = `${index * 4}px`;
       return conf;
     }, {}),

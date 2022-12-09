@@ -56,7 +56,7 @@
   <Example title="间距">
     <div class="flex">
       <div
-        v-for="cls in ['ml-1', 'ml-2', 'ml-3', 'ml-4', 'ml-5', 'ml-6', 'ml-7']"
+        v-for="cls in ['ml-0', 'ml-1', 'ml-2', 'ml-3', 'ml-4', 'ml-5', 'ml-6', 'ml-7']"
         :key="cls"
         :class="cls"
         class="flex items-center justify-center w-[150px] h-[80px] bg-blue-100">
@@ -64,7 +64,8 @@
       </div>
     </div>
     <el-alert :closable="false" title="注：" class="mt-2">
-      所有间距以4px的倍数递进，最大支持20倍。
+      <div>1. 所有间距以4px的倍数递进，最大支持20倍。</div>
+      <div>2. 间距可用于外边距、内边距、宽度、高度等场景。</div>
     </el-alert>
 
   </Example>
