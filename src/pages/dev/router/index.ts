@@ -15,6 +15,10 @@ addRoutes([{
     component: import('@p-dev/views/global-style.vue'),
     meta: { menu: true, title: '全局样式' },
   }, {
+    path: 'components-style',
+    component: import('@p-dev/views/components-style.vue'),
+    meta: { menu: true, title: '组件库样式覆盖' },
+  }, {
     path: 'icon',
     component: import('@p-dev/views/icon.vue'),
     meta: { menu: true, title: '图标方案' },

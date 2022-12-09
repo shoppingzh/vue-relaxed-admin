@@ -1,6 +1,6 @@
 <template>
   <aside>
-    <el-menu class="menu h-full w-[168px]" router collapse :default-active="$route.path">
+    <el-menu class="menu h-full w-[168px]" router :default-active="$route.path">
       <el-menu-item
         v-for="item in menus"
         :key="item.to"

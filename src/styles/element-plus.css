@@ -1,0 +1,38 @@
+/* 此文件用于覆盖element-plus的主题 */
+
+:root {
+  --el-color-primary: theme('colors.b-primary.DEFAULT');
+  --el-color-success: theme('colors.b-success.DEFAULT');
+  --el-color-warning: theme('colors.b-warn.DEFAULT');
+  --el-color-danger: theme('colors.b-danger.DEFAULT');
+
+}
+
+.el-button {
+  &--primary {
+    --el-button-hover-bg-color: theme('colors.b-primary.hover');
+    --el-button-active-bg-color: theme('colors.b-primary.active');
+    --el-button-hover-border-color: theme('colors.b-primary.hover');
+    --el-button-active-border-color: theme('colors.b-primary.active');
+  }
+
+  &--success {
+    --el-button-hover-bg-color: theme('colors.b-success.hover');
+    --el-button-active-bg-color: theme('colors.b-success.active');
+    --el-button-hover-border-color: theme('colors.b-success.hover');
+    --el-button-active-border-color: theme('colors.b-success.active');
+  }
+
+  &--warning {
+    --el-button-hover-bg-color: theme('colors.b-warn.hover');
+    --el-button-active-bg-color: theme('colors.b-warn.active');
+    --el-button-hover-border-color: theme('colors.b-warn.hover');
+    --el-button-active-border-color: theme('colors.b-warn.active');
+  }
+  &--danger {
+    --el-button-hover-bg-color: theme('colors.b-danger.hover');
+    --el-button-active-bg-color: theme('colors.b-danger.active');
+    --el-button-hover-border-color: theme('colors.b-danger.hover');
+    --el-button-active-border-color: theme('colors.b-danger.active');
+  }
+}
