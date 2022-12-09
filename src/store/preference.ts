@@ -4,7 +4,7 @@
 import { useDark, useFullscreen, useToggle } from '@vueuse/core';
 import { defineStore } from 'pinia';
 
-export default defineStore('app', () => {
+export default defineStore('preference', () => {
 
   const darkMode = useDark();
   const toggleDarkMode = useToggle(darkMode);
