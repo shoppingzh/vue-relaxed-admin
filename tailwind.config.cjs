@@ -5,6 +5,11 @@ module.exports = {
   content: ['src/**/*.{html,vue,jsx,js,ts,tsx}', 'index.html'],
   darkMode: 'class',
   theme: {
+    // 规则：以4px为倍数递进
+    spacing: new Array(20).fill(null).reduce((conf, _, index) => {
+      conf[index] = `${index * 4}px`;
+      return conf;
+    }, {}),
     fontSize: [
       { name: 'xs', size: 10 },
       { name: 'sm', size: 12 },

@@ -53,6 +53,22 @@
 
   </Example>
 
+  <Example title="间距">
+    <div class="flex">
+      <div
+        v-for="cls in ['ml-1', 'ml-2', 'ml-3', 'ml-4', 'ml-5', 'ml-6', 'ml-7']"
+        :key="cls"
+        :class="cls"
+        class="flex items-center justify-center w-[150px] h-[80px] bg-blue-100">
+        <Copy :text="cls" />
+      </div>
+    </div>
+    <el-alert :closable="false" title="注：" class="mt-2">
+      所有间距以4px的倍数递进，最大支持20倍。
+    </el-alert>
+
+  </Example>
+
   <Example title="文字大小">
     <div
       v-for="[cls, name] in textSizes"
