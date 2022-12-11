@@ -5,6 +5,20 @@
   </el-alert>
 
   <Example title="色彩">
+    <div class="flex">
+      <div v-for="color in colors" :key="color.name" class="w-[300px] mr-2">
+        <div
+          v-for="(cls, idx) in color.list"
+          :key="cls"
+          class="p-4"
+          :class="[cls, { 'text-gray-300': idx > 6 }]">
+          <Copy :text="cls" />
+        </div>
+      </div>
+    </div>
+  </Example>
+
+  <Example title="主题色">
     <div
       v-for="[colors, name] in bgColors"
       :key="name"
@@ -29,7 +43,7 @@
     <div class="mt-5">
       <div class="text-h6 font-semibold">文字</div>
       <div
-        v-for="[color] in colors"
+        v-for="[color] in primaryTextColors"
         :key="color"
         class="flex text-white text-h5 leading-relaxed font-semibold w-[600px]"
         :class="color">
@@ -133,6 +147,17 @@
 </template>
 
 <script setup lang="ts">
+const colors = [{
+  name: 'blue',
+  list: ['bg-blue-100', 'bg-blue-200', 'bg-blue-300', 'bg-blue-400', 'bg-blue-500', 'bg-blue-600', 'bg-blue-700', 'bg-blue-800', 'bg-blue-900', 'bg-blue-1000']
+}, {
+  name: 'blue',
+  list: ['bg-orange-100', 'bg-orange-200', 'bg-orange-300', 'bg-orange-400', 'bg-orange-500', 'bg-orange-600', 'bg-orange-700', 'bg-orange-800', 'bg-orange-900', 'bg-orange-1000']
+}, {
+  name: 'green',
+  list: ['bg-green-100', 'bg-green-200', 'bg-green-300', 'bg-green-400', 'bg-green-500', 'bg-green-600', 'bg-green-700', 'bg-green-800', 'bg-green-900', 'bg-green-1000']
+}];
+
 const bgColors = [
   [['bg-b-primary', 'bg-b-primary-hover', 'bg-b-primary-active', 'bg-b-primary-disabled'], '品牌色'],
   // [['bg-b-info', 'bg-b-info-hover', 'bg-b-info-active', 'bg-b-info-disabled'], '信息色'],
@@ -141,7 +166,7 @@ const bgColors = [
   [['bg-b-danger', 'bg-b-danger-hover', 'bg-b-danger-active', 'bg-b-danger-disabled'], '危险色'],
   // ['text-b-link', 'text-b-primary-hover', 'text-b-primary-active', 'text-b-primary-disabled', '链接色'],
 ];
-const colors = [
+const primaryTextColors = [
   ['text-b-primary', '品牌色'],
   ['text-b-primary-hover', '品牌色'],
   ['text-b-primary-active', '品牌色'],

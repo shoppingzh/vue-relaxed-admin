@@ -1,10 +1,49 @@
-const config = require('tailwindcss/defaultConfig')
+const config = require('tailwindcss/defaultConfig');
+const colors = require('tailwindcss/colors');
+
+const baseColors = {
+  blue: ['#E8F7FF', '#C3E7FE', '#9FD4FD', '#7BC0FC', '#57A9FB', '#3491FA', '#206CCF', '#114BA3', '#063078', '#001A4D'],
+  orange: ['#FFF7E8', '#FFE4BA', '#FFCF8B', '#FFB65D', '#FF9A2E', '#FF7D00', '#D25F00', '#A64500', '#792E00', '#4D1B00'],
+  green: ['#E8FFEA', '#AFF0B5', '#7BE188', '#4CD263', '#23C343', '#00B42A', '#009A29', '#008026', '#006622', '#004D1C'],
+  red: ['#FFECE8', '#FDCDC5', '#FBACA3', '#F98981', '#F76560', '#F53F3F', '#CB272D', '#A1151E', '#770813', '#4D000A'],
+};
+
+function createPrimaryColors(type, colors) {
+  if (!colors) return {};
+  return {
+    [`b-${type}`]: {
+      DEFAULT: colors[6],
+      hover: colors[5],
+      active: colors[7],
+      disabled: colors[3],
+      background: colors[1],
+    }
+  };
+}
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['src/**/*.{html,vue,jsx,js,ts,tsx}', 'index.html'],
   darkMode: 'class',
   theme: {
+    colors: {
+      ...colors,
+
+      ...Object.entries(baseColors).reduce((conf, [name, list]) => {
+        conf[name] = list.reduce((map, color, index) => {
+          map[(index + 1) * 100] = color;
+          return map;
+        }, {});
+        return conf;
+      }, {}),
+
+      ...createPrimaryColors('primary', baseColors.blue),
+      ...createPrimaryColors('success', baseColors.green),
+      ...createPrimaryColors('warn', baseColors.orange),
+      ...createPrimaryColors('danger', baseColors.red),
+      ...createPrimaryColors('link', baseColors.blue),
+
+    },
     // 规则：以4px为倍数递进
     spacing: new Array(21).fill(null).reduce((conf, _, index) => {
       conf[index] = `${index * 4}px`;
@@ -39,42 +78,6 @@ module.exports = {
 
     // 继承（原有的不会删除）
     extend: {
-      colors: {
-        // 品牌色 b表brand(品牌)
-        'b-primary': {
-          DEFAULT: '#165DFF',
-          hover: '#4080FF',
-          active: '#0E42D2',
-          disabled: '#94BFFF',
-        },
-        'b-info': {
-          DEFAULT: '#1DB8E3',
-          hover: '#1DB8E3',
-          active: '#1DB8E3',
-          disabled: '#1DB8E3',
-        },
-        'b-success': {
-          DEFAULT: '#00B42A',
-          hover: '#23C343',
-          active: '#009A29',
-          disabled: '#7BE188',
-        },
-        'b-warn': {
-          DEFAULT: '#FF7D00',
-          hover: '#FF9A2E',
-          active: '#D25F00',
-          disabled: '#FFCF8B',
-        },
-        'b-danger': {
-          DEFAULT: '#F53F3F',
-          hover: '#F76560',
-          active: '#CB2634',
-          disabled: '#FBACA3',
-        },
-        // 'b-link': {
-        //   DEFAULT: '#395BCC'
-        // },
-      },
       textColor: {
         primary: '#1D2129',
         regular: '#4E5969',

@@ -1,6 +1,6 @@
 <template>
   <Example title="JIT即时编译">
-    <div class="w-[210px] h-[100px] bg-blue-50 center">
+    <div class="w-[210px] h-[100px] bg-blue-100 center">
       w-[210px] h-[100px]
     </div>
     <div class="mt-2">

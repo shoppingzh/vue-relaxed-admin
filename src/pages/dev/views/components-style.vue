@@ -1,9 +1,18 @@
 <template>
   <Example title="按钮">
-    <el-button
-      v-for="type in types"
-      :key="type"
-      :type="type">我是一个按钮</el-button>
+    <div>
+      <el-button
+        v-for="type in types"
+        :key="type"
+        :type="type">我是一个按钮</el-button>
+    </div>
+    <div class="mt-2">
+      <el-button
+        v-for="type in types"
+        :key="type"
+        :type="type"
+        disabled>我是一个按钮</el-button>
+    </div>
   </Example>
 
   <Example title="链接">

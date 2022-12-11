@@ -36,3 +36,10 @@
     --el-button-active-border-color: theme('colors.b-danger.active');
   }
 }
+
+.el-link {
+  .el-link&--primary {
+    --el-link-hover-text-color: theme('colors.b-primary.hover');
+    --el-link-active-text-color: theme('colors.b-primary.active');
+  }
+}
