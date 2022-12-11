@@ -1,7 +1,7 @@
 <template>
 
   <el-alert class="mb-5" type="warning">
-    注：所有带有复制标记的文本点击都可点击复制。
+    注：所有带有复制标记的文本可点击复制。
   </el-alert>
 
   <Example title="色彩">

@@ -1,7 +1,26 @@
-html {
-  @apply text-base;
-}
-
 html, body, #app {
   @apply h-full;
+}
+
+/* 滚动条样式 */
+*::-webkit-scrollbar {
+  @apply block w-2 h-2;
+  /* 上下箭头 */
+  &-button {
+    @apply hidden;
+  }
+  /* 滚动滑块 */
+  &-thumb {
+    @apply min-w-[25px] min-h-[25px] bg-gray-300 rounded-full;
+  }
+  /* 轨道 */
+  &-track {
+    @apply bg-gray-50;
+  }
+  &-track-piece {
+  }
+  /* 水平、垂直滚动条的交点（右下角） */
+  &-corner {
+    @apply hidden;
+  }
 }

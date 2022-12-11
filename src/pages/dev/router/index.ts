@@ -30,6 +30,10 @@ addRoutes([{
     path: 'css-nested',
     component: import('@p-dev/views/css-nested.vue'),
     meta: { menu: true, title: 'CSS嵌套' },
+  }, {
+    path: 'scroller',
+    component: import('@p-dev/views/scroller.vue'),
+    meta: { menu: true, title: '滚动条' }
   }],
 }]);
 
