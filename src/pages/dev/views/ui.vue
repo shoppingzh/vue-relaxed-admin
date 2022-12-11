@@ -1,7 +1,8 @@
 <template>
 
-  <el-alert class="mb-5" type="warning">
-    注：所有带有复制标记的文本可点击复制。
+  <el-alert class="mb-5" type="warning" title="注：">
+    <div class="">1. 所有带有复制标记的文本可点击复制。</div>
+    <div>2. 该规范为Arco Design的TailwindCSS实现。</div>
   </el-alert>
 
   <Example title="色彩">
@@ -37,8 +38,8 @@
   </Example>
   
   <Example title="色彩的应用">
-    <el-alert :closable="false" title="注：">
-      默认色彩是可以用于任何可以加颜色的地方的（如文本、边框、背景等）
+    <el-alert :closable="false">
+      默认色彩可以用于任何可以加颜色的地方（如文本、边框、背景等）。
     </el-alert>
     <div class="mt-5">
       <div class="text-h6 font-semibold">文字</div>
