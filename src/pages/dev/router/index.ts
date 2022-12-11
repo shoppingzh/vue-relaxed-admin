@@ -37,6 +37,11 @@ addRoutes([{
       component: import('@p-dev/views/tailwindcss.vue'),
       meta: { menu: true, title: 'TailwindCSS技巧' },
     },
+    {
+      path: 'smooth-scroll',
+      component: import('@p-dev/views/solutions/smooth-scroll.vue'),
+      meta: { menu: true, title: '平滑滚动' },
+    },
   ],
 }]);
 
