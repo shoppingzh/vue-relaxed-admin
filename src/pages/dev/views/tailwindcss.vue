@@ -30,6 +30,17 @@
       切换暗黑模式：<el-switch v-model="darkMode" />
     </div>
   </Example>
+
+  <Example title="多行文本溢出插件">
+    <div class="line-clamp-3">
+      <span v-for="x in 100" :key="x">人生到处知何似，应似飞鸿踏雪泥；泥上偶然留指爪，鸿飞哪复计东西。</span>
+    </div>
+  </Example>
+
+  <Example title="比例盒子">
+    <div class="w-[500px] aspect-video bg-blue-200" />
+  </Example>
+
 </template>
 
 <script setup lang="ts">
