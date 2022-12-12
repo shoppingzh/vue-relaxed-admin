@@ -119,11 +119,11 @@
   </Example>
 
   <Example title="圆角">
-    <div class="flex bg-[#FCFCFC] p-4">
+    <div class="flex p-4">
       <div
         v-for="[cls, name] in radius"
         :key="cls">
-        <div class="w-[150px] h-[100px] mr-4 bg-blue-100" :class="cls" />
+        <div class="w-[150px] h-[100px] mr-4 bg-gray-500" :class="cls" />
         <div class="mt-2 text-h6">
           <div><Copy :text="cls" /></div>
           <div>{{ name }}</div>
