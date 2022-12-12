@@ -15,7 +15,7 @@ html, body, #app {
   }
   /* 轨道 */
   &-track {
-    @apply bg-gray-50;
+    @apply bg-gray-100;
   }
   &-track-piece {
   }

@@ -59,7 +59,7 @@
           v-for="cls in ['border-b-primary', 'border-b-info', 'border-b-success', 'border-b-warn', 'border-b-danger']"
           :key="cls"
           class="w-[160px] mr-2 border-2">
-          <div class="flex items-center justify-center h-[100px] border-solid text-regular font-semibold" :class="cls">
+          <div class="flex items-center justify-center h-[100px] border-solid font-semibold" :class="cls">
             <Copy :text="cls" />
           </div>
         </div>
@@ -89,7 +89,7 @@
     <div
       v-for="[cls, name] in textSizes"
       :key="cls"
-      class="text-gray-600 font-semibold"
+      class="font-semibold"
       :class="cls">
       {{ name }} <Copy :text="cls" />
     </div>
@@ -113,7 +113,7 @@
       </div>
     </div>
     <el-alert title="备注" :closable="false" class="mt-2">
-      <div>默认文字颜色：text-regular</div>
+      <div>默认文字颜色：text-primary</div>
     </el-alert>
   </Example>
 
@@ -123,7 +123,7 @@
         v-for="[cls, name] in shadows"
         :key="cls">
         <div class="w-[150px] h-[100px] mr-2" :class="cls" />
-        <div class="mt-2 text-regular text-h6">
+        <div class="mt-2 text-h6">
           <div><Copy :text="cls" /></div>
           <div>{{ name }}</div>
         </div>
@@ -137,7 +137,7 @@
         v-for="[cls, name] in radius"
         :key="cls">
         <div class="w-[150px] h-[100px] mr-4 bg-blue-100" :class="cls" />
-        <div class="mt-2 text-regular text-h6">
+        <div class="mt-2 text-h6">
           <div><Copy :text="cls" /></div>
           <div>{{ name }}</div>
         </div>
