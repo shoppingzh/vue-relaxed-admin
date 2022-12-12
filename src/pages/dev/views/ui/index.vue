@@ -6,13 +6,13 @@
   </el-alert>
 
   <Example title="色彩">
-    <div class="flex">
-      <div v-for="color in colors" :key="color.name" class="w-[300px] mr-2">
+    <div class="flex flex-wrap">
+      <div v-for="color in colors" :key="color.name" class="mb-4 w-[240px] shrink-0 mr-2">
         <div
           v-for="(cls, idx) in color.list"
           :key="cls"
           class="p-4"
-          :class="[cls, { 'text-gray-300': idx > 6 }]">
+          :class="[cls, { 'text-gray-200': idx > 6, 'text-gray-300': idx <= 6 && idx > 3 }]">
           <Copy :text="cls" />
         </div>
       </div>
@@ -46,7 +46,7 @@
       <div
         v-for="[color] in primaryTextColors"
         :key="color"
-        class="flex text-white text-h5 leading-relaxed font-semibold w-[600px]"
+        class="flex text-white leading-relaxed font-semibold w-[600px]"
         :class="color">
         <Copy :text="color" />
       </div>
@@ -56,7 +56,7 @@
       <div class="text-h6 mb-2 font-semibold">边框</div>
       <div class="flex">
         <div
-          v-for="cls in ['border-b-primary', 'border-b-info', 'border-b-success', 'border-b-warn', 'border-b-danger']"
+          v-for="cls in ['border-b-primary', 'border-b-success', 'border-b-warn', 'border-b-danger']"
           :key="cls"
           class="w-[160px] mr-2 border-2">
           <div class="flex items-center justify-center h-[100px] border-solid font-semibold" :class="cls">
@@ -69,20 +69,7 @@
   </Example>
 
   <Example title="间距">
-    <div class="flex">
-      <div
-        v-for="cls in ['ml-0', 'ml-1', 'ml-2', 'ml-3', 'ml-4', 'ml-5', 'ml-6', 'ml-7']"
-        :key="cls"
-        :class="cls"
-        class="flex items-center justify-center w-[150px] h-[80px] bg-blue-100">
-        <Copy :text="cls" />
-      </div>
-    </div>
-    <el-alert :closable="false" title="注：" class="mt-2">
-      <div>1. 所有间距以4px的倍数递进，最大支持20倍。</div>
-      <div>2. 间距可用于外边距、内边距、宽度、高度等场景。</div>
-    </el-alert>
-
+    <Spacing />
   </Example>
 
   <Example title="文字大小">
@@ -148,6 +135,8 @@
 </template>
 
 <script setup lang="ts">
+import Spacing from './spacing.vue';
+
 const colors = [{
   name: 'blue',
   list: ['bg-blue-100', 'bg-blue-200', 'bg-blue-300', 'bg-blue-400', 'bg-blue-500', 'bg-blue-600', 'bg-blue-700', 'bg-blue-800', 'bg-blue-900', 'bg-blue-1000']
@@ -157,6 +146,12 @@ const colors = [{
 }, {
   name: 'green',
   list: ['bg-green-100', 'bg-green-200', 'bg-green-300', 'bg-green-400', 'bg-green-500', 'bg-green-600', 'bg-green-700', 'bg-green-800', 'bg-green-900', 'bg-green-1000']
+}, {
+  name: 'red',
+  list: ['bg-red-100', 'bg-red-200', 'bg-red-300', 'bg-red-400', 'bg-red-500', 'bg-red-600', 'bg-red-700', 'bg-red-800', 'bg-red-900', 'bg-red-1000']
+}, {
+  name: 'gray',
+  list: ['bg-gray-100', 'bg-gray-200', 'bg-gray-300', 'bg-gray-400', 'bg-gray-500', 'bg-gray-600', 'bg-gray-700', 'bg-gray-800', 'bg-gray-900', 'bg-gray-1000']
 }];
 
 const bgColors = [
@@ -169,22 +164,22 @@ const bgColors = [
 ];
 const primaryTextColors = [
   ['text-b-primary', '品牌色'],
-  ['text-b-primary-hover', '品牌色'],
-  ['text-b-primary-active', '品牌色'],
-  ['text-b-primary-disabled', '品牌色'],
+  // ['text-b-primary-hover', '品牌色'],
+  // ['text-b-primary-active', '品牌色'],
+  // ['text-b-primary-disabled', '品牌色'],
   // ['text-b-info', '信息色'],
   ['text-b-success', '成功色'],
-  ['text-b-success-hover', '成功色'],
-  ['text-b-success-active', '成功色'],
-  ['text-b-success-disabled', '成功色'],
+  // ['text-b-success-hover', '成功色'],
+  // ['text-b-success-active', '成功色'],
+  // ['text-b-success-disabled', '成功色'],
   ['text-b-warn', '警告色'],
-  ['text-b-warn-hover', '警告色'],
-  ['text-b-warn-active', '警告色'],
-  ['text-b-warn-disabled', '警告色'],
+  // ['text-b-warn-hover', '警告色'],
+  // ['text-b-warn-active', '警告色'],
+  // ['text-b-warn-disabled', '警告色'],
   ['text-b-danger', '危险色'],
-  ['text-b-danger-hover', '危险色'],
-  ['text-b-danger-active', '危险色'],
-  ['text-b-danger-disabled', '危险色'],
+  // ['text-b-danger-hover', '危险色'],
+  // ['text-b-danger-active', '危险色'],
+  // ['text-b-danger-disabled', '危险色'],
   // ['text-b-link', '链接色'],
 ];
 

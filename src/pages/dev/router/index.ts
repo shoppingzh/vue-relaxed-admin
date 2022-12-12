@@ -9,7 +9,7 @@ addRoutes([{
   children: [
     {
       path: 'ui',
-      component: import('@p-dev/views/ui.vue'),
+      component: import('@p-dev/views/ui/index.vue'),
       meta: { menu: true, title: 'UI规范' },
     },
     {
