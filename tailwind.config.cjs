@@ -2,7 +2,7 @@ const config = require('tailwindcss/defaultConfig');
 const colors = require('tailwindcss/colors');
 
 const baseColors = {
-  blue: ['#E8F7FF', '#C3E7FE', '#9FD4FD', '#7BC0FC', '#57A9FB', '#3491FA', '#206CCF', '#114BA3', '#063078', '#001A4D'],
+  blue: ['#E8F3FF', '#BEDAFF', '#94BFFF', '#6AA1FF', '#4080FF', '#165DFF', '#0E42D2', '#072CA6', '#031A79', '#000D4D'],
   orange: ['#FFF7E8', '#FFE4BA', '#FFCF8B', '#FFB65D', '#FF9A2E', '#FF7D00', '#D25F00', '#A64500', '#792E00', '#4D1B00'],
   green: ['#E8FFEA', '#AFF0B5', '#7BE188', '#4CD263', '#23C343', '#00B42A', '#009A29', '#008026', '#006622', '#004D1C'],
   red: ['#FFECE8', '#FDCDC5', '#FBACA3', '#F98981', '#F76560', '#F53F3F', '#CB272D', '#A1151E', '#770813', '#4D000A'],
@@ -12,11 +12,11 @@ function createPrimaryColors(type, colors) {
   if (!colors) return {};
   return {
     [`b-${type}`]: {
-      DEFAULT: colors[6],
-      hover: colors[5],
-      active: colors[7],
-      disabled: colors[3],
-      background: colors[1],
+      DEFAULT: colors[5],
+      hover: colors[4],
+      active: colors[6],
+      disabled: colors[2],
+      background: colors[0],
     }
   };
 }
