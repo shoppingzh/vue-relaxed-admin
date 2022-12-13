@@ -6,8 +6,8 @@
   </el-alert>
 
   <Example title="色彩">
-    <div class="flex flex-wrap">
-      <div v-for="color in colors" :key="color.name" class="mb-4 w-[240px] shrink-0 mr-2">
+    <div class="flex">
+      <div v-for="color in colors" :key="color.name" class="mb-4 w-[240px] shrink-1 mr-2">
         <div
           v-for="(cls, idx) in color.list"
           :key="cls"
@@ -46,7 +46,7 @@
       <div
         v-for="[color] in primaryTextColors"
         :key="color"
-        class="flex text-white leading-relaxed font-semibold w-[600px]"
+        class="flex leading-relaxed font-semibold w-[600px]"
         :class="color">
         <Copy :text="color" />
       </div>
