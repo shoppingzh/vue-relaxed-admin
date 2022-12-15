@@ -5,7 +5,7 @@ import { watch } from 'vue';
 export default defineStore('layout', () => {
 
   const { width: windowWidth } = useWindowSize();
-  const isMenuCollapse = useLocalStorage('isMenuCollapse', false, {});
+  const isMenuCollapse = useLocalStorage('isMenuCollapse', false);
 
   // 自动折叠
   watch(windowWidth, () => {
