@@ -39,7 +39,7 @@
   
   <Example title="色彩的应用">
     <el-alert :closable="false">
-      默认色彩可以用于任何可以加颜色的地方（如文本、边框、背景等）。
+      调色盘与主题色中的色值可以用于任何可以设置颜色的地方（如文本、边框、背景等）。
     </el-alert>
     <div class="mt-5">
       <div class="text-h6 font-semibold">文字</div>
@@ -68,23 +68,6 @@
 
   </Example>
 
-  <Example title="间距">
-    <Spacing />
-  </Example>
-
-  <Example title="文字大小">
-    <div
-      v-for="[cls, name] in textSizes"
-      :key="cls"
-      class="font-semibold"
-      :class="cls">
-      {{ name }} <Copy :text="cls" />
-    </div>
-    <el-alert title="备注" :closable="false" class="mt-2">
-      <div>默认文本大小：常规</div>
-    </el-alert>
-  </Example>
-
   <Example title="文字颜色">
     <div class="flex">
       <div
@@ -99,9 +82,20 @@
         </div>
       </div>
     </div>
-    <el-alert title="备注" :closable="false" class="mt-2">
-      <div>默认文字颜色：text-primary</div>
-    </el-alert>
+  </Example>
+
+  <Example title="边框色">
+    <div class="flex">
+      <div
+        v-for="[cls, name] in borderColors"
+        :key="cls">
+        <div class="w-[150px] h-[100px] mr-2 border border-solid rounded-md" :class="cls" />
+        <div class="mt-2 text-h6">
+          <div><Copy :text="cls" /></div>
+          <div>{{ name }}</div>
+        </div>
+      </div>
+    </div>
   </Example>
 
   <Example title="阴影">
@@ -115,6 +109,20 @@
           <div>{{ name }}</div>
         </div>
       </div>
+    </div>
+  </Example>
+
+  <Example title="间距">
+    <Spacing />
+  </Example>
+
+  <Example title="文字大小">
+    <div
+      v-for="[cls, name] in textSizes"
+      :key="cls"
+      class="font-semibold"
+      :class="cls">
+      {{ name }} <Copy :text="cls" />
     </div>
   </Example>
 
@@ -181,6 +189,13 @@ const primaryTextColors = [
   // ['text-b-danger-active', '危险色'],
   // ['text-b-danger-disabled', '危险色'],
   // ['text-b-link', '链接色'],
+];
+
+const borderColors = [
+  ['border-light', '浅色'],
+  ['border-regular', '常规色'],
+  ['border-dark', '深色'],
+  ['border-darker', '更深色'],
 ];
 
 const textSizes = [

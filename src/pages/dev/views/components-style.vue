@@ -26,6 +26,19 @@
   <Example title="文字颜色">
     <el-input v-model="val" placeholder="请输入内容" class="w-[200px]" />
   </Example>
+
+  <Example title="圆角">
+    <el-select />
+    <el-time-picker class="ml-2" />
+    <!-- <el-switch class="ml-2" /> -->
+    <el-tag class="ml-2">hello</el-tag>
+
+    <div class="mt-2">
+      <el-alert :closable="false">hello</el-alert>
+    </div>
+    
+
+  </Example>
 </template>
 
 <script lang="ts" setup>

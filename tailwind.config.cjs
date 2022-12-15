@@ -85,6 +85,13 @@ module.exports = {
         secondary: baseColors.gray[5],
         disabled: baseColors.gray[3],
       },
+      borderColor: {
+        light: baseColors.gray[1],
+        DEFAULT: baseColors.gray[2],
+        regular: baseColors.gray[2],
+        dark: baseColors.gray[3],
+        darker: baseColors.gray[5],
+      },
     },
   },
   plugins: [
