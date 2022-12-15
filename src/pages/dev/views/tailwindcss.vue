@@ -1,4 +1,9 @@
 <template>
+
+  <el-alert type="success" :closable="false" class="mb-4">
+    TailwindC的入门使用，推荐看这篇文章就够了：<a target="_blank" href="https://zhengxiaoping.xyz/others/TailwindCSS%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.html">https://zhengxiaoping.xyz/others/TailwindCSS%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.html</a>
+  </el-alert>
+
   <Example title="JIT即时编译">
     <div class="w-[210px] h-[100px] bg-blue-100 center">
       w-[210px] h-[100px]
