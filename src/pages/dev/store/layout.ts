@@ -1,11 +1,11 @@
-import { useWindowSize } from '@vueuse/core';
+import { useLocalStorage, useWindowSize } from '@vueuse/core';
 import { defineStore } from 'pinia';
-import { ref, watch } from 'vue';
+import { watch } from 'vue';
 
 export default defineStore('layout', () => {
 
-  const isMenuCollapse = ref(false);
   const { width: windowWidth } = useWindowSize();
+  const isMenuCollapse = useLocalStorage('isMenuCollapse', false, {});
 
   // 自动折叠
   watch(windowWidth, () => {
