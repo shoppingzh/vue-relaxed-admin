@@ -22,8 +22,15 @@
       :type="type"
       class="mr-2">我是一个链接</el-link>
   </Example>
+
+  <Example title="文字颜色">
+    <el-input v-model="val" placeholder="请输入内容" class="w-[200px]" />
+  </Example>
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue';
+
 const types = ['default', 'primary', 'info', 'success', 'warning', 'danger'];
+const val = ref('');
 </script>
