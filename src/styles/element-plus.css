@@ -1,6 +1,7 @@
 /* 此文件用于覆盖element-plus的主题 */
 
 :root {
+  /* 主题色 */
   --el-color-primary: theme('colors.b-primary.DEFAULT');
   --el-color-success: theme('colors.b-success.DEFAULT');
   --el-color-warning: theme('colors.b-warn.DEFAULT');
@@ -43,6 +44,7 @@
     --el-button-active-border-color: theme('colors.b-danger.active');
   }
 }
+
 
 .el-link {
   .el-link&--primary {
