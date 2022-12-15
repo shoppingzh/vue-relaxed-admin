@@ -11,8 +11,8 @@
 import { computed } from 'vue';
 
 interface Props {
-  name: string,
-  inline: string,
+  name?: string,
+  inline?: string,
 }
 const props = defineProps<Props>();
 const symbolId = computed(() => `#svg-icon/${props.name}`);
