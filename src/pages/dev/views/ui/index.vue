@@ -28,7 +28,7 @@
         <div
           v-for="color in colors"
           :key="color">
-          <div class="w-[150px] h-[50px]" :class="color" />
+          <div class="w-[150px] h-[50px]" :class="[color, , `dark: bg-b-dark-primary`]" />
           <div class="mt-1 text-sm">
             <Copy :text="color" />
           </div>
@@ -99,11 +99,11 @@
   </Example>
 
   <Example title="阴影">
-    <div class="flex bg-[#FCFCFC] p-4">
+    <div class="flex bg-gray-100 p-4">
       <div
         v-for="[cls, name] in shadows"
         :key="cls">
-        <div class="w-[150px] h-[100px] mr-2" :class="cls" />
+        <div class="w-[150px] h-[100px] mr-2 bg-white dark:bg-gray-300" :class="cls" />
         <div class="mt-2 text-h6">
           <div><Copy :text="cls" /></div>
           <div>{{ name }}</div>
