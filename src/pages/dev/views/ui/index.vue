@@ -11,7 +11,7 @@
         <div
           v-for="(cls, idx) in color.list"
           :key="cls"
-          class="p-4"
+          class="p-4 transition-all duration-150"
           :class="[cls, { 'text-gray-200': idx > 6, 'text-gray-300': idx <= 6 && idx > 3 }]">
           <Copy :text="cls" />
         </div>
