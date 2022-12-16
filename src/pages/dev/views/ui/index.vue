@@ -37,7 +37,7 @@
     </div>
   </Example>
   
-  <Example title="色彩的应用">
+  <!-- <Example title="色彩的应用">
     <el-alert :closable="false">
       调色盘与主题色中的色值可以用于任何可以设置颜色的地方（如文本、边框、背景等）。
     </el-alert>
@@ -66,7 +66,7 @@
       </div>
     </div>
 
-  </Example>
+  </Example> -->
 
   <Example title="文字颜色">
     <div class="flex">
