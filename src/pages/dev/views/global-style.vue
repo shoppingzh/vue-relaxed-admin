@@ -17,7 +17,7 @@
   </Example>
 
   <Example title="滚动条">
-    <div class="p-4 w-[600px] h-[300px] overflow-auto">
+    <div class="p-4 w-[600px] h-[300px] overflow-auto border border-gray-300 rounded-sm">
       <p v-for="x in 1000" :key="x" class="w-[2000px]">{{ x }}. 我们这个解决方案是真的全面啊！！！</p>
     </div>
   </Example>
