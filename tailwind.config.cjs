@@ -1,14 +1,6 @@
 const config = require('tailwindcss/defaultConfig');
 const colors = require('tailwindcss/colors');
 
-const baseColors = {
-  blue: ['#E8F3FF', '#BEDAFF', '#94BFFF', '#6AA1FF', '#4080FF', '#165DFF', '#0E42D2', '#072CA6', '#031A79', '#000D4D'],
-  orange: ['#FFF7E8', '#FFE4BA', '#FFCF8B', '#FFB65D', '#FF9A2E', '#FF7D00', '#D25F00', '#A64500', '#792E00', '#4D1B00'],
-  green: ['#E8FFEA', '#AFF0B5', '#7BE188', '#4CD263', '#23C343', '#00B42A', '#009A29', '#008026', '#006622', '#004D1C'],
-  red: ['#FFECE8', '#FDCDC5', '#FBACA3', '#F98981', '#F76560', '#F53F3F', '#CB272D', '#A1151E', '#770813', '#4D000A'],
-  gray: ['#F7F8FA', '#F2F3F5', '#E5E6EB', '#C9CDD4', '#A9AEB8', '#86909C', '#6B7785', '#4E5969', '#272E3B', '#1D2129'],
-};
-
 function createPrimaryColors(type, colors) {
   if (!colors) return {};
   return {
@@ -21,6 +13,15 @@ function createPrimaryColors(type, colors) {
     }
   };
 }
+
+function createStepCssVarColors(name, count = 10) {
+  return new Array(count).fill().map((_, index) => `var(--color-${name}-${index + 1})`);
+}
+
+const baseColors = ['blue', 'orange', 'green', 'red', 'gray'].reduce((map, name) => {
+  map[name] = createStepCssVarColors(name);
+  return map;
+}, {});
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -43,7 +44,6 @@ module.exports = {
       ...createPrimaryColors('warn', baseColors.orange),
       ...createPrimaryColors('danger', baseColors.red),
       ...createPrimaryColors('link', baseColors.blue),
-
     },
     // 规则：以4px为倍数递进
     spacing: new Array(21).fill(null).reduce((conf, _, index) => {

@@ -1,3 +1,7 @@
+body {
+  @apply text-base text-primary;
+}
+
 html, body, #app {
   @apply h-full;
 }
