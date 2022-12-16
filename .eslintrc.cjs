@@ -24,6 +24,7 @@ module.exports = {
     'array-bracket-newline': [0],
     'function-paren-newline': [0],
     'id-blacklist': [0],
+    'no-param-reassign': [0],
 
     // vue
     'vue/multi-word-component-names': [0],
