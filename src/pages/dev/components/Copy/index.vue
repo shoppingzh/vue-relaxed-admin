@@ -22,7 +22,7 @@ const { copy, copied } = useClipboard({
 watch(copied, () => {
   if (copied.value) {
     ElMessage.success({
-      message: '已复制！'
+      message: `已复制：${props.text}`
     });
   }
 });

@@ -14,7 +14,7 @@
       </el-tooltip>
     </el-menu>
     <div
-      class="p-2 text-center hover:bg-gray-100 cursor-pointer border-t border-t-gray-600"
+      class="p-2 text-center hover:bg-gray-100 cursor-pointer border-t border-t-gray-200"
       @click="isCollapse = !isCollapse">
       <el-icon class="transition-all duration-350 text-h6" :class="{ 'rotate-180': isCollapse }"><Fold /></el-icon>
     </div>
