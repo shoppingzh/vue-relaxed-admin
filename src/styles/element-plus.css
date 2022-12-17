@@ -1,6 +1,6 @@
 /* 此文件用于覆盖element-plus的主题 */
 
-:root {
+:root, html.dark {
   /* 主题色 */
   --el-color-primary: theme('colors.b-primary.DEFAULT');
   --el-color-success: theme('colors.b-success.DEFAULT');
