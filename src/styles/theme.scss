@@ -4,6 +4,8 @@ $colors: (
   green: ('#E8FFEA', '#AFF0B5', '#7BE188', '#4CD263', '#23C343', '#00B42A', '#009A29', '#008026', '#006622', '#004D1C'),
   red: ('#FFECE8', '#FDCDC5', '#FBACA3', '#F98981', '#F76560', '#F53F3F', '#CB272D', '#A1151E', '#770813', '#4D000A'),
   gray: ('#F7F8FA', '#F2F3F5', '#E5E6EB', '#C9CDD4', '#A9AEB8', '#86909C', '#6B7785', '#4E5969', '#272E3B', '#1D2129'),
+  pink: ('#FFE8F1', '#FDC2DB', '#FB9DC7', '#F979B7', '#F754A8', '#F5319D', '#CB1E83', '#A11069', '#77064F', '#4D0034'),
+  cyan: ('#E8FFFB', '#B7F4EC', '#89E9E0', '#5EDFD6', '#37D4CF', '#14C9C9', '#0DA5AA', '#07828B', '#03616C', '#00424D'),
 );
 
 $dark-colors: (
@@ -12,17 +14,15 @@ $dark-colors: (
   green: ('#004D1C', '#046625', '#0A802D', '#129A37', '#1DB440', '#27C346', '#50D266', '#7EE18B', '#B2F0B7', '#EBFFEC'),
   red: ('#4D000A', '#770611', '#A1161F', '#CB2E34', '#F54E4E', '#F76965', '#F98D86', '#FBB0A7', '#FDD1CA', '#FFF0EC'),
   gray: ('#17171A', '#2E2E30', '#484849', '#5F5F60', '#78787A', '#929293', '#ABABAC', '#C5C5C5', '#DFDFDF', '#F6F6F6'),
-);
-
-$text-colors: (
-  
+  pink: ('#4D0034', '#770850', '#A1176C', '#CB2B88', '#F545A6', '#F756A9', '#F97AB8', '#FB9EC8', '#FDC3DB', '#FFE8F1'),
+  cyan: ('#00424D', '#06616C', '#11838B', '#1FA6AA', '#30C9C9', '#3FD4CF', '#66DFD7', '#90E9E1', '#BEF4ED', '#F0FFFC'),
 );
 
 :root {
   @each $name, $list in $colors {
     @each $color in $list {
       $index: index($list, $color);
-      --color-#{$name}-#{$index}: #{$color};
+      --color-#{'' + $name}-#{$index}: #{$color};
     }
   }
 }
@@ -31,7 +31,7 @@ html.dark {
   @each $name, $list in $dark-colors {
     @each $color in $list {
       $index: index($list, $color);
-      --color-#{$name}-#{$index}: #{$color};
+      --color-#{'' + $name}-#{$index}: #{$color};
     }
   }
 }

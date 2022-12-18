@@ -18,7 +18,7 @@ function createStepCssVarColors(name, count = 10) {
   return new Array(count).fill().map((_, index) => `var(--color-${name}-${index + 1})`);
 }
 
-const baseColors = ['blue', 'orange', 'green', 'red', 'gray'].reduce((map, name) => {
+const baseColors = ['blue', 'orange', 'green', 'red', 'pink', 'cyan', 'gray'].reduce((map, name) => {
   map[name] = createStepCssVarColors(name);
   return map;
 }, {});
@@ -29,7 +29,11 @@ module.exports = {
   darkMode: 'class',
   theme: {
     colors: {
-      ...colors,
+      inherit: colors.inherit,
+      current: colors.current,
+      transparent: colors.transparent,
+      black: colors.black,
+      white: colors.white,
 
       ...Object.entries(baseColors).reduce((conf, [name, list]) => {
         conf[name] = list.reduce((map, color, index) => {
