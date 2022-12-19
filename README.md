@@ -9,4 +9,4 @@ pnpm gen-icons
 # npm run gen-icons
 ```
 
-相关文档：![](https://github.com/shoppingzh/iconfont-downloader)
+相关文档：[https://github.com/shoppingzh/iconfont-downloader](https://github.com/shoppingzh/iconfont-downloader)
