@@ -6,9 +6,13 @@ const router = createRouter({
   routes
 });
 
-export function addRoutes(routes: RouteRecordRaw[]) {
+export function addRoutes(routes: RouteRecordRaw[], parentName?: string) {
   routes.forEach(route => {
-    router.addRoute(route);
+    if (parentName) {
+      router.addRoute(parentName, route);
+    } else {
+      router.addRoute(route);
+    }
   });
 }
 
