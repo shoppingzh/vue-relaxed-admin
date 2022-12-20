@@ -5,6 +5,7 @@ import ElementPlus from '@/plugins/element-plus';
 import components from '@/components';
 import router from './router';
 import { createPinia } from 'pinia';
+import '@/mock';
 
 import './styles/index.scss';
 
