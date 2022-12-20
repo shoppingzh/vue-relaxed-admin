@@ -1,7 +1,5 @@
 const modules: Record<string, any> = import.meta.glob('@p-dev/icons/*.svg', { as: 'raw', eager: true });
 
-console.log(modules);
-
 const NAME_RE = /\/(?:\w+\/)(\w+)\.svg$/;
 
 export default Object.entries(modules).reduce((map, [path, mod]) => {

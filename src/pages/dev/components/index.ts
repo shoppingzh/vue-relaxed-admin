@@ -2,8 +2,9 @@ import { App } from 'vue';
 
 const modules: Record<string, any> = import.meta.glob('./*/index.vue', { eager: true });
 
+console.log(modules);
+
 function getComponentName(path: string) {
-  console.log(path);
   const re = new RegExp(/(?:\/|\\)(\w+)(?:\/|\\)index.vue$/g);
   const result = re.exec(path);
   return result ? result[1] : null;
