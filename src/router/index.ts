@@ -1,9 +1,8 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import routes from './routes';
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes: []
 });
 
 export function addRoutes(routes: RouteRecordRaw[], parentName?: string) {
