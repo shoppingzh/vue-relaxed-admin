@@ -1,21 +1,21 @@
 <template>
-  <header class="flex items-center h-[52px] leading-[52px] px-4 border-b border-b-gray-300">
-    <RouterLink to="/" class="appearance-none text-inherit no-underline hover:text-inherit">
-      <svg-icon :inline="logoSvg" class="text-h5" />
-      <span class="ml-2 text-h6">Vue Template</span>
-    </RouterLink>
+  <header class="flex items-center h-[52px] leading-[52px] border-b border-b-gray-300">
+    <div class="h-full flex items-center px-4 cursor-pointer hover:bg-gray-300" @click="isMenuCollapse = !isMenuCollapse">
+      <el-icon class="text-h5 transition-all duration-300" :class="{ 'rotate-180': isMenuCollapse }"><Fold /></el-icon>
+    </div>
     <div class="flex-1" />
-    <div>
+    <div class="px-4">
       <el-switch v-model="darkMode" />
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import logoSvg from '@/assets/vue.svg?raw';
 import usePrefs from '@/store/preference';
 import { storeToRefs } from 'pinia';
+import useLayout from '@p-index/store/layout';
 
 const prefs = usePrefs();
 const { darkMode } = storeToRefs(prefs);
+const { isMenuCollapse } = storeToRefs(useLayout());
 </script>
