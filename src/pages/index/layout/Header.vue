@@ -1,5 +1,5 @@
 <template>
-  <header class="flex items-center h-[52px] leading-[52px] border-b border-b-gray-300">
+  <header class="flex items-center h-[52px] leading-[52px]">
     <div class="h-full flex items-center px-4 cursor-pointer hover:bg-gray-300" @click="isMenuCollapse = !isMenuCollapse">
       <el-icon class="text-h5 transition-all duration-300" :class="{ 'rotate-180': isMenuCollapse }"><Fold /></el-icon>
     </div>
