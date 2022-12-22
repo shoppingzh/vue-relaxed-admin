@@ -10,7 +10,7 @@ export default defineStore('preference', () => {
   const darkMode = useDark();
   const toggleDarkMode = useToggle(darkMode);
   const { isFullscreen, toggle: toggleFullscreen } = useFullscreen(document.body);
-  const grayMode = useLocalStorage('grayMode', true, {});
+  const grayMode = useLocalStorage('grayMode', false, {});
 
   watch(grayMode, () => {
     document.body.style.filter = grayMode.value ? `grayscale(1)` : 'unset';
