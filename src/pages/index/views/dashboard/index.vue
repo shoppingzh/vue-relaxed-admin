@@ -1,5 +1,8 @@
 <template>
-  <div class="w-[3000px] h-[3000px]" />
+  <div class="p-4 h-[3000px]">
+
+    <el-card header="卡片1"></el-card>
+  </div>
 </template>
 
 <script setup>
