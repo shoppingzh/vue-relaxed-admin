@@ -72,3 +72,9 @@
     --el-link-active-text-color: theme('colors.b-primary.active');
   }
 }
+
+.el-drawer {
+  &__header {
+    @apply px-4 py-3 mb-0 border-b border-b-gray-300 text-primary text-base;
+  }
+}
