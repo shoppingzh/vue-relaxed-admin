@@ -1,6 +1,6 @@
 <template>
   <aside
-    class="relative border-r border-r-gray-300 transition-all duration-200 ease-in-out" :class="{ '!w-[50px]': isAsideCollapse }" :style="styles">
+    class="relative transition-all duration-200 ease-in-out" :class="{ '!w-[50px]': isAsideCollapse }" :style="styles">
     <div class="flex flex-col w-full h-full overflow-hidden">
       <div class="p-4 text-center whitespace-nowrap">
         <RouterLink to="/" class="appearance-none text-inherit no-underline hover:text-inherit">

@@ -1,8 +1,8 @@
 <template>
   <section class="h-full flex overflow-hidden">
-    <Aside class="h-full" />
+    <Aside class="h-full border-r border-r-gray-200" />
     <section class="flex flex-col flex-1 w-0">
-      <Header class="" />
+      <Header class="z-10 border-b border-b-gray-200" />
       <Main class="flex-1 h-0 w-full bg-gray-200" />
     </section>
   </section>
@@ -22,3 +22,9 @@ import Settings from './components/Settings.vue';
 const { isSetting } = storeToRefs(useLayout());
 
 </script>
+
+<style scoped>
+aside {
+  box-shadow: 0 3px 20px theme('colors.gray.200');
+}
+</style>
