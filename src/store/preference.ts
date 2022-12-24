@@ -7,7 +7,9 @@ import { watch } from 'vue';
 
 export default defineStore('preference', () => {
 
-  const darkMode = useDark();
+  const darkMode = useDark({
+    storageKey: 'darkMode',
+  });
   const toggleDarkMode = useToggle(darkMode);
   const { isFullscreen, toggle: toggleFullscreen } = useFullscreen(document.body);
   const grayMode = useLocalStorage('grayMode', false, {});
