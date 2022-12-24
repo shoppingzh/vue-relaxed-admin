@@ -1,11 +1,11 @@
 <template>
   <header class="flex items-center h-[52px] leading-[52px]">
-    <div v-if="menuCollapseTogglePlace === 'header'" class="h-full flex items-center px-4 cursor-pointer hover:bg-gray-300" @click="isMenuCollapse = !isMenuCollapse">
-      <el-icon class="text-h5 transition-all duration-300" :class="{ 'rotate-180': isMenuCollapse }"><Fold /></el-icon>
+    <div v-if="asideCollapseTogglePlace === 'header'" class="h-full flex items-center px-4 cursor-pointer hover:bg-gray-300" @click="isAsideCollapse = !isAsideCollapse">
+      <el-icon class="text-h5 transition-all duration-300" :class="{ 'rotate-180': isAsideCollapse }"><Fold /></el-icon>
     </div>
     <div class="px-4 text-h6 font-semibold">Hello, Xpzheng!</div>
     <div class="flex-1" />
-    <div class="px-4">
+    <div class="px-4 flex items-center">
       <span class="nav-button" @click="isSetting = !isSetting">
         <el-icon>
           <Setting />
@@ -26,7 +26,7 @@ import useLayout from '@p-index/store/layout';
 
 const prefs = usePrefs();
 const { darkMode } = storeToRefs(prefs);
-const { isMenuCollapse, menuCollapseTogglePlace, isSetting } = storeToRefs(useLayout());
+const { isAsideCollapse, asideCollapseTogglePlace, isSetting } = storeToRefs(useLayout());
 </script>
 
 <style scoped>

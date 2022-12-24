@@ -1,15 +1,26 @@
 <template>
-  <el-form label-position="top" label-suffix="：">
-    <el-form-item label="侧边栏切换按钮位置">
-      <el-radio-group v-model="menuCollapseTogglePlace">
+  <div class="mb-4 font-semibold">表现相关</div>
+  <div>
+    <div class="set-item flex">
+      <div class="flex-1">侧边栏宽度</div>
+      <el-input-number v-model="asideWidth" :controls="false" :min="80" :max="500" class="w-[100px]" />
+    </div>
+    <div class="set-item flex">
+      <div class="flex-1">侧切位置</div>
+      <el-radio-group v-model="asideCollapseTogglePlace">
         <el-radio label="aside">侧边</el-radio>
         <el-radio label="header">顶部</el-radio>
       </el-radio-group>
-    </el-form-item>
-    <el-form-item label="灰色模式">
+    </div>
+    <div class="set-item flex">
+      <div class="flex-1">暗黑模式</div>
+      <el-switch v-model="darkMode" />
+    </div>
+    <div class="set-item flex">
+      <div class="flex-1">灰色模式</div>
       <el-switch v-model="grayMode" />
-    </el-form-item>
-  </el-form>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -17,6 +28,12 @@ import usePrefs from '@/store/preference';
 import useLayout from '@p-index/store/layout';
 import { storeToRefs } from 'pinia';
 
-const { menuCollapseTogglePlace } = storeToRefs(useLayout());
-const { grayMode } = storeToRefs(usePrefs());
+const { asideWidth, asideCollapseTogglePlace } = storeToRefs(useLayout());
+const { darkMode, grayMode } = storeToRefs(usePrefs());
 </script>
+
+<style scoped>
+.set-item {
+  @apply mb-2;
+}
+</style>

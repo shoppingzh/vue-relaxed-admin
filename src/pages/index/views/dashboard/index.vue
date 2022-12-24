@@ -1,7 +1,6 @@
 <template>
   <div class="p-4 h-[3000px]">
-
-    <el-card header="卡片1"></el-card>
+    控制台
   </div>
 </template>
 
