@@ -3,6 +3,7 @@ import { downloadSvgs } from 'iconfont-downloader';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import prompt from 'prompt';
+import rimraf from 'rimraf';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const destDir = path.resolve(__dirname, '../src/icons/svg');
@@ -45,18 +46,27 @@ function readConfig() {
     });
   }
 
+  // 先删除原目录
+  rimraf.sync(destDir, {});
+  mkdirSync(destDir);
 
-  await downloadSvgs({
-    token: config.token,
-    pid: config.pid,
-    destDir,
-    filename: id => id.replace(/^icon-(.*)$/g, '$1'),
-  });
+  try {
+    await downloadSvgs({
+      token: config.token,
+      pid: config.pid,
+      destDir,
+      filename: id => id.replace(/^icon-(.*)$/g, '$1'),
+    });
+  } catch (err) {
+    console.error(err);
+    // 删除配置文件
+    rimraf.sync(configFilePath);
+    return;
+  }
   console.log(`生成成功！请在${destDir}中查看结果`);
-  
 
   // 写入文件
-  writeFileSync(configFilePath, Object.keys(config).reduce((content, name) => content + `${name}=${config[name]}\n`, ''), {
+  writeFileSync(configFilePath, Object.keys(config).reduce((content, name) => `${content}${name}=${config[name]}\n`, ''), {
     encoding: 'utf-8',
   });
 })();
