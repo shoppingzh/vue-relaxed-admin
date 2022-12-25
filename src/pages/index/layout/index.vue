@@ -1,5 +1,5 @@
 <template>
-  <section class="h-full flex overflow-hidden">
+  <section class="h-full flex overflow-hidden" :style="styles">
     <Aside class="h-full border-r border-r-gray-200" />
     <section class="flex flex-col flex-1 w-0">
       <Header v-show="!isHideHeader" class="z-10 border-b border-b-gray-200" />
@@ -23,8 +23,15 @@ import Main from './Main.vue';
 import useLayout from '@p-index/store/layout';
 import { storeToRefs } from 'pinia';
 import Settings from './components/Settings.vue';
+import { computed } from 'vue';
 
 const { isSetting, isHideHeader } = storeToRefs(useLayout());
+const styles = computed<any>(() => {
+  if (!isSetting.value) return {};
+  return {
+    filter: 'blur(3px)',
+  };
+});
 
 </script>
 
