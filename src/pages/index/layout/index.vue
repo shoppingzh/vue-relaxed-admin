@@ -1,5 +1,5 @@
 <template>
-  <section class="h-full flex overflow-hidden" :style="styles">
+  <section class="h-full flex overflow-hidden">
     <Aside class="h-full border-r border-r-gray-200" />
     <section class="flex flex-col flex-1 w-0">
       <Header v-show="!isHideHeader" class="z-10 border-b border-b-gray-200" />
