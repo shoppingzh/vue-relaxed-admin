@@ -1,4 +1,12 @@
 <template>
+  <div class="mb-4 font-semibold">布局</div>
+  <div>
+    <div class="set-item flex">
+      <div class="flex-1">隐藏顶部栏</div>
+      <el-switch v-model="isHideHeader" />
+    </div>
+  </div>
+
   <div class="mb-4 font-semibold">表现相关</div>
   <div>
     <div class="set-item flex">
@@ -28,8 +36,8 @@ import usePrefs from '@/store/preference';
 import useLayout from '@p-index/store/layout';
 import { storeToRefs } from 'pinia';
 
-const { asideWidth, asideCollapseTogglePlace } = storeToRefs(useLayout());
 const { darkMode, grayMode } = storeToRefs(usePrefs());
+const { asideWidth, asideCollapseTogglePlace, isHideHeader } = storeToRefs(useLayout());
 </script>
 
 <style scoped>

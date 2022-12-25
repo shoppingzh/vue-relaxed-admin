@@ -6,15 +6,14 @@
     <div class="px-4 text-h6 font-semibold">Hello, Xpzheng!</div>
     <div class="flex-1" />
     <div class="px-4 flex items-center">
-      <span class="nav-button" @click="isSetting = !isSetting">
+      <!-- <span class="nav-button" @click="isSetting = !isSetting">
         <el-icon>
           <Setting />
         </el-icon>
       </span>
       <span class="nav-button" @click="darkMode = !darkMode">
         <el-icon><Sunny /></el-icon>
-      </span>
-      <!-- <el-switch v-model="darkMode" /> -->
+      </span> -->
     </div>
   </header>
 </template>

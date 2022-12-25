@@ -1,6 +1,6 @@
 <template>
   <aside
-    class="relative transition-all duration-200 ease-in-out" :class="{ '!w-[50px]': isAsideCollapse }" :style="styles">
+    class="relative transition-all duration-200 ease-in-out" :class="{ '!w-[60px]': isAsideCollapse }" :style="styles">
     <div class="flex flex-col w-full h-full overflow-hidden">
       <div class="p-4 text-center whitespace-nowrap">
         <RouterLink to="/" class="appearance-none text-inherit no-underline hover:text-inherit">
@@ -12,6 +12,14 @@
         <el-menu-item index="1">
           <MenuContent icon="yibiaopan" title="分析页" />
         </el-menu-item>
+        <el-sub-menu>
+          <template #title>
+            <MenuContent icon="yibiaopan" title="错误页" />
+          </template>
+          <el-menu-item>
+            <MenuContent icon="yibiaopan" title="404" />
+          </el-menu-item>
+        </el-sub-menu>
       </el-menu>
     </div>
 
@@ -49,11 +57,11 @@ const styles = computed<any>(() => {
   --el-menu-hover-bg-color: var(--color);
   --el-menu-border-color: theme('colors.transparent');
   --el-menu-active-text-color: theme('colors.gray.100'); */
-  &--collapse {
+  /* &--collapse {
     @apply !w-full;
   }
   &-item {
     @apply !px-4;
-  }
+  } */
 }
 </style>

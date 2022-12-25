@@ -10,6 +10,8 @@ export default defineStore('layout', () => {
   const asideCollapseTogglePlace = useLocalStorage('asideCollapseTogglePlace', 'aside');
   // 菜单栏宽度
   const asideWidth = useLocalStorage('asideWidth', 180);
+  // 顶部栏显示
+  const isHideHeader = useLocalStorage('isHideHeader', false);
 
   const isSetting = ref(false);
 
@@ -23,6 +25,7 @@ export default defineStore('layout', () => {
     isSetting,
     asideCollapseTogglePlace,
     asideWidth,
+    isHideHeader,
   };
 
 });
