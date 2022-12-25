@@ -28,6 +28,10 @@
       <div class="flex-1">灰色模式</div>
       <el-switch v-model="grayMode" />
     </div>
+    <div class="set-item flex">
+      <div class="flex-1">色弱模式</div>
+      <el-switch v-model="weakMode" />
+    </div>
   </div>
 </template>
 
@@ -36,7 +40,7 @@ import usePrefs from '@/store/preference';
 import useLayout from '@p-index/store/layout';
 import { storeToRefs } from 'pinia';
 
-const { darkMode, grayMode } = storeToRefs(usePrefs());
+const { darkMode, grayMode, weakMode } = storeToRefs(usePrefs());
 const { asideWidth, asideCollapseTogglePlace, isHideHeader } = storeToRefs(useLayout());
 </script>
 
