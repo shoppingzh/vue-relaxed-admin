@@ -3,7 +3,7 @@
  */
 import { useDark, useFullscreen, useLocalStorage, useToggle } from '@vueuse/core';
 import { defineStore } from 'pinia';
-import { watch } from 'vue';
+import { watch, computed } from 'vue';
 
 export default defineStore('preference', () => {
 
@@ -13,10 +13,21 @@ export default defineStore('preference', () => {
   const toggleDarkMode = useToggle(darkMode);
   const { isFullscreen, toggle: toggleFullscreen } = useFullscreen(document.body);
   const grayMode = useLocalStorage('grayMode', false, {});
+  const weakMode = useLocalStorage('weakMode', false);
 
-  watch(grayMode, () => {
-    document.body.style.filter = grayMode.value ? `grayscale(1)` : 'unset';
-  }, { immediate: true });
+  watch([grayMode, weakMode], updateBodyFilter, { immediate: true });
+
+  function updateBodyFilter() {
+    const filters = [];
+    if (grayMode.value) {
+      filters.push('grayscale(1)');
+    }
+    if (weakMode.value) {
+      filters.push('invert(.8)');
+    }
+    document.body.style.filter = filters.length ? filters.join(' ') : 'unset';
+
+  }
 
   return {
     darkMode,
@@ -26,6 +37,8 @@ export default defineStore('preference', () => {
     toggleFullscreen,
 
     grayMode,
+
+    weakMode,
   };
 
 });
