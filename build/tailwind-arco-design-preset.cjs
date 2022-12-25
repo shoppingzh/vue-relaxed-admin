@@ -82,6 +82,7 @@ module.exports = {
       sm: '4px',
       md: '6px',
       full: config.theme.borderRadius.full,
+      none: config.theme.borderRadius.none,
     },
 
     // 继承（原有的不会删除）
