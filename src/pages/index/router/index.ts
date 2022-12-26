@@ -9,6 +9,9 @@ addRoutes([{
     path: '',
     component: () => import('@p-index/views/dashboard/index.vue')
   }, {
+    path: 'icon',
+    component: () => import('@p-index/views/icon/index.vue')
+  }, {
     path: 'error',
     redirect: '/error/404',
     children: [{
