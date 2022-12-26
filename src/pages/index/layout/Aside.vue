@@ -2,12 +2,14 @@
   <aside
     class="relative transition-all duration-200 ease-in-out" :class="{ '!w-[60px]': isAsideCollapse }" :style="styles">
     <div class="flex flex-col w-full h-full overflow-hidden">
-      <div class="p-4 text-center whitespace-nowrap">
-        <RouterLink to="/" class="appearance-none text-inherit no-underline hover:text-inherit">
-          <svg-icon :inline="logoSvg" class="text-h5" />
+      <!-- LOGO区 -->
+      <div class="p-4 text-center whitespace-nowrap border-b border-b-gray-200">
+        <RouterLink to="/" class="flex items-center appearance-none text-inherit no-underline hover:text-inherit">
+          <svg-icon :inline="logoSvg" class="text-h4" />
           <span v-show="!layout.isAsideCollapse" class="ml-2">Vue Template</span>
         </RouterLink>
       </div>
+      <!-- 菜单区 -->
       <el-menu :collapse="isAsideCollapse" class="flex-1 h-0 border-r-0">
         <el-menu-item index="1">
           <MenuContent icon="yibiaopan" title="分析页" />
@@ -32,7 +34,7 @@
 
 <script lang="ts" setup>
 import { useRouter } from 'vue-router';
-import logoSvg from '@/assets/vue.svg?raw';
+import logoSvg from '@/assets/logo.svg?raw';
 import useLayout from '@p-index/store/layout';
 import { storeToRefs } from 'pinia';
 import MenuContent from './components/MenuContent.vue';
