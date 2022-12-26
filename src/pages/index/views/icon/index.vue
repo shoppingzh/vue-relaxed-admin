@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <div class="p-4 bg-white dark:bg-black rounded-sm shadow-sm">
+    <div class="p-4 bg-white dark:bg-black rounded-xs shadow-xs">
       
       <div class="mb-4 flex items-center">
         <el-input v-model="keyword" placeholder="搜索图标" class="w-[300px] mr-4" clearable />
