@@ -11,9 +11,11 @@
   </el-drawer>
 
   <!-- 悬浮设置按钮 -->
-  <el-button type="primary" class="px-3 py-3 fixed right-0 bottom-2/3 rounded-none rounded-tl-sm rounded-bl-sm" @click="isSetting = true">
-    <el-icon class="text-h6"><Setting /></el-icon>
-  </el-button>
+  <div ref="floatBtn" class="fixed right-0 bottom-2/3 z-[200]">
+    <el-button type="primary" class="px-3 py-3 rounded-none rounded-tl-sm rounded-bl-sm" @click="openSettings()">
+      <el-icon class="text-h6"><Setting /></el-icon>
+    </el-button>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -23,15 +25,15 @@ import Main from './Main.vue';
 import useLayout from '@p-index/store/layout';
 import { storeToRefs } from 'pinia';
 import Settings from './components/Settings.vue';
-import { computed } from 'vue';
+import useFixedDrag from './useFixedDrag';
 
 const { isSetting, isHideHeader } = storeToRefs(useLayout());
-const styles = computed<any>(() => {
-  if (!isSetting.value) return {};
-  return {
-    filter: 'blur(3px)',
-  };
-});
+const { el: floatBtn, isDragging } = useFixedDrag();
+
+function openSettings() {
+  if (isDragging.value) return;
+  isSetting.value = true;
+}
 
 </script>
 
