@@ -28,10 +28,9 @@ import Settings from './components/Settings.vue';
 import useFixedDrag from './useFixedDrag';
 
 const { isSetting, isHideHeader } = storeToRefs(useLayout());
-const { el: floatBtn, isDragging } = useFixedDrag();
+const { el: floatBtn } = useFixedDrag();
 
 function openSettings() {
-  if (isDragging.value) return;
   isSetting.value = true;
 }
 

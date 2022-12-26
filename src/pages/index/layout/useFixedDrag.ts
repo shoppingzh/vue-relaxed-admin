@@ -1,5 +1,5 @@
 import useDrag from '@/hooks/useDrag';
-import { ref, reactive, watch } from 'vue';
+import { reactive, watch } from 'vue';
 
 interface Coord {
   x: number,
@@ -27,7 +27,7 @@ export default function() {
     right: null,
     top: null,
   });
-  const { el, isDragging, dragSession } = useDrag({
+  const { el, dragSession } = useDrag({
     onStart: (e) => {
       if (!el.value) return;
       const rect = el.value.getBoundingClientRect();
@@ -73,6 +73,5 @@ export default function() {
 
   return {
     el,
-    isDragging,
   };
 }
