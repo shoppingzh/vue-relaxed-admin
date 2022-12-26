@@ -25,6 +25,7 @@ module.exports = {
     'function-paren-newline': [0],
     'id-blacklist': [0],
     'no-param-reassign': [0],
+    'max-lines-per-function': [0],
 
     // vue
     'vue/multi-word-component-names': [0],
