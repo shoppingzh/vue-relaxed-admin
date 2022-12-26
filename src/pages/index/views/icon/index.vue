@@ -17,20 +17,23 @@
 
       </div>
 
+      <div class="mb-4 text-secondary"><svg-icon name="tishi" />点击图标可复制组件内容。</div>
+
       <div v-if="filterIcons.length" class="flex flex-wrap">
-        <div
+        <Copy
           v-for="name in filterIcons"
           :key="name"
+          :text="getSvgIcon(name)"
           class="p-4 bg-white dark:bg-black border border-gray-200 rounded-sm mr-3 text-center
             cursor-pointer hover:translate-y-[-2px] hover:shadow-md hover:border-transparent transition-all duration-300"
-          :style="{ width: `${size}px` }">
+          :style="{ width: `${size + 10}px` }">
           <div class="w-full aspect-square">
             <svg-icon :name="name" class="text-[30px]" :style="iconStyle" />
           </div>
-          <div class="mt-2 text-center text-xs text-secondary truncate">
+          <div class="text-center text-xs text-secondary truncate">
             {{ name }}
           </div>
-        </div>
+        </Copy>
       </div>
       <el-empty v-else description="空空如也" image-size="50" />
     </div>
@@ -40,6 +43,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import icons from './icons';
+import Copy from './Copy.vue';
 
 const keyword = ref('');
 const color = ref('');
@@ -50,4 +54,9 @@ const iconStyle = computed(() => ({
   color: color.value,
   fontSize: `${size.value}px`,
 }));
+
+
+function getSvgIcon(name: string) {
+  return `<svg-icon name="${name}" />`;
+}
 </script>
