@@ -26,6 +26,7 @@ import useLayout from '@p-index/store/layout';
 import { storeToRefs } from 'pinia';
 import Settings from './components/Settings.vue';
 import useFixedDrag from './useFixedDrag';
+import hotkeys from 'hotkeys-js';
 
 const { isSetting, isHideHeader } = storeToRefs(useLayout());
 const { el: floatBtn } = useFixedDrag();
@@ -33,6 +34,10 @@ const { el: floatBtn } = useFixedDrag();
 function openSettings() {
   isSetting.value = true;
 }
+
+hotkeys('s', () => {
+  isSetting.value = !isSetting.value;
+});
 
 </script>
 
