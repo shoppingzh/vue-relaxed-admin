@@ -3,17 +3,26 @@
     <div v-if="asideCollapseTogglePlace === 'header'" class="h-full flex items-center px-4 cursor-pointer hover:bg-gray-300" @click="isAsideCollapse = !isAsideCollapse">
       <el-icon class="text-h5 transition-all duration-300" :class="{ 'rotate-180': isAsideCollapse }"><Fold /></el-icon>
     </div>
-    <div class="px-4 text-h6 font-semibold">Hello, Xpzheng!</div>
+    <!-- <div class="px-4 text-h6 font-semibold">Hello, Xpzheng!</div> -->
+    <div class="px-4">
+      <el-input v-model="keyword" class="w-[300px]" placeholder="搜索关键词" icon="search" @keydown.enter="search">
+        <template #suffix>
+          <svg-icon name="sousuo" class="text-h6 cursor-pointer" @click="search" />
+        </template>
+      </el-input>
+    </div>
     <div class="flex-1" />
     <div class="px-4 flex items-center">
-      <!-- <span class="nav-button" @click="isSetting = !isSetting">
-        <el-icon>
-          <Setting />
-        </el-icon>
+      <span class="nav-button" @click="openRepo">
+        <svg-icon name="github" />
       </span>
+      <span class="line" />
       <span class="nav-button" @click="darkMode = !darkMode">
-        <el-icon><Sunny /></el-icon>
-      </span> -->
+        <svg-icon :name="darkMode ? 'yewan' : 'baitian'" />
+      </span>
+      <span class="nav-button" @click="isSetting = !isSetting">
+        <svg-icon name="shezhi" />
+      </span>
     </div>
   </header>
 </template>
@@ -22,18 +31,32 @@
 import usePrefs from '@/store/preference';
 import { storeToRefs } from 'pinia';
 import useLayout from '@p-index/store/layout';
+import { ref } from 'vue';
+import { ElMessage } from 'element-plus';
 
+const keyword = ref('');
 const prefs = usePrefs();
 const { darkMode } = storeToRefs(prefs);
 const { isAsideCollapse, asideCollapseTogglePlace, isSetting } = storeToRefs(useLayout());
+
+function openRepo() {
+  window.open('https://github.com/shoppingzh/vue-template');
+}
+
+function search() {
+  ElMessage.info(`搜索：${keyword.value}`);
+}
 </script>
 
 <style scoped>
 .nav-button {
-  @apply inline-flex items-center justify-center p-2 cursor-pointer text-h5;
-  @apply hover:text-b-primary;
+  @apply inline-flex items-center justify-center p-2 cursor-pointer text-h5 rounded-sm;
+  @apply hover:bg-gray-200;
   & + & {
-    @apply ml-1;
+    @apply ml-2;
   }
+}
+.line {
+  @apply inline-block mx-2 w-[1px] h-4 bg-gray-300;
 }
 </style>
