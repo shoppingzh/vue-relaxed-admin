@@ -24,7 +24,7 @@
           v-for="name in filterIcons"
           :key="name"
           :text="getSvgIcon(name)"
-          class="p-4 bg-white dark:bg-black border border-gray-200 rounded-sm mr-3 text-center
+          class="mb-2 p-4 bg-white dark:bg-black border border-gray-200 rounded-sm mr-3 text-center
             cursor-pointer hover:translate-y-[-2px] hover:shadow-md hover:border-transparent transition-all duration-300"
           :style="{ width: `${size + 10}px` }">
           <div class="w-full aspect-square">
