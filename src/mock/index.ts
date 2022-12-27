@@ -5,7 +5,7 @@ const modules = import.meta.glob('./data/**/*.ts', { eager: true });
 
 function setup() {
   Mock.setup({
-    timeout: '0 - 500'
+    timeout: '300 - 1500'
   });
   
   Object.entries(modules).forEach(([path, mod]: [string, any]) => {
