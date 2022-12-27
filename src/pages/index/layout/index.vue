@@ -1,14 +1,19 @@
 <template>
-  <section class="h-full flex overflow-hidden">
-    <Aside class="h-full border-r border-r-gray-200" />
-    <section class="flex flex-col flex-1 w-0">
-      <Header v-show="!isHideHeader" class="z-10 border-b border-b-gray-200" />
-      <Main class="flex-1 h-0 w-full bg-gray-200" />
+  <section class="h-full flex flex-col">
+    <!-- 网络检测区 -->
+    <network-detector />
+    <!-- 主区 -->
+    <section class="flex-1 h-0 flex overflow-hidden">
+      <Aside class="h-full border-r border-r-gray-200" />
+      <section class="flex flex-col flex-1 w-0">
+        <Header v-show="!isHideHeader" class="z-10 border-b border-b-gray-200" />
+        <Main class="flex-1 h-0 w-full bg-gray-200" />
+      </section>
     </section>
+    <el-drawer v-model="isSetting" size="300px" title="设置">
+      <Settings />
+    </el-drawer>
   </section>
-  <el-drawer v-model="isSetting" size="300px" title="设置">
-    <Settings />
-  </el-drawer>
 
   <!-- 悬浮设置按钮 -->
   <div ref="floatBtn" class="fixed right-0 bottom-2/3 z-[200]">
