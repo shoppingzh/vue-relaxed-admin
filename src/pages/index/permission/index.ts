@@ -11,7 +11,7 @@ router.beforeEach(async(to, from, next) => {
   }
 
   try {
-    useSession().init();
+    await useSession().init();
   } catch {
     next('/404');
   }
