@@ -6,6 +6,7 @@ import ElementPlus from '@/plugins/element-plus';
 import components from '@/components';
 import router from './router';
 import pageComponents from './components';
+import './permission';
 import '@/mock';
 
 import './styles/index.scss';

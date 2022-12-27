@@ -10,19 +10,12 @@
         </RouterLink>
       </div>
       <!-- 菜单区 -->
-      <el-menu :collapse="isAsideCollapse" class="flex-1 h-0 border-r-0">
-        <el-menu-item index="1">
-          <MenuContent icon="yibiaopan" title="分析页" />
-        </el-menu-item>
-        <el-sub-menu>
-          <template #title>
-            <MenuContent icon="yibiaopan" title="错误页" />
-          </template>
-          <el-menu-item>
-            <MenuContent icon="yibiaopan" title="404" />
-          </el-menu-item>
-        </el-sub-menu>
-      </el-menu>
+      <Menu class="flex-1 h-0 border-r-0" />
+
+      <!-- 个人标记 -->
+      <div class="p-2 text-center text-secondary text-xs border-t border-t-gray-200">
+        by xpzheng
+      </div>
     </div>
 
     <!-- 折叠按钮 -->
@@ -33,15 +26,12 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from 'vue-router';
 import logoSvg from '@/assets/logo.svg?raw';
 import useLayout from '@p-index/store/layout';
 import { storeToRefs } from 'pinia';
-import MenuContent from './components/MenuContent.vue';
 import { computed } from 'vue';
+import Menu from './Menu.vue';
 
-const router = useRouter();
-const routes = router.getRoutes();
 const layout = useLayout();
 const { isAsideCollapse, asideCollapseTogglePlace, asideWidth } = storeToRefs(layout);
 const styles = computed<any>(() => {
@@ -49,6 +39,7 @@ const styles = computed<any>(() => {
     width: isAsideCollapse.value ? null : `${asideWidth.value}px`,
   };
 });
+
 </script>
 
 <style scoped>
