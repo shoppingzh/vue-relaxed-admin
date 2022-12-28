@@ -10,6 +10,6 @@ module.exports = {
     preflight: false,
   },
   presets: [
-    require('./build/tailwind-arco-design-preset.cjs')
+    require('./build/theme-preset.cjs')
   ]
 };

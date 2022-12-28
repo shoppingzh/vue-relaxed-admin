@@ -1,7 +1,3 @@
-/**
- * 使用TailwindCSS实现Arco Design的UI规范
- */
-
 const config = require('tailwindcss/defaultConfig');
 const colors = require('tailwindcss/colors');
 
