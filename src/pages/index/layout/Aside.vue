@@ -19,7 +19,7 @@
     </div>
 
     <!-- 折叠按钮 -->
-    <div v-if="asideCollapseTogglePlace === 'aside'" class="absolute flex items-center justify-center w-[24px] h-[24px] right-0 top-[20%] translate-x-[50%] bg-white dark:bg-black z-10 rounded-full border border-gray-300 cursor-pointer hover:!bg-gray-100" @click="isAsideCollapse = !isAsideCollapse">
+    <div v-if="asideCollapseTogglePlace === 'aside'" class="absolute flex items-center justify-center w-[24px] h-[24px] right-0 top-[20%] translate-x-[50%] bg-normal z-10 rounded-full border border-gray-300 cursor-pointer hover:!bg-gray-100" @click="isAsideCollapse = !isAsideCollapse">
       <el-icon class="transition-all duration-300" :class="{ 'rotate-180': isAsideCollapse }"><ArrowLeft /></el-icon>
     </div>
   </aside>

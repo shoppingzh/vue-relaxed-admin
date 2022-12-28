@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <div class="p-4 bg-white dark:bg-black rounded-xs shadow-xs">
+    <div class="p-4 bg-normal rounded-xs shadow-xs">
       
       <div class="mb-4 flex items-center">
         <el-input v-model="keyword" placeholder="搜索图标" class="w-[300px] mr-4" clearable />
@@ -24,7 +24,7 @@
           v-for="name in filterIcons"
           :key="name"
           :text="getSvgIcon(name)"
-          class="mb-2 p-4 bg-white dark:bg-black border border-gray-200 rounded-sm mr-3 text-center
+          class="mb-2 p-4 bg-normal border border-gray-200 rounded-sm mr-3 text-center
             cursor-pointer hover:translate-y-[-2px] hover:shadow-md hover:border-transparent transition-all duration-300"
           :style="{ width: `${size + 10}px` }">
           <div class="w-full aspect-square">

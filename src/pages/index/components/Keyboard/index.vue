@@ -1,5 +1,5 @@
 <template>
-  <span class="keyboard px-2 inline-block text-secondary text-xs bg-white dark:bg-black
+  <span class="keyboard px-2 inline-block text-secondary text-xs bg-normal
     border border-gray-200 rounded-sm">
     <span class="inline-block scale-75">
       {{ text }}
