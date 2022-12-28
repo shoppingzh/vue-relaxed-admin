@@ -19,19 +19,25 @@ $dark-colors: (
 );
 
 :root {
+  // 色盘
   @each $name, $list in $colors {
     @each $color in $list {
       $index: index($list, $color);
       --color-#{'' + $name}-#{$index}: #{$color};
     }
   }
+  // 背景色
+  --color-bg-normal: theme('colors.white');
 }
 
 html.dark {
+  // 色盘
   @each $name, $list in $dark-colors {
     @each $color in $list {
       $index: index($list, $color);
       --color-#{'' + $name}-#{$index}: #{$color};
     }
   }
+  // 背景色
+  --color-bg-normal: #17171A;
 }

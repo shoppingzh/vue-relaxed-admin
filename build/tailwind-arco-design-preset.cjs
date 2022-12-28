@@ -100,6 +100,9 @@ module.exports = {
         dark: baseColors.gray[3],
         darker: baseColors.gray[5],
       },
+      backgroundColor: {
+        normal: 'var(--color-bg-normal)'
+      },
     },
   }
 };
