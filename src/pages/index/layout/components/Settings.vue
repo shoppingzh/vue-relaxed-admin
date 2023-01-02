@@ -1,7 +1,7 @@
 <template>
   <div class="h-full flex flex-col">
     <!-- 主区 -->
-    <div class="flex-1 h-0">
+    <div class="flex-1 h-0 overflow-auto">
       <div class="mb-4">
         <div class="mb-4 font-semibold">布局</div>
         <div>

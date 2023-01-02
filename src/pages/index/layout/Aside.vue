@@ -10,7 +10,7 @@
         </RouterLink>
       </div>
       <!-- 菜单区 -->
-      <Menu class="flex-1 h-0 border-r-0" />
+      <Menu class="flex-1 h-0 border-r-0 overflow-auto" />
 
       <!-- 个人标记 -->
       <div class="p-2 text-center text-secondary text-xs border-t border-t-gray-200">

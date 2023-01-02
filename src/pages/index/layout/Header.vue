@@ -1,7 +1,7 @@
 <template>
   <header class="flex items-center h-[52px] leading-[52px]">
     <div v-if="asideCollapseTogglePlace === 'header'" class="h-full flex items-center px-4 cursor-pointer hover:bg-gray-300" @click="isAsideCollapse = !isAsideCollapse">
-      <el-icon class="text-h5 transition-all duration-300" :class="{ 'rotate-180': isAsideCollapse }"><Fold /></el-icon>
+      <svg-icon name="zhedie" class="text-h5 transition-all duration-300" :class="{ 'rotate-180': isAsideCollapse }" />
     </div>
     <!-- <div class="px-4 text-h6 font-semibold">Hello, Xpzheng!</div> -->
     <div class="px-4">

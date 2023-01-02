@@ -17,7 +17,7 @@
 
       </div>
 
-      <div class="mb-4 text-secondary"><svg-icon name="tishi" />点击图标可复制组件内容。</div>
+      <div class="mb-4 text-secondary"><svg-icon name="tishi" /> 点击图标可复制组件内容。</div>
 
       <div v-if="filterIcons.length" class="flex flex-wrap">
         <Copy
