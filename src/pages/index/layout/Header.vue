@@ -17,6 +17,9 @@
         <svg-icon name="github" />
       </span>
       <span class="line" />
+      <span class="nav-button" @click="prefs.toggleFullscreen()">
+        <svg-icon name="quanping" />
+      </span>
       <span class="nav-button" @click="darkMode = !darkMode">
         <svg-icon :name="darkMode ? 'yewan' : 'baitian'" />
       </span>
