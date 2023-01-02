@@ -28,3 +28,8 @@ html, body, #app {
     @apply hidden;
   }
 }
+
+/* 去除全屏后的黑色背景 */
+:not(:root):fullscreen::backdrop {
+  background-color: unset;
+}
