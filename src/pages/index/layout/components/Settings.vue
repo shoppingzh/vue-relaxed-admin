@@ -1,7 +1,7 @@
 <template>
   <div class="h-full flex flex-col">
     <!-- 主区 -->
-    <div class="flex-1 h-0 overflow-auto">
+    <div class="flex-1 h-0 overflow-auto py-3">
       <div class="mb-4">
         <div class="mb-4 font-semibold">布局</div>
         <div>
@@ -43,7 +43,7 @@
     </div>
 
     <!-- 快捷键区 -->
-    <div class="text-center">
+    <div class="py-2 text-center">
       <Keyboard text="S" /> <span class="ml-2 text-xs text-secondary">展开/收起</span>
     </div>
   </div>

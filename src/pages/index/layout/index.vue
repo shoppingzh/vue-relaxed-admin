@@ -50,4 +50,7 @@ hotkeys('s', () => {
 aside {
   box-shadow: 0 3px 20px theme('colors.gray.200');
 }
+:deep(.el-drawer__body) {
+  @apply py-0;
+}
 </style>
