@@ -47,7 +47,7 @@ import Copy from './Copy.vue';
 
 const keyword = ref('');
 const color = ref('');
-const size = ref(40);
+const size = ref(36);
 
 const filterIcons = computed(() => icons.filter(name => name.indexOf(keyword.value.trim()) >= 0));
 const iconStyle = computed(() => ({
