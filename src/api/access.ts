@@ -6,3 +6,10 @@ export function listLatest() {
     method: 'get',
   });
 }
+
+export function listUsers() {
+  return service({
+    url: 'access/users',
+    method: 'get'
+  });
+}

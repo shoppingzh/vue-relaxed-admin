@@ -25,4 +25,14 @@ export default [{
       })
     }).list;
   }
+}, {
+  url: '/api/access/users',
+  data: (mock: Mock.MockjsMock) => mock({
+    'list|20-100': [{
+      name: '@cname',
+      date: '@date',
+      article: '@ctitle',
+      inc: '@float(-100, 100, 2, 2)',
+    }]
+  }).list
 }];

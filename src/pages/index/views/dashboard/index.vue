@@ -22,11 +22,35 @@
     <div class="flex mt-3">
       <div class="flex-1 w-0">
         <div class="p-3 bg-normal rounded-sm">
-          <div class="text-h6 font-semibold">最近访问情况</div>
+          <div class="text-h6 font-semibold">访问情况趋势</div>
           <Access />
         </div>
+
+        <div class="mt-4 p-3 rounded-sm overflow-hidden bg-normal">
+          <div class="text-h6 font-semibold">访问情况详情</div>
+          <Users class="mt-2" />
+        </div>
       </div>
-      <div class="w-[300px]"></div>
+      <div class="ml-3 w-[350px]">
+        <div v-for="x in 2" :key="x" class="mb-2 p-3 bg-normal rounded-sm">
+          <div class="mb-2 flex">
+            <div class="flex-1 w-0">最近阅读变现</div>
+            <el-select size="small" class="w-[70px]">
+              <el-option v-for="year in ['2021', '2022', '2023']" :key="year" :value="year" :label="year"></el-option>
+            </el-select>
+          </div>
+          <div class="text-h5 font-semibold">¥9,999.66</div>
+          <div class="mt-1 text-green-500 text-xs">
+            <svg-icon name="shang" class="text-md" /> 环比上升3.2%
+          </div>
+        </div>
+
+        <div class="mt-4 p-3 bg-normal rounded-sm">
+          <div class="mb-3">热门文章</div>
+          <Hot />
+        </div>
+
+      </div>
     </div>
 
   </div>
@@ -34,4 +58,6 @@
 
 <script setup lang="ts">
 import Access from './Access.vue';
+import Users from './Users.vue';
+import Hot from './Hot.vue';
 </script>
