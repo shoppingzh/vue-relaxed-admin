@@ -3,6 +3,17 @@
     <!-- 主区 -->
     <div class="flex-1 h-0 overflow-auto py-3">
       <div class="mb-4">
+        <div class="mb-4 font-semibold">主题色</div>
+        <div class="flex">
+          <div
+            v-for="([name, color]) in brandColors"
+            :key="name"
+            class="relative w-8 h-8 transition-all duration-150 cursor-pointer hover:scale-110 hover:z-10 opacity-70"
+            :style="{ backgroundColor: `var(--color-${color}-6)` }"
+            @click="brandColor = name" />
+        </div>
+      </div>
+      <div class="mb-4">
         <div class="mb-4 font-semibold">布局</div>
         <div>
           <div class="set-item flex">
@@ -55,8 +66,17 @@ import usePrefs from '@/store/preference';
 import useLayout from '@p-index/store/layout';
 import { storeToRefs } from 'pinia';
 
-const { darkMode, grayMode, weakMode } = storeToRefs(usePrefs());
+const { darkMode, grayMode, weakMode, brandColor } = storeToRefs(usePrefs());
 const { asideWidth, asideCollapseTogglePlace, isHideHeader } = storeToRefs(useLayout());
+const brandColors = [
+  ['blue', 'blue'],
+  ['red', 'red'],
+  ['green', 'green'],
+  ['orange', 'orange'],
+  ['pink', 'pink'],
+  ['cyan', 'cyan'],
+  ['gray', 'gray'],
+];
 </script>
 
 <style scoped>
