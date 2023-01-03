@@ -1,9 +1,9 @@
 <template>
   <aside
-    class="relative transition-all duration-200 ease-in-out" :class="{ '!w-[60px]': isAsideCollapse }" :style="styles">
+    class="relative transition-[width] duration-200 ease-in-out" :class="{ '!w-[60px]': isAsideCollapse }" :style="styles">
     <div class="flex flex-col w-full h-full overflow-hidden">
       <!-- LOGO区 -->
-      <div class="p-4 text-center whitespace-nowrap border-b border-b-gray-200">
+      <div class="h-[52px] p-4 text-center whitespace-nowrap border-b border-b-gray-200">
         <RouterLink to="/" class="flex items-center appearance-none text-inherit no-underline hover:text-inherit">
           <svg-icon :inline="logoSvg" class="text-h4" />
           <span v-show="!layout.isAsideCollapse" class="ml-2">Vue Template</span>

@@ -6,7 +6,7 @@
     <section class="flex-1 h-0 flex overflow-hidden">
       <Aside class="h-full border-r border-r-gray-200" />
       <section class="flex flex-col flex-1 w-0">
-        <Header v-show="!isHideHeader" class="z-10 border-b border-b-gray-200" />
+        <Header v-show="!isHideHeader" class="z-10" />
         <Main class="flex-1 h-0 w-full bg-gray-200" />
       </section>
     </section>
@@ -48,7 +48,8 @@ hotkeys('s', () => {
 
 <style scoped>
 aside {
-  box-shadow: 0 3px 20px theme('colors.gray.200');
+  /* FIXME 暂时去除 */
+  /* box-shadow: 0 3px 20px theme('colors.gray.200'); */
 }
 :deep(.el-drawer__body) {
   @apply py-0;
