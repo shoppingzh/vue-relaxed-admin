@@ -1,6 +1,6 @@
 <template>
   <el-menu
-    :default-index="$route.path"
+    :default-active="$route.path"
     :collapse="isAsideCollapse">
     <MenuItem
       v-for="item in menus"
