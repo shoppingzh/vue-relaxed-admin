@@ -1,14 +1,7 @@
 import { computed, onMounted, onUnmounted, Ref, ref, shallowRef, unref, watch } from 'vue';
 import * as echarts from 'echarts';
-import { useWindowSize } from '@vueuse/core';
+import { useResizeObserver } from '@vueuse/core';
 import { throttle } from 'lodash';
-
-function onWindowResize(callback: () => void) {
-  const { width: windowWidth } = useWindowSize();
-  watch(windowWidth, throttle(() => {
-    callback && callback();
-  }, 500));
-}
 
 export default function(
   option?: Ref<echarts.EChartsOption> | echarts.EChartsOption,
@@ -36,21 +29,22 @@ export default function(
     }
   };
 
-  onMounted(() => {
-    chart.value = echarts.init(el.value);
-  });
-
-  onUnmounted(() => {
-    chart.value && chart.value.dispose();
-  });
-
-  onWindowResize(() => {
+  const rerender = () => {
     chart.value && chart.value.resize({
       animation: {
         duration: 500
       }
     });
+  };
+
+  onMounted(() => {
+    chart.value = echarts.init(el.value);
   });
+  onUnmounted(() => {
+    chart.value && chart.value.dispose();
+  });
+  // 容器大小发生改变，重绘
+  useResizeObserver(el, throttle(rerender, 500));
 
   watch([chart, optionRef], () => {
     resetOption();
