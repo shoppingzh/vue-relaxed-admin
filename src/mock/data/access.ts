@@ -28,7 +28,7 @@ export default [{
 }, {
   url: '/api/access/users',
   data: (mock: Mock.MockjsMock) => mock({
-    'list|20-100': [{
+    'list|20-50': [{
       name: '@cname',
       date: '@date',
       article: '@ctitle',
