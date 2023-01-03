@@ -1,5 +1,5 @@
 <template>
-  <div ref="el" class="h-[350px]" />
+  <div ref="el" class="h-[350px] overflow-hidden" />
 </template>
 
 <script setup lang="ts">

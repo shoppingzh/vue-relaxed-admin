@@ -20,7 +20,7 @@
     </div>
 
     <div class="flex mt-3">
-      <div class="flex-1">
+      <div class="flex-1 w-0">
         <div class="p-3 bg-normal rounded-sm">
           <div class="text-h6 font-semibold">最近访问情况</div>
           <Access />
