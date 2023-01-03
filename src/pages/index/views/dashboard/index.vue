@@ -19,27 +19,19 @@
       </div>
     </div>
 
-    <div class="mt-3 bg-normal rounded-sm">
-      <div ref="el" class="h-[350px]" />
+    <div class="flex mt-3">
+      <div class="flex-1">
+        <div class="p-3 bg-normal rounded-sm">
+          <div class="text-h6 font-semibold">最近访问情况</div>
+          <Access />
+        </div>
+      </div>
+      <div class="w-[300px]"></div>
     </div>
+
   </div>
 </template>
 
 <script setup lang="ts">
-import useChart from '@/hooks/useChart';
-import { EChartsOption } from 'echarts';
-import { computed } from 'vue';
-
-const options = computed<EChartsOption>(() => ({
-  xAxis: {
-    type: 'category'
-  },
-  yAxis: {},
-  tooltip: {},
-  series: [{
-    type: 'bar',
-    data: new Array(50).fill(null).map(() => Math.random() * 100)
-  }]
-}));
-const { el } = useChart(options);
+import Access from './Access.vue';
 </script>
