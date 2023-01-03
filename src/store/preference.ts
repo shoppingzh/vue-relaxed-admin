@@ -4,7 +4,8 @@
  */
 import { useDark, useFullscreen, useLocalStorage, useToggle } from '@vueuse/core';
 import { defineStore } from 'pinia';
-import { watch } from 'vue';
+import { ref, watch } from 'vue';
+import { changeBrandCssVar } from '@/utils/theme';
 
 export default defineStore('preference', () => {
 
@@ -15,8 +16,12 @@ export default defineStore('preference', () => {
   const { isFullscreen, toggle: toggleFullscreen } = useFullscreen(document.body);
   const grayMode = useLocalStorage('grayMode', false, {});
   const weakMode = useLocalStorage('weakMode', false);
+  const brandColor = ref<string>();
 
   watch([grayMode, weakMode], updateBodyFilter, { immediate: true });
+  watch(brandColor, () => {
+    changeBrandCssVar('primary', brandColor.value);
+  });
 
   function updateBodyFilter() {
     const filters = [];
@@ -40,6 +45,8 @@ export default defineStore('preference', () => {
     grayMode,
 
     weakMode,
+
+    brandColor,
   };
 
 });

@@ -42,7 +42,13 @@ module.exports = {
         return conf;
       }, {}),
 
-      ...createBrandColor('primary', baseColors.blue),
+      'b-primary': {
+        DEFAULT: 'var(--color-b-primary)',
+        hover: 'var(--color-b-primary-hover)',
+        active: 'var(--color-b-primary-active)',
+        disabled: 'var(--color-b-primary-disabled)',
+        background: 'var(--color-b-primary-background)',
+      },
       ...createBrandColor('success', baseColors.green),
       ...createBrandColor('warn', baseColors.orange),
       ...createBrandColor('danger', baseColors.red),

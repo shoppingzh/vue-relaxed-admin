@@ -1,3 +1,15 @@
+/*
+管理主题中的可变样式变量
+
+历史背景：
+1. TailwindCSS是原子化的，可以认为每个原子class就是一个常量，例如使用.text-primary，对应了#333这个颜色，这个#333就是一个常量
+2. 因为TailwindCSS的class是不可变的，如果要可变，需要将#333变成一个CSS变量
+
+结论：
+如果样式中存在需要未来动态替换的值（如修改主题色、暗黑模式等），则需要抽取为CSS变量，否则在TailwindCSS配置中写死即可
+
+*/
+
 $colors: (
   blue: ('#E8F3FF', '#BEDAFF', '#94BFFF', '#6AA1FF', '#4080FF', '#165DFF', '#0E42D2', '#072CA6', '#031A79', '#000D4D'),
   orange: ('#FFF7E8', '#FFE4BA', '#FFCF8B', '#FFB65D', '#FF9A2E', '#FF7D00', '#D25F00', '#A64500', '#792E00', '#4D1B00'),
@@ -26,6 +38,12 @@ $dark-colors: (
       --color-#{'' + $name}-#{$index}: #{$color};
     }
   }
+  // 主题色
+  --color-b-primary: var(--color-blue-6);
+  --color-b-primary-hover: var(--color-blue-5);
+  --color-b-primary-active: var(--color-blue-7);
+  --color-b-primary-disabled: var(--color-blue-3);
+  --color-b-primary-background: var(--color-blue-1);
   // 背景色
   --color-bg-normal: theme('colors.white');
 }
