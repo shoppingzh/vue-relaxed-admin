@@ -1,6 +1,6 @@
 const menus: any[] = [{
   name: '控制台',
-  icon: 'home',
+  icon: 'yibiaopan2',
   path: '/',
 }, {
   path: '/icon',
