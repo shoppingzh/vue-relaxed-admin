@@ -15,6 +15,7 @@
     "@element-plus/icons-vue": "^2.0.10",
     "@vueuse/core": "^9.5.0",
     "axios": "^0.27.2",
+    "dayjs": "^1.11.7",
     "echarts": "^5.4.1",
     "element-plus": "^2.2.21",
     "hotkeys-js": "^3.10.1",
