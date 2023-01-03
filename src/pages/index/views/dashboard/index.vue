@@ -19,8 +19,8 @@
       </div>
     </div>
 
-    <div class="flex mt-3">
-      <div class="flex-1 w-0">
+    <div class="md:flex mt-3">
+      <div class="md:flex-1 md:w-0">
         <div class="p-3 bg-normal rounded-sm">
           <div class="text-h6 font-semibold">访问情况趋势</div>
           <Access />
@@ -31,7 +31,7 @@
           <Users class="mt-2" />
         </div>
       </div>
-      <div class="ml-3 w-[350px]">
+      <div class="mt-2 md:mt-0 md:ml-3 md:w-[350px]">
         <div v-for="x in 2" :key="x" class="mb-2 p-3 bg-normal rounded-sm">
           <div class="mb-2 flex">
             <div class="flex-1 w-0">最近阅读变现</div>
