@@ -6,6 +6,10 @@ html, body, #app {
   @apply h-full;
 }
 
+* {
+  @apply box-border;
+}
+
 /* 滚动条样式 */
 *::-webkit-scrollbar {
   @apply block w-2 h-2;
