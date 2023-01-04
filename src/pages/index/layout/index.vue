@@ -18,7 +18,7 @@
   <!-- 悬浮设置按钮 -->
   <div ref="floatBtn" class="fixed right-0 bottom-2/3 z-[200]">
     <el-button type="primary" class="px-3 py-3 rounded-none rounded-tl-sm rounded-bl-sm" @click="openSettings()">
-      <el-icon class="text-h6"><Setting /></el-icon>
+      <svg-icon name="shezhi2" class="text-h6" />
     </el-button>
   </div>
 </template>

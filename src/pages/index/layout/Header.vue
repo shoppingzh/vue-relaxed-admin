@@ -24,7 +24,7 @@
         <svg-icon :name="darkMode ? 'yewan' : 'baitian'" />
       </span>
       <span class="nav-button" @click="isSetting = !isSetting">
-        <svg-icon name="shezhi" />
+        <svg-icon name="shezhi2" />
       </span>
     </div>
   </header>
