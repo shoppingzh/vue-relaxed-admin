@@ -6,13 +6,16 @@ const menus: any[] = [{
   path: '/icon',
   icon: 'tubiao',
   name: '图标',
-
+}, {
+  path: '/datetime',
+  icon: 'riqishijian',
+  name: '日期时间',
 }, {
   name: '错误页',
   icon: 'xiayu',
   children: [{
     path: '/404',
-    name: '404'
+    name: '404',
   }]
 }, {
   name: '外部链接',
