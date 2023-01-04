@@ -8,9 +8,11 @@
           <div
             v-for="([name, color]) in brandColors"
             :key="name"
-            class="relative w-8 h-8 transition-all duration-150 cursor-pointer hover:scale-110 hover:z-10 opacity-70"
+            class="flex items-center justify-center relative w-8 h-8 transition-all duration-150 cursor-pointer hover:scale-110 hover:z-10 opacity-70"
             :style="{ backgroundColor: `var(--color-${color}-6)` }"
-            @click="brandColor = name" />
+            @click="brandColor = name">
+            <svg-icon v-if="name === brandColor" name="duihao" class="text-h6 text-gray-100" />
+          </div>
         </div>
       </div>
       <div class="mb-4">
