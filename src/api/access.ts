@@ -1,5 +1,12 @@
 import service from '@/service';
 
+export function statGlobal() {
+  return service({
+    url: 'access/stat',
+    method: 'get'
+  });
+}
+
 export function listLatest() {
   return service({
     url: 'access/latest',
