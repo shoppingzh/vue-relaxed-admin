@@ -7,7 +7,7 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint ./**/*.{js,ts,vue}",
+    "lint": "eslint ./**/*.{js,ts,jsx,tsx,vue}",
     "prepare": "husky install",
     "gen-icons": "node ./build/gen-icons.js"
   },
@@ -46,6 +46,7 @@
     "eslint-plugin-vue": "^9.8.0",
     "husky": "^8.0.0",
     "iconfont-downloader": "^0.0.2",
+    "lint-staged": "^13.1.0",
     "postcss": "^8.4.14",
     "prompt": "^1.3.0",
     "rimraf": "^3.0.2",
