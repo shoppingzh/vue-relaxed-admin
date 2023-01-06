@@ -18,6 +18,7 @@ module.exports = {
     'plugin:vue/vue3-essential',
     'plugin:@typescript-eslint/recommended',
     '@shoppingzh/eslint-config',
+    'prettier',
   ],
   rules: {
     'semi': [2, 'always'],
