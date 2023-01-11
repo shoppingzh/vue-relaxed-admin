@@ -7,7 +7,16 @@
 
 在线访问地址：[https://vue.zhengxiaoping.xyz/](https://vue.zhengxiaoping.xyz/)
 
-![](./images/preview.png)
+<!-- ![](./images/preview.png) -->
+
+<div style="display: flex; border-radius: 15px; overflow: hidden; box-shadow: 0 0 25px 15px rgba(0, 0, 0, .1);">
+  <div>
+    <img src="./images/light.png">
+  </div>
+  <div>
+    <img src="./images/dark.png">
+  </div>
+</div>
 
 ## 🚀 特性
 
