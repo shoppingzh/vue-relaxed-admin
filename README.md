@@ -7,10 +7,7 @@
 
 在线访问地址：[https://vue.zhengxiaoping.xyz/](https://vue.zhengxiaoping.xyz/)
 
-![](./images/screenshot1.png)
-
-
-![](./images/screenshot2.png)
+![](./images/preview.png)
 
 ## 🚀 特性
 
