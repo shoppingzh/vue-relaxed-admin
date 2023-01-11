@@ -6,7 +6,7 @@
       <div class="h-[52px] p-4 text-center whitespace-nowrap border-b border-b-gray-200" :class="{ '!p-2': isAsideCollapse }">
         <RouterLink to="/" class="flex items-center appearance-none text-inherit no-underline hover:text-inherit" :class="{ 'justify-center': isAsideCollapse }">
           <img src="@/assets/logo.png" class="w-6 h-6 transition-all duration-200" :class="{ 'w-8 h-8': isAsideCollapse }" >
-          <span v-show="!layout.isAsideCollapse" class="ml-2 font-semibold">Template PRO</span>
+          <span v-show="!layout.isAsideCollapse" class="ml-2 font-semibold">{{ app.name }}</span>
         </RouterLink>
       </div>
       <!-- 菜单区 -->
@@ -30,6 +30,9 @@ import useLayout from '@p-index/store/layout';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
 import Menu from './Menu.vue';
+import useApp from '@/store/app';
+
+const app = useApp();
 
 const layout = useLayout();
 const { isAsideCollapse, asideCollapseTogglePlace, asideWidth } = storeToRefs(layout);

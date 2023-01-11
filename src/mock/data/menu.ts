@@ -20,7 +20,7 @@ const menus: any[] = [{
 }, {
   name: '外部链接',
   icon: 'github',
-  path: 'https://github.com/shoppingzh/vue-template'
+  path: 'https://github.com/shoppingzh/vue-relaxed-admin'
 }];
 
 export default [{

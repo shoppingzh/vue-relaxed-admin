@@ -43,7 +43,7 @@ const { darkMode } = storeToRefs(prefs);
 const { isAsideCollapse, asideCollapseTogglePlace, isSetting } = storeToRefs(useLayout());
 
 function openRepo() {
-  window.open('https://github.com/shoppingzh/vue-template');
+  window.open('https://github.com/shoppingzh/vue-relaxed-admin');
 }
 
 function search() {

@@ -1,12 +1,18 @@
-# vue-template
-vue工程模板
+# vue-relaxed-admin
+
+轻松的、开箱即用的中后台模板。
+
+
+## 预览
+
+在线访问地址：[https://vue.zhengxiaoping.xyz/](https://vue.zhengxiaoping.xyz/)
 
 ![](./images/screenshot1.png)
 
 
 ![](./images/screenshot2.png)
 
-## 特性
+## 🚀 特性
 
 - Vue3/Element Plus/Pinia
 - ESLint/Prettier集成
