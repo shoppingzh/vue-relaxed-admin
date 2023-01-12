@@ -18,7 +18,7 @@
       </span>
       <span class="line" />
       <span class="nav-button" @click="prefs.toggleFullscreen()">
-        <svg-icon name="quanping" />
+        <svg-icon :name="isFullscreen ? 'quxiaoquanping' : 'quanping'" />
       </span>
       <span class="nav-button" @click="darkMode = !darkMode">
         <svg-icon :name="darkMode ? 'yewan' : 'baitian'" />
@@ -39,7 +39,7 @@ import { ElMessage } from 'element-plus';
 
 const keyword = ref('');
 const prefs = usePrefs();
-const { darkMode } = storeToRefs(prefs);
+const { darkMode, isFullscreen } = storeToRefs(prefs);
 const { isAsideCollapse, asideCollapseTogglePlace, isSetting } = storeToRefs(useLayout());
 
 function openRepo() {
