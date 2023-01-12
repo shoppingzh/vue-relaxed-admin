@@ -16,15 +16,18 @@
       <span class="nav-button" @click="openRepo">
         <svg-icon name="github" />
       </span>
-      <span class="line" />
-      <span class="nav-button" @click="prefs.toggleFullscreen()">
-        <svg-icon :name="isFullscreen ? 'quxiaoquanping' : 'quanping'" />
+      <span class="nav-button" @click="openDocs()">
+        <svg-icon name="wendang" />
       </span>
+      <span class="line" />
       <span class="nav-button" @click="darkMode = !darkMode">
         <svg-icon :name="darkMode ? 'yewan' : 'baitian'" />
       </span>
       <span class="nav-button" @click="isSetting = !isSetting">
         <svg-icon name="shezhi2" />
+      </span>
+      <span class="nav-button" @click="prefs.toggleFullscreen()">
+        <svg-icon :name="isFullscreen ? 'quxiaoquanping' : 'quanping'" />
       </span>
     </div>
   </header>
@@ -44,6 +47,10 @@ const { isAsideCollapse, asideCollapseTogglePlace, isSetting } = storeToRefs(use
 
 function openRepo() {
   window.open('https://github.com/shoppingzh/vue-relaxed-admin');
+}
+
+function openDocs() {
+  window.open('https://vue-docs.zhengxiaoping.xyz/');
 }
 
 function search() {
