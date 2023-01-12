@@ -51,6 +51,13 @@
             <div class="flex-1">色弱模式</div>
             <el-switch v-model="weakMode" />
           </div>
+          <div class="set-item flex">
+            <div class="flex-1">侧边栏风格</div>
+            <el-radio-group v-model="asideTheme.dark">
+              <el-radio :label="false">亮色</el-radio>
+              <el-radio :label="true">暗色</el-radio>
+            </el-radio-group>
+          </div>
         </div>
       </div>
     </div>
@@ -69,7 +76,7 @@ import useLayout from '@p-index/store/layout';
 import { storeToRefs } from 'pinia';
 
 const { darkMode, grayMode, weakMode, brandColor } = storeToRefs(usePrefs());
-const { asideWidth, asideCollapseTogglePlace, isHideHeader } = storeToRefs(useLayout());
+const { asideWidth, asideCollapseTogglePlace, isHideHeader, asideTheme } = storeToRefs(useLayout());
 const brandColors = [
   ['blue', 'blue'],
   ['red', 'red'],

@@ -12,8 +12,12 @@ export default defineStore('layout', () => {
   const asideWidth = useLocalStorage('asideWidth', 180);
   // 顶部栏显示
   const isHideHeader = useLocalStorage('isHideHeader', false);
-
+  // 是否处于设置状态
   const isSetting = ref(false);
+  // 侧边栏主题配置
+  const asideTheme = useLocalStorage('asideTheme', {
+    dark: false,
+  });
 
   // 自动折叠
   watch(windowWidth, () => {
@@ -26,6 +30,7 @@ export default defineStore('layout', () => {
     asideCollapseTogglePlace,
     asideWidth,
     isHideHeader,
+    asideTheme,
   };
 
 });

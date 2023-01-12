@@ -1,9 +1,11 @@
 <template>
   <aside
-    class="relative transition-[width] duration-200 ease-in-out" :class="{ '!w-[60px]': isAsideCollapse }" :style="styles">
+    class="aside relative transition-[width] duration-200 ease-in-out"
+    :class="{ '!w-[60px]': isAsideCollapse, 'is-dark': asideTheme.dark }"
+    :style="styles">
     <div class="flex flex-col w-full h-full overflow-hidden">
       <!-- LOGO区 -->
-      <div class="h-[52px] p-4 text-center whitespace-nowrap border-b border-b-gray-200" :class="{ '!p-2': isAsideCollapse }">
+      <div class="aside-logo h-[52px] p-4 text-center whitespace-nowrap border-b border-b-gray-200" :class="{ '!p-2': isAsideCollapse }">
         <RouterLink to="/" class="flex items-center appearance-none text-inherit no-underline hover:text-inherit" :class="{ 'justify-center': isAsideCollapse }">
           <img src="@/assets/logo.png" class="w-6 h-6 transition-all duration-200" :class="{ 'w-8 h-8': isAsideCollapse }" >
           <span v-show="!layout.isAsideCollapse" class="ml-2 font-semibold">{{ app.name }}</span>
@@ -13,7 +15,7 @@
       <Menu class="flex-1 h-0 border-r-0 overflow-auto" />
 
       <!-- 个人标记 -->
-      <div class="p-2 text-center text-secondary text-xs border-t border-t-gray-200">
+      <div class="aside-brand p-2 text-center text-secondary text-xs border-t border-t-gray-200">
         by xpzheng
       </div>
     </div>
@@ -35,7 +37,7 @@ import useApp from '@/store/app';
 const app = useApp();
 
 const layout = useLayout();
-const { isAsideCollapse, asideCollapseTogglePlace, asideWidth } = storeToRefs(layout);
+const { isAsideCollapse, asideCollapseTogglePlace, asideWidth, asideTheme } = storeToRefs(layout);
 const styles = computed<any>(() => {
   return {
     width: isAsideCollapse.value ? null : `${asideWidth.value}px`,
@@ -46,7 +48,6 @@ const styles = computed<any>(() => {
 
 <style scoped>
 .el-menu {
-  @apply !w-full;
   /* --color: theme('colors.white');
   --el-menu-bg-color: var(--color);
   --el-menu-hover-bg-color: var(--color);
@@ -58,5 +59,22 @@ const styles = computed<any>(() => {
   &-item {
     @apply !px-4;
   } */
+}
+.aside {
+  &.is-dark {
+    background-color: #141414;
+    @apply text-white;
+    .el-menu {
+      --el-menu-bg-color: #141414;
+      --el-menu-hover-bg-color: #1f1f1f;
+      --el-menu-text-color: theme('colors.white');
+    }
+    .aside-logo {
+      border-bottom-color: #262626;
+    }
+    .aside-brand {
+      border-top-color: #262626;
+    }
+  }
 }
 </style>
