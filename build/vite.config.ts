@@ -21,10 +21,10 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api/': {
-        target: 'http://localhost:3000/',
+        target: 'http://localhost:7001/',
         changeOrigin: true,
         ws: true,
-        rewrite: path => path.replace(/^\/api/, '')
+        rewrite: path => path.replace(/^\/api/, '/api')
       }
     }
   },

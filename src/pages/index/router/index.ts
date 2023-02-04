@@ -15,6 +15,9 @@ addRoutes([{
     path: 'datetime',
     component: () => import('@p-index/views/datetime/index.vue')
   }, {
+    path: 'category',
+    component: () => import('@p-index/views/category/index.vue')
+  }, {
     path: 'error',
     redirect: '/error/404',
     children: [{

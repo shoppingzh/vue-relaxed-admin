@@ -18,6 +18,10 @@ const menus: any[] = [{
     name: '404',
   }]
 }, {
+  path: '/category',
+  name: '分类管理',
+  icon: 'category',
+}, {
   name: '外部链接',
   icon: 'github',
   path: 'https://github.com/shoppingzh/vue-relaxed-admin'
