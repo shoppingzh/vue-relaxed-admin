@@ -18,6 +18,9 @@ addRoutes([{
     path: 'category',
     component: () => import('@p-index/views/category/index.vue')
   }, {
+    path: 'task',
+    component: () => import('@p-index/views/task/index.vue')
+  }, {
     path: 'error',
     redirect: '/error/404',
     children: [{
