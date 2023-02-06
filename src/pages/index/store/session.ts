@@ -10,7 +10,10 @@ export default defineStore('session', () => {
   function init() {
     return new Promise<void>(async(resolve, reject) => {
       try {
-        if (inited.value) return resolve();
+        if (inited.value) {
+          resolve()
+          return
+        };
 
         menus.value = await api.list();
 

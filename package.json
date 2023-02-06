@@ -30,7 +30,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
-    "@shoppingzh/eslint-config": "^1.0.0",
+    "@shoppingzh/eslint-config": "^2.0.0",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@types/eslint": "^8.4.5",

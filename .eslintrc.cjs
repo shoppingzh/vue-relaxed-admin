@@ -15,18 +15,16 @@ module.exports = {
     '@typescript-eslint'
   ],
   extends: [
+    '@shoppingzh',
     'plugin:vue/vue3-essential',
     'plugin:@typescript-eslint/recommended',
-    '@shoppingzh/eslint-config',
     'prettier',
   ],
   rules: {
-    'semi': [2, 'always'],
-    'array-bracket-newline': [0],
-    'function-paren-newline': [0],
-    'id-blacklist': [0],
-    'no-param-reassign': [0],
-    'max-lines-per-function': [0],
+    'no-use-before-define': [2, { functions: false }],
+
+    // ts
+    '@typescript-eslint/no-explicit-any': [0],
 
     // vue
     'vue/multi-word-component-names': [0],
