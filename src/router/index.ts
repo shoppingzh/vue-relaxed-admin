@@ -1,18 +1,18 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: []
-});
+  routes: [],
+})
 
 export function addRoutes(routes: RouteRecordRaw[], parentName?: string) {
-  routes.forEach(route => {
+  routes.forEach((route) => {
     if (parentName) {
-      router.addRoute(parentName, route);
+      router.addRoute(parentName, route)
     } else {
-      router.addRoute(route);
+      router.addRoute(route)
     }
-  });
+  })
 }
 
-export default router;
+export default router

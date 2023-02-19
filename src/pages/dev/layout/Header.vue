@@ -9,31 +9,27 @@
       </RouterLink>
     </div>
     <div class="px-[10px]">
-
       <div class="flex items-center">
         <el-link :underline="false" class="text-h4">
-          <el-icon
-            @click="prefs.toggleDarkMode()">
+          <el-icon @click="prefs.toggleDarkMode()">
             <Sunny v-if="!darkMode" />
             <Moon v-else />
           </el-icon>
         </el-link>
 
         <el-link :underline="false" class="ml-[15px] text-h5">
-          <el-icon
-            @click="prefs.toggleFullscreen()"><FullScreen /></el-icon>
+          <el-icon @click="prefs.toggleFullscreen()"><FullScreen /></el-icon>
         </el-link>
-  
       </div>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import usePrefs from '@/store/preference';
-import { storeToRefs } from 'pinia';
-import logo from './logo.svg?raw';
+import usePrefs from '@/store/preference'
+import { storeToRefs } from 'pinia'
+import logo from './logo.svg?raw'
 
-const prefs = usePrefs();
-const { darkMode } = storeToRefs(prefs);
+const prefs = usePrefs()
+const { darkMode } = storeToRefs(prefs)
 </script>

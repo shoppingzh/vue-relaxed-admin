@@ -5,15 +5,19 @@
 </template>
 
 <script setup lang="ts">
-import { useNetwork } from '@vueuse/core';
-import { watch } from 'vue';
-import locale from 'element-plus/dist/locale/zh-cn.mjs';
+import { useNetwork } from '@vueuse/core'
+import { watch } from 'vue'
+import locale from 'element-plus/dist/locale/zh-cn.mjs'
 
-const { isOnline } = useNetwork();
+const { isOnline } = useNetwork()
 
-watch(isOnline, () => {
-  if (!isOnline.value) {
-    alert('已断网！');
-  }
-}, { immediate: true });
+watch(
+  isOnline,
+  () => {
+    if (!isOnline.value) {
+      alert('已断网！')
+    }
+  },
+  { immediate: true }
+)
 </script>

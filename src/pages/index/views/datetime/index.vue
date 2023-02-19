@@ -10,15 +10,13 @@
 </template>
 
 <script setup lang="ts">
-import { useIntervalFn } from '@vueuse/core';
-import dayjs from 'dayjs';
-import { ref } from 'vue';
+import { useIntervalFn } from '@vueuse/core'
+import dayjs from 'dayjs'
+import { ref } from 'vue'
 
-
-const now = ref(new Date());
+const now = ref(new Date())
 
 useIntervalFn(() => {
-  now.value = new Date();
-}, 1000);
-
+  now.value = new Date()
+}, 1000)
 </script>

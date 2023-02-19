@@ -5,12 +5,7 @@
       <div class="mb-4">
         <div class="mb-4 font-semibold">主题色</div>
         <div class="flex">
-          <div
-            v-for="([name, color]) in brandColors"
-            :key="name"
-            class="flex items-center justify-center relative w-8 h-8 transition-all duration-150 cursor-pointer hover:scale-110 hover:z-10 opacity-70"
-            :style="{ backgroundColor: `var(--color-${color}-6)` }"
-            @click="brandColor = name">
+          <div v-for="[name, color] in brandColors" :key="name" class="flex items-center justify-center relative w-8 h-8 transition-all duration-150 cursor-pointer hover:scale-110 hover:z-10 opacity-70" :style="{ backgroundColor: `var(--color-${color}-6)` }" @click="brandColor = name">
             <svg-icon v-if="name === brandColor" name="duihao" class="text-h6 text-gray-100" />
           </div>
         </div>
@@ -35,7 +30,7 @@
           </div>
         </div>
       </div>
-    
+
       <div>
         <div class="mb-4 font-semibold">风格/表现</div>
         <div>
@@ -63,20 +58,17 @@
     </div>
 
     <!-- 快捷键区 -->
-    <div class="py-2 text-center">
-      <Keyboard text="S" /> <span class="ml-2 text-xs text-secondary">展开/收起</span>
-    </div>
+    <div class="py-2 text-center"><Keyboard text="S" /> <span class="ml-2 text-xs text-secondary">展开/收起</span></div>
   </div>
-
 </template>
 
 <script setup lang="ts">
-import usePrefs from '@/store/preference';
-import useLayout from '@p-index/store/layout';
-import { storeToRefs } from 'pinia';
+import usePrefs from '@/store/preference'
+import useLayout from '@p-index/store/layout'
+import { storeToRefs } from 'pinia'
 
-const { darkMode, grayMode, weakMode, brandColor } = storeToRefs(usePrefs());
-const { asideWidth, asideCollapseTogglePlace, isHideHeader, asideTheme } = storeToRefs(useLayout());
+const { darkMode, grayMode, weakMode, brandColor } = storeToRefs(usePrefs())
+const { asideWidth, asideCollapseTogglePlace, isHideHeader, asideTheme } = storeToRefs(useLayout())
 const brandColors = [
   ['blue', 'blue'],
   ['red', 'red'],
@@ -85,7 +77,7 @@ const brandColors = [
   ['pink', 'pink'],
   ['cyan', 'cyan'],
   ['gray', 'gray'],
-];
+]
 </script>
 
 <style scoped>

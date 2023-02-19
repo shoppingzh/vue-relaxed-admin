@@ -6,17 +6,16 @@
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
-import useLayout from '@p-index/store/layout';
+import { storeToRefs } from 'pinia'
+import useLayout from '@p-index/store/layout'
 
 interface Props {
-  icon?: string,
-  title: string,
+  icon?: string
+  title: string
 }
-defineProps<Props>();
+defineProps<Props>()
 
-const { isAsideCollapse } = storeToRefs(useLayout());
-
+const { isAsideCollapse } = storeToRefs(useLayout())
 </script>
 
 <style scoped>

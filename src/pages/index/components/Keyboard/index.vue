@@ -1,6 +1,5 @@
 <template>
-  <span class="keyboard px-2 inline-block text-secondary text-xs bg-normal
-    border border-gray-200 rounded-sm">
+  <span class="keyboard px-2 inline-block text-secondary text-xs bg-normal border border-gray-200 rounded-sm">
     <span class="inline-block scale-75">
       {{ text }}
     </span>
@@ -11,7 +10,7 @@
 interface Props {
   text: string
 }
-defineProps<Props>();
+defineProps<Props>()
 </script>
 
 <style scoped>

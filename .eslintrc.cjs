@@ -11,15 +11,8 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
   },
-  plugins: [
-    '@typescript-eslint'
-  ],
-  extends: [
-    '@shoppingzh',
-    'plugin:vue/vue3-essential',
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-  ],
+  plugins: ['@typescript-eslint'],
+  extends: ['@shoppingzh', 'plugin:vue/vue3-essential', 'plugin:@typescript-eslint/recommended', 'prettier'],
   rules: {
     'no-use-before-define': [2, { functions: false }],
 
@@ -29,4 +22,4 @@ module.exports = {
     // vue
     'vue/multi-word-component-names': [0],
   },
-};
+}

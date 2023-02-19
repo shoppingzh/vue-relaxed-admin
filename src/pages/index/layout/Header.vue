@@ -34,27 +34,27 @@
 </template>
 
 <script setup lang="ts">
-import usePrefs from '@/store/preference';
-import { storeToRefs } from 'pinia';
-import useLayout from '@p-index/store/layout';
-import { ref } from 'vue';
-import { ElMessage } from 'element-plus';
+import usePrefs from '@/store/preference'
+import { storeToRefs } from 'pinia'
+import useLayout from '@p-index/store/layout'
+import { ref } from 'vue'
+import { ElMessage } from 'element-plus'
 
-const keyword = ref('');
-const prefs = usePrefs();
-const { darkMode, isFullscreen } = storeToRefs(prefs);
-const { isAsideCollapse, asideCollapseTogglePlace, isSetting } = storeToRefs(useLayout());
+const keyword = ref('')
+const prefs = usePrefs()
+const { darkMode, isFullscreen } = storeToRefs(prefs)
+const { isAsideCollapse, asideCollapseTogglePlace, isSetting } = storeToRefs(useLayout())
 
 function openRepo() {
-  window.open('https://github.com/shoppingzh/vue-relaxed-admin');
+  window.open('https://github.com/shoppingzh/vue-relaxed-admin')
 }
 
 function openDocs() {
-  window.open('https://vue-docs.zhengxiaoping.xyz/');
+  window.open('https://vue-docs.zhengxiaoping.xyz/')
 }
 
 function search() {
-  ElMessage.info(`搜索：${keyword.value}`);
+  ElMessage.info(`搜索：${keyword.value}`)
 }
 </script>
 

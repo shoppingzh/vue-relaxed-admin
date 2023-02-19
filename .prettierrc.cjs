@@ -8,5 +8,5 @@ module.exports = {
   arrowParens: 'always',
   singleAttributePerLine: false,
   bracketSameLine: true,
-  endOfLine: 'auto'
+  endOfLine: 'auto',
 }

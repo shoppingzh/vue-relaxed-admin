@@ -1,65 +1,65 @@
-import useDrag from '@/hooks/useDrag';
-import { reactive, watch } from 'vue';
+import useDrag from '@/hooks/useDrag'
+import { reactive, watch } from 'vue'
 
 interface Coord {
-  x: number,
+  x: number
   y: number
 }
 
 interface Position {
-  right?: number,
-  top?: number,
+  right?: number
+  top?: number
 }
 
 function css(el: HTMLElement | null, styles: Partial<CSSStyleDeclaration>) {
-  if (!el || !styles || typeof styles !== 'object') return;
+  if (!el || !styles || typeof styles !== 'object') return
   Object.entries(styles).forEach(([name, style]) => {
-    el.style[name] = style;
-  });
+    el.style[name] = style
+  })
 }
 
-export default function() {
+export default function () {
   const offset = reactive<Coord>({
     x: 0,
     y: 0,
-  });
+  })
   const position = reactive<Position>({
     right: null,
     top: null,
-  });
+  })
   const { el, dragSession } = useDrag({
     onStart: (e) => {
-      if (!el.value) return;
-      const rect = el.value.getBoundingClientRect();
+      if (!el.value) return
+      const rect = el.value.getBoundingClientRect()
       Object.assign(offset, {
         x: e.clientX - rect.x,
         y: e.clientY - rect.y,
-      });
+      })
     },
-    onEnd
-  });
+    onEnd,
+  })
 
   watch(dragSession, () => {
-    if (!dragSession.value) return;
-    const { x, y } = dragSession.value;
+    if (!dragSession.value) return
+    const { x, y } = dragSession.value
     Object.assign(position, {
       top: y - offset.y,
       right: window.innerWidth - x - offset.x,
-    });
-  });
+    })
+  })
 
   function onEnd() {
     // 平滑贴边
     const animate = () => {
       window.requestAnimationFrame(() => {
-        const next = position.right - 30;
-        position.right = next < 0 ? 0 : next;
+        const next = position.right - 30
+        position.right = next < 0 ? 0 : next
         if (position.right > 0) {
-          animate();
+          animate()
         }
-      });
-    };
-    animate();
+      })
+    }
+    animate()
   }
 
   watch(position, () => {
@@ -68,10 +68,10 @@ export default function() {
       bottom: 'auto',
       left: 'auto',
       right: `${position.right}px`,
-    });
-  });
+    })
+  })
 
   return {
     el,
-  };
+  }
 }

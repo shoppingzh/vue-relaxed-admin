@@ -1,11 +1,7 @@
 <template>
-  <div
-    v-for="(item, index) in list"
-    :key="index"
-    :class="{ 'ml-2': index > 0 }"
-    class="relative flex items-center flex-1 bg-normal p-3 rounded-sm">
+  <div v-for="(item, index) in list" :key="index" :class="{ 'ml-2': index > 0 }" class="relative flex items-center flex-1 bg-normal p-3 rounded-sm">
     <div class="flex items-center justify-center w-[44px] h-[44px] p-2 rounded-full bg-gray-200">
-      <img :src="images[index]" class="w-full h-full">
+      <img :src="images[index]" class="w-full h-full" />
     </div>
     <div class="ml-6">
       <div class="text-h3">
@@ -27,20 +23,20 @@
 </template>
 
 <script setup lang="ts">
-import * as api from '@/api/access';
-import { ref } from 'vue';
-import p1 from './1.svg';
-import p2 from './2.svg';
-import p3 from './3.svg';
-import p4 from './4.svg';
+import * as api from '@/api/access'
+import { ref } from 'vue'
+import p1 from './1.svg'
+import p2 from './2.svg'
+import p3 from './3.svg'
+import p4 from './4.svg'
 
-const images = [p1, p2, p3, p4];
-const list = ref([]);
+const images = [p1, p2, p3, p4]
+const list = ref([])
 
 async function load() {
-  const data: any = await api.statGlobal();
-  list.value = data;
+  const data: any = await api.statGlobal()
+  list.value = data
 }
 
-load();
+load()
 </script>
