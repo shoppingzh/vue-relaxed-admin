@@ -143,7 +143,7 @@
 </template>
 
 <script setup lang="ts">
-import Spacing from './spacing.vue';
+// import Spacing from './spacing.vue';
 
 const colors = [{
   name: 'blue',
@@ -176,26 +176,26 @@ const bgColors = [
   [['bg-b-danger', 'bg-b-danger-hover', 'bg-b-danger-active', 'bg-b-danger-disabled'], '危险色'],
   // ['text-b-link', 'text-b-primary-hover', 'text-b-primary-active', 'text-b-primary-disabled', '链接色'],
 ];
-const primaryTextColors = [
-  ['text-b-primary', '品牌色'],
-  // ['text-b-primary-hover', '品牌色'],
-  // ['text-b-primary-active', '品牌色'],
-  // ['text-b-primary-disabled', '品牌色'],
-  // ['text-b-info', '信息色'],
-  ['text-b-success', '成功色'],
-  // ['text-b-success-hover', '成功色'],
-  // ['text-b-success-active', '成功色'],
-  // ['text-b-success-disabled', '成功色'],
-  ['text-b-warn', '警告色'],
-  // ['text-b-warn-hover', '警告色'],
-  // ['text-b-warn-active', '警告色'],
-  // ['text-b-warn-disabled', '警告色'],
-  ['text-b-danger', '危险色'],
-  // ['text-b-danger-hover', '危险色'],
-  // ['text-b-danger-active', '危险色'],
-  // ['text-b-danger-disabled', '危险色'],
-  // ['text-b-link', '链接色'],
-];
+// const primaryTextColors = [
+//   ['text-b-primary', '品牌色'],
+//   // ['text-b-primary-hover', '品牌色'],
+//   // ['text-b-primary-active', '品牌色'],
+//   // ['text-b-primary-disabled', '品牌色'],
+//   // ['text-b-info', '信息色'],
+//   ['text-b-success', '成功色'],
+//   // ['text-b-success-hover', '成功色'],
+//   // ['text-b-success-active', '成功色'],
+//   // ['text-b-success-disabled', '成功色'],
+//   ['text-b-warn', '警告色'],
+//   // ['text-b-warn-hover', '警告色'],
+//   // ['text-b-warn-active', '警告色'],
+//   // ['text-b-warn-disabled', '警告色'],
+//   ['text-b-danger', '危险色'],
+//   // ['text-b-danger-hover', '危险色'],
+//   // ['text-b-danger-active', '危险色'],
+//   // ['text-b-danger-disabled', '危险色'],
+//   // ['text-b-link', '链接色'],
+// ];
 
 const borderColors = [
   ['border-light', '浅色'],
