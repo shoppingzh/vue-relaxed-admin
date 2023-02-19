@@ -1,11 +1,10 @@
 /**
  * 解析文件名
  * @param path 路径
- * @returns 
+ * @returns
  */
 export function parseFilename(path: string) {
-  if (!path) return null;
-  const parts = path.split(/[/\\]/g);
-  return parts[parts.length - 1];
+  if (!path) return null
+  const parts = path.split(/[/\\]/g)
+  return parts[parts.length - 1]
 }
-

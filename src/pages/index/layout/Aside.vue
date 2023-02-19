@@ -1,13 +1,10 @@
 <template>
-  <aside
-    class="aside relative transition-[width] duration-200 ease-in-out"
-    :class="{ '!w-[60px]': isAsideCollapse, 'is-dark': asideTheme.dark }"
-    :style="styles">
+  <aside class="aside relative transition-[width] duration-200 ease-in-out" :class="{ '!w-[60px]': isAsideCollapse, 'is-dark': asideTheme.dark }" :style="styles">
     <div class="flex flex-col w-full h-full overflow-hidden">
       <!-- LOGO区 -->
       <div class="aside-logo h-[52px] p-4 text-center whitespace-nowrap border-b border-b-gray-200" :class="{ '!p-2': isAsideCollapse }">
         <RouterLink to="/" class="flex items-center appearance-none text-inherit no-underline hover:text-inherit" :class="{ 'justify-center': isAsideCollapse }">
-          <img src="@/assets/logo.png" class="w-6 h-6 transition-all duration-200" :class="{ 'w-8 h-8': isAsideCollapse }" >
+          <img src="@/assets/logo.png" class="w-6 h-6 transition-all duration-200" :class="{ 'w-8 h-8': isAsideCollapse }" />
           <span v-show="!layout.isAsideCollapse" class="ml-2 font-semibold">{{ app.name }}</span>
         </RouterLink>
       </div>
@@ -15,9 +12,7 @@
       <Menu class="flex-1 h-0 border-r-0 overflow-auto" />
 
       <!-- 个人标记 -->
-      <div class="aside-brand p-2 text-center text-secondary text-xs border-t border-t-gray-200">
-        by xpzheng
-      </div>
+      <div class="aside-brand p-2 text-center text-secondary text-xs border-t border-t-gray-200">by xpzheng</div>
     </div>
 
     <!-- 折叠按钮 -->
@@ -28,22 +23,21 @@
 </template>
 
 <script lang="ts" setup>
-import useLayout from '@p-index/store/layout';
-import { storeToRefs } from 'pinia';
-import { computed } from 'vue';
-import Menu from './Menu.vue';
-import useApp from '@/store/app';
+import useLayout from '@p-index/store/layout'
+import { storeToRefs } from 'pinia'
+import { computed } from 'vue'
+import Menu from './Menu.vue'
+import useApp from '@/store/app'
 
-const app = useApp();
+const app = useApp()
 
-const layout = useLayout();
-const { isAsideCollapse, asideCollapseTogglePlace, asideWidth, asideTheme } = storeToRefs(layout);
+const layout = useLayout()
+const { isAsideCollapse, asideCollapseTogglePlace, asideWidth, asideTheme } = storeToRefs(layout)
 const styles = computed<any>(() => {
   return {
     width: isAsideCollapse.value ? null : `${asideWidth.value}px`,
-  };
-});
-
+  }
+})
 </script>
 
 <style scoped>

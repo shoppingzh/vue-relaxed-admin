@@ -3,9 +3,7 @@
     <!-- <el-table-column label="序号" type="index" width="50px" /> -->
     <el-table-column label="用户" prop="name" />
     <el-table-column label="阅读文章" prop="article">
-      <template #default="{ row }">
-        《{{ row.article }}》
-      </template>
+      <template #default="{ row }"> 《{{ row.article }}》 </template>
     </el-table-column>
     <el-table-column label="访问日期" prop="date" align="center" />
     <el-table-column label="本月阅读时长增长" align="center">
@@ -17,7 +15,7 @@
       </template>
     </el-table-column>
     <el-table-column label="操作" align="center">
-      <template #default="{ }">
+      <template #default="{}">
         <el-tooltip content="查看">
           <svg-icon name="chakan" class="table-button text-b-primary hover:text-b-primary-hover" />
         </el-tooltip>
@@ -33,18 +31,18 @@
 </template>
 
 <script setup lang="ts">
-import * as api from '@/api/access';
-import { ref } from 'vue';
+import * as api from '@/api/access'
+import { ref } from 'vue'
 
-const list = ref([]);
+const list = ref([])
 
 async function load() {
-  const users: any = await api.listUsers();
-  list.value = users;
-  console.log(users);
+  const users: any = await api.listUsers()
+  list.value = users
+  console.log(users)
 }
 
-load();
+load()
 </script>
 
 <style scoped>

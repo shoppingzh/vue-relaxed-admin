@@ -32,25 +32,21 @@
             </el-select>
           </div>
           <div class="text-h5 font-semibold">¥9,999.66</div>
-          <div class="mt-1 text-green-500 text-xs">
-            <svg-icon name="shang" class="text-md" /> 环比上升3.2%
-          </div>
+          <div class="mt-1 text-green-500 text-xs"><svg-icon name="shang" class="text-md" /> 环比上升3.2%</div>
         </div>
 
         <div class="mt-4 p-3 bg-normal rounded-sm">
           <div class="mb-3">热门文章</div>
           <Hot />
         </div>
-
       </div>
     </div>
-
   </div>
 </template>
 
 <script setup lang="ts">
-import Access from './Access.vue';
-import Users from './Users.vue';
-import Hot from './Hot.vue';
-import Stat from './Stat/index.vue';
+import Access from './Access.vue'
+import Users from './Users.vue'
+import Hot from './Hot.vue'
+import Stat from './Stat/index.vue'
 </script>

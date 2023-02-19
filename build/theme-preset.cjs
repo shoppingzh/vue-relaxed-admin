@@ -1,8 +1,8 @@
-const config = require('tailwindcss/defaultConfig');
-const colors = require('tailwindcss/colors');
+const config = require('tailwindcss/defaultConfig')
+const colors = require('tailwindcss/colors')
 
 function createBrandColor(type, colors) {
-  if (!colors) return {};
+  if (!colors) return {}
   return {
     [`b-${type}`]: {
       DEFAULT: colors[5],
@@ -10,19 +10,18 @@ function createBrandColor(type, colors) {
       active: colors[6],
       disabled: colors[2],
       background: colors[0],
-    }
-  };
+    },
+  }
 }
 
 function createStepCssVarColors(name, count = 10) {
-  return new Array(count).fill().map((_, index) => `var(--color-${name}-${index + 1})`);
+  return new Array(count).fill().map((_, index) => `var(--color-${name}-${index + 1})`)
 }
 
 const baseColors = ['blue', 'orange', 'green', 'red', 'pink', 'cyan', 'gray'].reduce((map, name) => {
-  map[name] = createStepCssVarColors(name);
-  return map;
-}, {});
-
+  map[name] = createStepCssVarColors(name)
+  return map
+}, {})
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -36,10 +35,10 @@ module.exports = {
 
       ...Object.entries(baseColors).reduce((conf, [name, list]) => {
         conf[name] = list.reduce((map, color, index) => {
-          map[(index + 1) * 100] = color;
-          return map;
-        }, {});
-        return conf;
+          map[(index + 1) * 100] = color
+          return map
+        }, {})
+        return conf
       }, {}),
 
       'b-primary': {
@@ -56,8 +55,8 @@ module.exports = {
     },
     // 规则：以4px为倍数递进
     spacing: new Array(21).fill(null).reduce((conf, _, index) => {
-      conf[index] = `${index * 4}px`;
-      return conf;
+      conf[index] = `${index * 4}px`
+      return conf
     }, {}),
     fontSize: [
       { name: 'xs', size: 10 },
@@ -71,8 +70,8 @@ module.exports = {
       { name: 'h2', size: 48 },
       { name: 'h1', size: 56 },
     ].reduce((sizes, o) => {
-      sizes[o.name] = [`${o.size}px`, { lineHeight: `${Math.round(o.size * 1.5)}px` }];
-      return sizes;
+      sizes[o.name] = [`${o.size}px`, { lineHeight: `${Math.round(o.size * 1.5)}px` }]
+      return sizes
     }, {}),
     boxShadow: {
       sm: ' 0px 2px 5px 0px rgba(0, 0, 0, 0.1)',
@@ -103,8 +102,8 @@ module.exports = {
         darker: baseColors.gray[5],
       },
       backgroundColor: {
-        normal: 'var(--color-bg-normal)'
+        normal: 'var(--color-bg-normal)',
       },
     },
-  }
-};
+  },
+}

@@ -16,21 +16,12 @@
 
   <div class="my-6 h-[1px] bg-gray-300"></div>
 
-
-  <div
-    v-for="cls in sizes"
-    :key="cls"
-    :class="[cls]"
-    class="leading-relaxed">
-    我是一个SVG图标 <svg-icon name="home" />
-  </div>
-
-
+  <div v-for="cls in sizes" :key="cls" :class="[cls]" class="leading-relaxed">我是一个SVG图标 <svg-icon name="home" /></div>
 </template>
 
 <script setup lang="ts">
-import homeSvg from '@/icons/svg/home.svg?raw';
-console.log(homeSvg);
+import homeSvg from '@/icons/svg/home.svg?raw'
+console.log(homeSvg)
 
-const sizes = ['text-xs', 'text-sm', 'text-base', 'text-h6', 'text-h5', 'text-h4', 'text-h3', 'text-h2', 'text-h1'];
+const sizes = ['text-xs', 'text-sm', 'text-base', 'text-h6', 'text-h5', 'text-h4', 'text-h3', 'text-h2', 'text-h1']
 </script>

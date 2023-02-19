@@ -1,3 +1,1 @@
-export default [
-  '/404'
-];
+export default ['/404']

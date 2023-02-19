@@ -8,14 +8,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 interface Props {
-  name?: string,
-  inline?: string,
+  name?: string
+  inline?: string
 }
-const props = defineProps<Props>();
-const symbolId = computed(() => `#svg-icon/${props.name}`);
+const props = defineProps<Props>()
+const symbolId = computed(() => `#svg-icon/${props.name}`)
 </script>
 
 <style lang="scss" scoped>

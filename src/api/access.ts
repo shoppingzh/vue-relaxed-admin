@@ -1,22 +1,22 @@
-import service from '@/service';
+import service from '@/service'
 
 export function statGlobal() {
   return service({
     url: 'access/stat',
-    method: 'get'
-  });
+    method: 'get',
+  })
 }
 
 export function listLatest() {
   return service({
     url: 'access/latest',
     method: 'get',
-  });
+  })
 }
 
 export function listUsers() {
   return service({
     url: 'access/users',
-    method: 'get'
-  });
+    method: 'get',
+  })
 }

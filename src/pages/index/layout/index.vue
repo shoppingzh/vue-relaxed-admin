@@ -24,26 +24,25 @@
 </template>
 
 <script lang="ts" setup>
-import Header from './Header.vue';
-import Aside from './Aside.vue';
-import Main from './Main.vue';
-import useLayout from '@p-index/store/layout';
-import { storeToRefs } from 'pinia';
-import Settings from './components/Settings.vue';
-import useFixedDrag from './useFixedDrag';
-import hotkeys from 'hotkeys-js';
+import Header from './Header.vue'
+import Aside from './Aside.vue'
+import Main from './Main.vue'
+import useLayout from '@p-index/store/layout'
+import { storeToRefs } from 'pinia'
+import Settings from './components/Settings.vue'
+import useFixedDrag from './useFixedDrag'
+import hotkeys from 'hotkeys-js'
 
-const { isSetting, isHideHeader } = storeToRefs(useLayout());
-const { el: floatBtn } = useFixedDrag();
+const { isSetting, isHideHeader } = storeToRefs(useLayout())
+const { el: floatBtn } = useFixedDrag()
 
 function openSettings() {
-  isSetting.value = true;
+  isSetting.value = true
 }
 
 hotkeys('s', () => {
-  isSetting.value = !isSetting.value;
-});
-
+  isSetting.value = !isSetting.value
+})
 </script>
 
 <style scoped>

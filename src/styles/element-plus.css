@@ -1,12 +1,12 @@
 /* 此文件用于覆盖element-plus的主题 */
 
-:root, html.dark {
+:root,
+html.dark {
   /* 主题色 */
   --el-color-primary: theme('colors.b-primary.DEFAULT');
   --el-color-success: theme('colors.b-success.DEFAULT');
   --el-color-warning: theme('colors.b-warn.DEFAULT');
   --el-color-danger: theme('colors.b-danger.DEFAULT');
-
 
   /* 文字色 */
   --el-text-color-primary: theme('textColor.primary');
@@ -20,7 +20,7 @@
   --el-border-color: theme('borderColor.regular');
   --el-border-color-dark: theme('borderColor.dark');
   --el-border-color-darker: theme('borderColor.darker');
-  
+
   /* 圆角大小 */
   --el-border-radius-base: theme('borderRadius.xs');
   --el-border-radius-small: theme('borderRadius.sm');
@@ -33,7 +33,6 @@
   --el-font-size-medium: theme('fontSize.h6');
   --el-font-size-large: theme('fontSize.h5');
   --el-font-size-extra-large: theme('fontSize.h4');
-
 }
 
 .el-button {
@@ -64,7 +63,6 @@
     --el-button-active-border-color: theme('colors.b-danger.active');
   }
 }
-
 
 .el-link {
   .el-link&--primary {

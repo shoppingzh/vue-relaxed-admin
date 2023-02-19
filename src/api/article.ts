@@ -1,8 +1,8 @@
-import service from '@/service';
+import service from '@/service'
 
 export function listHot() {
   return service({
     url: 'article/hot',
-    method: 'get'
-  });
+    method: 'get',
+  })
 }
