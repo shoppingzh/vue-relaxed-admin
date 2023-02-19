@@ -6,4 +6,7 @@ module.exports = {
   semi: false,
   singleQuote: true,
   arrowParens: 'always',
+  singleAttributePerLine: false,
+  bracketSameLine: true,
+  endOfLine: 'auto'
 }
