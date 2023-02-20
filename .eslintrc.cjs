@@ -12,7 +12,12 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint'],
-  extends: ['@shoppingzh', 'plugin:vue/vue3-essential', 'plugin:@typescript-eslint/recommended', 'prettier'],
+  extends: [
+    '@shoppingzh',
+    'plugin:vue/vue3-essential',
+    'plugin:@typescript-eslint/recommended',
+    // 'prettier'
+  ],
   rules: {
     'no-use-before-define': [2, { functions: false }],
 
