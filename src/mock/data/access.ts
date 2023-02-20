@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 
 function getLatestDates(): Date[] {
   const list: Date[] = []
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0;i < 15;i++) {
     list.unshift(dayjs().subtract(i, 'day').toDate())
   }
   return list
@@ -58,16 +58,15 @@ export default [
   },
   {
     url: '/api/access/users',
-    data: (mock: Mock.MockjsMock) =>
-      mock({
-        'list|10-30': [
-          {
-            name: '@cname',
-            date: '@date',
-            article: '@ctitle',
-            inc: '@float(-100, 100, 2, 2)',
-          },
-        ],
-      }).list,
+    data: (mock: Mock.MockjsMock) => mock({
+      'list|10-30': [
+        {
+          name: '@cname',
+          date: '@date',
+          article: '@ctitle',
+          inc: '@float(-100, 100, 2, 2)',
+        },
+      ],
+    }).list,
   },
 ]

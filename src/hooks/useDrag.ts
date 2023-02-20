@@ -13,7 +13,7 @@ interface DragSession {
   movementY?: number
 }
 
-export default function (options?: UseDragOptions) {
+export default function(options?: UseDragOptions) {
   const el = shallowRef<HTMLElement | null>(null)
   const isDragging = ref(false)
   const dragSession = ref<DragSession | null>()

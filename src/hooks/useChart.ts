@@ -3,7 +3,7 @@ import * as echarts from 'echarts'
 import { useResizeObserver } from '@vueuse/core'
 import { throttle } from 'lodash'
 
-export default function (option?: Ref<echarts.EChartsOption> | echarts.EChartsOption, loading?: Ref<boolean> | boolean) {
+export default function(option?: Ref<echarts.EChartsOption> | echarts.EChartsOption, loading?: Ref<boolean> | boolean) {
   const el = ref<HTMLElement>(null)
   const chart = shallowRef<echarts.EChartsType>(null)
   const optionRef = computed(() => unref(option))
@@ -27,12 +27,11 @@ export default function (option?: Ref<echarts.EChartsOption> | echarts.EChartsOp
   }
 
   const rerender = () => {
-    chart.value &&
-      chart.value.resize({
-        animation: {
-          duration: 500,
-        },
-      })
+    chart.value && chart.value.resize({
+      animation: {
+        duration: 500,
+      },
+    })
   }
 
   onMounted(() => {
