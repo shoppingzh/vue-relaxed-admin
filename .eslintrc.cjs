@@ -19,8 +19,7 @@ module.exports = {
     // 'prettier'
   ],
   rules: {
-    'no-use-before-define': [2, { functions: false }],
-
+    'linebreak-style': [0],
     // ts
     '@typescript-eslint/no-explicit-any': [0],
 
