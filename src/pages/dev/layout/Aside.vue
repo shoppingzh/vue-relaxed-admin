@@ -23,15 +23,13 @@ import icons from './icons'
 
 const router = useRouter()
 const routes = router.getRoutes()
-const menus = computed(() =>
-  routes
-    .filter((o) => o.meta && o.meta.menu)
-    .map((o) => ({
-      name: o.meta.title,
-      to: o.path,
-      icon: o.meta.icon,
-    }))
-)
+const menus = computed(() => routes
+  .filter((o) => o.meta && o.meta.menu)
+  .map((o) => ({
+    name: o.meta.title,
+    to: o.path,
+    icon: o.meta.icon,
+  })))
 const { isMenuCollapse: isCollapse } = storeToRefs(useLayout())
 </script>
 

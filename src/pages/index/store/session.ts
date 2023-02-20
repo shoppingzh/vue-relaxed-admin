@@ -7,7 +7,7 @@ export default defineStore('session', () => {
   const menus = ref()
 
   function init() {
-    return new Promise<void>(async (resolve, reject) => {
+    return new Promise<void>(async(resolve, reject) => {
       try {
         if (inited.value) {
           resolve()

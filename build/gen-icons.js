@@ -27,7 +27,7 @@ function readConfig() {
   }, {})
 }
 
-;(async function () {
+(async function() {
   let config = readConfig()
   if (!config) {
     prompt.start()

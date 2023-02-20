@@ -13,7 +13,7 @@ function getComponentName(path: string) {
   return parts.join('-')
 }
 
-export default function (app: App) {
+export default function(app: App) {
   Object.keys(modules).forEach((path) => {
     const component = modules[path].default
     if (!component) return

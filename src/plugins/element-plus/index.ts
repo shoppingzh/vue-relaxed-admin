@@ -6,7 +6,7 @@ import type { App } from 'vue'
 // 暗黑模式
 import 'element-plus/theme-chalk/dark/css-vars.css'
 
-export default function (app: App) {
+export default function(app: App) {
   app.use(ElementPlus)
   for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)

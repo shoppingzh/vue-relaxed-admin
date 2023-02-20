@@ -18,7 +18,7 @@ function css(el: HTMLElement | null, styles: Partial<CSSStyleDeclaration>) {
   })
 }
 
-export default function () {
+export default function() {
   const offset = reactive<Coord>({
     x: 0,
     y: 0,
