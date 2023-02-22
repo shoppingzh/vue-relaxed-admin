@@ -1,19 +1,22 @@
 import service from '@/service'
+import { Task } from './types'
 
-export interface Task {
-  id: number;
+export function create(data: Task) {
+  return service.post('task', data)
 }
 
-export function create(data: any) {
-  return service({
-    url: 'task',
-    method: 'post',
-    data,
+export function update(data: Task) {
+  return service.put('task', data)
+}
+
+export function createOrUpdate(data: Task) {
+  return data.id ? update(data) : create(data)
+}
+
+export function list(params?: any) {
+  return service.get<any, Task[]>('task', {
+    params
   })
-}
-
-export function list() {
-  return service.get<any, Task[]>('task')
 }
 
 export function removeById(id: number) {
