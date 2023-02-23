@@ -23,6 +23,7 @@ import * as api from '@/api/schedule'
 import { Schedule } from '@/api/types'
 import { merge } from 'lodash'
 import { onMounted, reactive, ref } from 'vue'
+import useAutoFocus from '@/hooks/useAutoFocus'
 
 interface Props {
   taskId: number
@@ -39,7 +40,7 @@ const form = reactive<Schedule>({
     id: props.taskId
   }
 })
-const inputIns = ref(null)
+const { input: inputIns } = useAutoFocus()
 
 async function submit() {
   await api.createOrUpdate(form)
@@ -52,11 +53,5 @@ async function load() {
 }
 
 props.id && load()
-
-onMounted(() => {
-  setTimeout(() => {
-    inputIns.value && inputIns.value.focus()
-  }, 100)
-})
 
 </script>
