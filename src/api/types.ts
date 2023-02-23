@@ -23,5 +23,6 @@ export interface Task extends Base {
 export interface Schedule extends Base {
   percent?: number
   description?: string
+  time?: Date
   task?: Task
 }
