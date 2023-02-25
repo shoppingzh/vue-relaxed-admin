@@ -9,24 +9,46 @@
     </div>
 
     <el-table :data="list" class="mt-4">
-      <el-table-column label="ID" prop="id" align="center"></el-table-column>
       <el-table-column label="名称" prop="name" align="center"></el-table-column>
       <el-table-column label="创建时间" prop="gmtCreate" align="center"></el-table-column>
-      <el-table-column label="最后修改时间" prop="gmtModify" align="center"></el-table-column>
       <el-table-column label="操作" align="center">
         <template #default="{ row }">
-          <el-button size="small" type="danger" @click="remove(row)">删除</el-button>
+          <el-button
+            type="primary"
+            size="small"
+            plain
+            @click="handleUpdate(row)">
+            <el-icon><Edit /></el-icon>
+          </el-button>
+          <el-button size="small" type="danger" plain @click="remove(row)">
+            <el-icon><Delete /></el-icon>
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
   </div>
+
+  <el-dialog v-model="popper.create" :title="`${updateItem ? '修改' : '新增'}分类`">
+    <New
+      v-if="popper.create"
+      :id="updateItem ? updateItem.id : null"
+      @success="handleCreateSuccess"
+      @cancel="popper.create = false" />
+  </el-dialog>
 </template>
 
 <script setup lang="ts">
 import * as api from '@/api/category'
-import { ElMessage, ElMessageBox } from 'element-plus'
+import { ElMessage } from 'element-plus'
 import useLoad from '@p-index/hooks/useLoad'
+import { reactive, ref, watch } from 'vue'
+import New from './New.vue'
+import { Category } from '@/api/types'
 
+const popper = reactive({
+  create: false
+})
+const updateItem = ref<Category>()
 const { data: list, load } = useLoad(() => api.list())
 
 async function remove(row: any) {
@@ -36,15 +58,23 @@ async function remove(row: any) {
 }
 
 async function create() {
-  try {
-    const { value: name } = await ElMessageBox.prompt('分类名称', '添加分类', {})
-    await api.create({ name })
-    load()
-  } catch {
-    return
-  }
+  popper.create = true
 }
 
+function handleCreateSuccess() {
+  popper.create = false
+  load()
+}
+
+function handleUpdate(item: Category) {
+  updateItem.value = item
+  popper.create = true
+}
 
 load()
+
+watch(() => popper.create, () => {
+  if (popper.create) return
+  updateItem.value = null
+})
 </script>

@@ -21,15 +21,18 @@
           <el-button
             type="warning"
             size="small"
-            @click="handleViewSchedule(row)">进度</el-button>
+            plain
+            @click="handleViewSchedule(row)"><el-icon><Clock /></el-icon></el-button>
           <el-button
             type="primary"
             size="small"
-            @click="update(row)">修改</el-button>
+            plain
+            @click="update(row)"><el-icon><Edit /></el-icon></el-button>
           <el-button
             type="danger"
             size="small"
-            @click="remove(row)">删除</el-button>
+            plain
+            @click="remove(row)"><el-icon><Delete /></el-icon></el-button>
         </template>
       </el-table-column>
     </el-table>

@@ -3,6 +3,7 @@
     <el-form ref="formIns" :model="form" :rules="rules" size="medium" label-width="120px" label-position="left">
       <el-form-item label="标题" prop="title">
         <el-input
+          ref="titleInputIns"
           v-model="form.title"
           placeholder="标题" />
       </el-form-item>
@@ -54,18 +55,15 @@
       <el-button
         type="primary"
         size="medium"
-        @click="submit">提交</el-button>
+        @click="handleSubmit">提交</el-button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
 import * as api from '@/api/task'
-import { ElMessage } from 'element-plus'
 import useCategorySelect from './useCategorySelect'
-import { merge } from 'lodash'
-import type { Task } from '@/api/types'
+import useFastCreateUpdate from '../../hooks/useFastCreateUpdate'
 
 interface Props {
   id: number
@@ -73,6 +71,7 @@ interface Props {
 
 const props = defineProps<Props>()
 const emit = defineEmits(['success'])
+
 const { list: categoryList } = useCategorySelect()
 const rules: any = {
   title: [{
@@ -81,10 +80,14 @@ const rules: any = {
   }],
   target: [{ required: true, message: '请填写任务目标' }]
 }
-const formIns = ref()
 
-const form = reactive<Partial<Task>>({
-  id: null,
+const {
+  model: form,
+  firstFocusInputIns: titleInputIns,
+  elFormIns: formIns,
+  submit,
+} = useFastCreateUpdate({
+  id: props.id,
   title: null,
   description: null,
   target: null,
@@ -96,27 +99,11 @@ const form = reactive<Partial<Task>>({
   category: {
     id: null
   }
-})
+}, (model) => api.createOrUpdate(model), () => api.getById(props.id))
 
-async function submit() {
-  try {
-    await formIns.value.validate()
-  } catch {
-    return
-  }
-  await api.createOrUpdate(form)
+async function handleSubmit() {
+  await submit()
   emit('success')
-  ElMessage.success('添加成功！')
 }
 
-async function load() {
-  const data = await api.list({ id: props.id })
-  if (!data.length) return
-  merge(form, data[0])
-}
-
-if (props.id) {
-  console.log('加载')
-  load()
-}
 </script>
