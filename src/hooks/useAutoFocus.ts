@@ -1,16 +1,21 @@
-import { onMounted, Ref, ref } from 'vue'
+import { Ref, ref, watch } from 'vue'
 
 interface Focusable {
   focus: () => void
 }
 
-export default function(initialInput?: Ref<Focusable>) {
+export default function(initialInput?: Ref<Focusable>, timeout = 100) {
   const input = initialInput || ref<Focusable>()
 
-  onMounted(() => {
+  function focus() {
+    if (!input.value) return
     setTimeout(() => {
-      input.value && input.value.focus()
-    }, 100)
+      input.value.focus()
+    }, timeout)
+  }
+
+  watch(input, () => {
+    focus()
   })
 
   return {
