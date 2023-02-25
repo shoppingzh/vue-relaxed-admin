@@ -20,6 +20,7 @@ module.exports = {
   ],
   rules: {
     'linebreak-style': [0],
+    'no-promise-executor-return': [0],
     // ts
     '@typescript-eslint/no-explicit-any': [0],
 
