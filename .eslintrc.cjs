@@ -16,7 +16,6 @@ module.exports = {
     '@shoppingzh',
     'plugin:vue/vue3-essential',
     'plugin:@typescript-eslint/recommended',
-    // 'prettier'
   ],
   rules: {
     'linebreak-style': [0],
