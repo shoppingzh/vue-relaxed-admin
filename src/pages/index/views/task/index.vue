@@ -35,8 +35,16 @@
       <el-table-column label="描述" prop="description" />
       <el-table-column label="目标" prop="target" />
       <el-table-column label="权重" prop="weight" align="center" />
-      <el-table-column label="开始时间" prop="startTime" />
-      <el-table-column label="结束时间" prop="endTime" />
+      <el-table-column label="开始时间" prop="startTime">
+        <template #default="{ row }">
+          {{ $dayjs(row.startTime).format('YYYY-MM-DD') }}
+        </template>
+      </el-table-column>
+      <el-table-column label="结束时间" prop="endTime">
+        <template #default="{ row }">
+          {{ $dayjs(row.endTime).format('YYYY-MM-DD') }}
+        </template>
+      </el-table-column>
       <el-table-column label="分类" prop="category.name" />
       <el-table-column label="操作" align="center" min-width="120px">
         <template #default="{ row }">
