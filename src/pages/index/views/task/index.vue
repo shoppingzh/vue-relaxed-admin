@@ -1,14 +1,36 @@
 <template>
   <div class="p-4">
 
-    <div class="text-right">
+    <div class="p-4 flex items-center bg-white">
+      <div class="flex-1">
+        <el-date-picker
+          v-model="query.startTime"
+          placeholder="开始时间"
+          clearable />
+        <el-date-picker
+          v-model="query.endTime"
+          class="ml-2"
+          placeholder="结束时间"
+          clearable />
+        <el-select v-model="query.categoryId" class="ml-2" clearable>
+          <!-- <el-option :value="null" label="全部" /> -->
+          <el-option
+            v-for="item in categoryList"
+            :key="item.id"
+            :value="item.id"
+            :label="item.name" />
+        </el-select>
+        <el-button
+          class="ml-2"
+          type="primary"
+          @click="load">筛选</el-button>
+      </div>
       <el-button
         type="primary"
-        size="small"
         @click="popper.new = true">新增任务</el-button>
     </div>
 
-    <el-table :data="list" class="mt-4">
+    <el-table v-loading="loading" :data="list" class="mt-4">
       <el-table-column label="标题" prop="title" />
       <el-table-column label="描述" prop="description" />
       <el-table-column label="目标" prop="target" />
@@ -58,14 +80,26 @@ import { reactive, ref, watch } from 'vue'
 import New from './New.vue'
 import { Task } from '@/api/types'
 import Schedule from './Schedule/index.vue'
+import useCategorySelect from './useCategorySelect'
 
-const { data: list, load } = useLoad(() => api.list())
+interface Query {
+  startTime?: Date
+  endTime?: Date
+  categoryId?: number
+}
+
+const { query, data: list, loading, load } = useLoad<Task[], Query>(() => api.list(query), {
+  startTime: null,
+  endTime: null,
+  categoryId: null,
+})
 const popper = reactive({
   new: false,
   schedule: false,
 })
 const updateItem = ref<Task>()
 const scheduleItem = ref<Task>()
+const { list: categoryList } = useCategorySelect()
 
 async function remove(row: Task) {
   await api.removeById(row.id)
@@ -94,6 +128,7 @@ watch(() => popper.new, () => {
   }
 })
 
-load()
+watch(() => [query.startTime, query.endTime, query.categoryId], load)
 
+load()
 </script>
