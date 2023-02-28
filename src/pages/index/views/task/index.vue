@@ -8,8 +8,7 @@
           <el-radio-button label="0m">本月</el-radio-button>
           <el-radio-button label="-1m">上月</el-radio-button>
         </el-radio-group>
-        <el-select v-model="query.categoryId" class="ml-2" clearable>
-          <!-- <el-option :value="null" label="全部" /> -->
+        <el-select v-model="query.categoryId" class="ml-2" clearable placeholder="请选择分类">
           <el-option
             v-for="item in categoryList"
             :key="item.id"
@@ -27,21 +26,21 @@
     </div>
 
     <el-table v-loading="loading" :data="list" class="mt-4">
-      <el-table-column label="标题" prop="title" />
-      <el-table-column label="描述" prop="description" />
-      <el-table-column label="目标" prop="target" />
+      <el-table-column label="分类" prop="category.name" align="center" />
+      <el-table-column label="标题" prop="title" header-align="center" />
+      <el-table-column label="描述" prop="description" show-overflow-tooltip />
+      <el-table-column label="目标" prop="target" show-overflow-tooltip />
       <el-table-column label="权重" prop="weight" align="center" />
-      <el-table-column label="开始时间" prop="startTime">
+      <el-table-column label="开始时间" prop="startTime" align="center">
         <template #default="{ row }">
           {{ $dayjs(row.startTime).format('YYYY-MM-DD') }}
         </template>
       </el-table-column>
-      <el-table-column label="结束时间" prop="endTime">
+      <el-table-column label="结束时间" prop="endTime" align="center">
         <template #default="{ row }">
           {{ $dayjs(row.endTime).format('YYYY-MM-DD') }}
         </template>
       </el-table-column>
-      <el-table-column label="分类" prop="category.name" />
       <el-table-column label="操作" align="center" min-width="120px">
         <template #default="{ row }">
           <el-button

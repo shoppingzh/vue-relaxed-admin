@@ -4,13 +4,17 @@
     <div class="flex">
       <div class="flex-1"></div>
       <div>
-        <el-button size="small" type="primary" @click="create">新增分类</el-button>
+        <el-button type="primary" @click="create">新增分类</el-button>
       </div>
     </div>
 
     <el-table :data="list" class="mt-4">
       <el-table-column label="名称" prop="name" align="center"></el-table-column>
-      <el-table-column label="创建时间" prop="gmtCreate" align="center"></el-table-column>
+      <el-table-column label="创建时间" prop="gmtCreate" align="center">
+        <template #default="{ row }">
+          {{ $dayjs(row.gmtCreate).format('YYYY-MM-DD') }}
+        </template>
+      </el-table-column>
       <el-table-column label="操作" align="center">
         <template #default="{ row }">
           <el-button
