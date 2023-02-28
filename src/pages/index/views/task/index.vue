@@ -2,16 +2,12 @@
   <div class="p-4">
 
     <div class="p-4 flex items-center bg-white">
-      <div class="flex-1">
-        <el-date-picker
-          v-model="query.startTime"
-          placeholder="开始时间"
-          clearable />
-        <el-date-picker
-          v-model="query.endTime"
-          class="ml-2"
-          placeholder="结束时间"
-          clearable />
+      <div class="flex-1 flex items-center">
+        <el-radio-group v-model="query.timeRange">
+          <el-radio-button label="0w">本周</el-radio-button>
+          <el-radio-button label="0m">本月</el-radio-button>
+          <el-radio-button label="-1m">上月</el-radio-button>
+        </el-radio-group>
         <el-select v-model="query.categoryId" class="ml-2" clearable>
           <!-- <el-option :value="null" label="全部" /> -->
           <el-option
@@ -89,17 +85,46 @@ import New from './New.vue'
 import { Task } from '@/api/types'
 import Schedule from './Schedule/index.vue'
 import useCategorySelect from './useCategorySelect'
+import dayjs, { Dayjs } from 'dayjs'
 
 interface Query {
-  startTime?: Date
-  endTime?: Date
+  startTime?: string
+  endTime?: string
   categoryId?: number
+  timeRange?: '0w' | '0m' | '-1m' | 'custom'
 }
 
-const { query, data: list, loading, load } = useLoad<Task[], Query>(() => api.list(query), {
+const today = dayjs()
+
+const { query, data: list, loading, load } = useLoad<Task[], Query>(() => {
+  const q: Query = {
+    ...query
+  }
+  if (query.timeRange !== 'custom') {
+    let start: Dayjs, end: Dayjs
+    if (query.timeRange === '0w') {
+      start = today.startOf('week')
+      end = today.endOf('week')
+    } else if (query.timeRange === '0m') {
+      start = today.startOf('month')
+      end = today.endOf('month')
+    } else if (query.timeRange === '-1m') {
+      const lastMonthDay = today.subtract(1, 'month')
+      start = lastMonthDay.startOf('month')
+      end = lastMonthDay.endOf('month')
+    }
+    q.startTime = start.format('YYYY-MM-DD')
+    q.endTime = end.format('YYYY-MM-DD')
+  }
+
+  return api.list({
+    ...q
+  })
+}, {
   startTime: null,
   endTime: null,
   categoryId: null,
+  timeRange: '0w',
 })
 const popper = reactive({
   new: false,
@@ -136,7 +161,7 @@ watch(() => popper.new, () => {
   }
 })
 
-watch(() => [query.startTime, query.endTime, query.categoryId], load)
+watch(() => [query.startTime, query.endTime, query.timeRange, query.categoryId], load)
 
 load()
 </script>
