@@ -1,12 +1,20 @@
 <template>
   <div class="p-4">
 
-    <div class="p-4 flex items-center bg-white">
+    <div class="p-4 flex items-center bg-normal">
       <div class="flex-1 flex items-center">
-        <el-radio-group v-model="query.timeRange">
+        <el-input
+          v-model="query.keyword"
+          placeholder="关键字"
+          clearable
+          class="w-[300px]"
+          @clear="load"
+          @keydown.enter="load" />
+        <el-radio-group v-model="query.timeRange" class="ml-2">
           <el-radio-button label="0w">本周</el-radio-button>
           <el-radio-button label="0m">本月</el-radio-button>
           <el-radio-button label="-1m">上月</el-radio-button>
+          <el-radio-button label="all">所有</el-radio-button>
         </el-radio-group>
         <el-select v-model="query.categoryId" class="ml-2" clearable placeholder="请选择分类">
           <el-option
@@ -87,10 +95,11 @@ import useCategorySelect from './useCategorySelect'
 import dayjs, { Dayjs } from 'dayjs'
 
 interface Query {
+  keyword: string
   startTime?: string
   endTime?: string
   categoryId?: number
-  timeRange?: '0w' | '0m' | '-1m' | 'custom'
+  timeRange?: '0w' | '0m' | '-1m' | 'custom' | 'all'
 }
 
 const today = dayjs()
@@ -112,14 +121,17 @@ const { query, data: list, loading, load } = useLoad<Task[], Query>(() => {
       start = lastMonthDay.startOf('month')
       end = lastMonthDay.endOf('month')
     }
-    q.startTime = start.format('YYYY-MM-DD')
-    q.endTime = end.format('YYYY-MM-DD')
+    if (start && end) {
+      q.startTime = start.format('YYYY-MM-DD')
+      q.endTime = end.format('YYYY-MM-DD')
+    }
   }
 
   return api.list({
     ...q
   })
 }, {
+  keyword: null,
   startTime: null,
   endTime: null,
   categoryId: null,
