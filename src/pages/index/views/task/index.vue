@@ -31,6 +31,9 @@
       <el-button
         type="primary"
         @click="popper.new = true">新增任务</el-button>
+      <el-button
+        type="success"
+        @click="handleExport">导出任务</el-button>
     </div>
 
     <el-table v-loading="loading" :data="list" class="mt-4">
@@ -164,6 +167,14 @@ function update(item: Task) {
 function handleViewSchedule(item: Task) {
   scheduleItem.value = item
   popper.schedule = true
+}
+
+function joinQuery(query: Record<string, any>) {
+  return Object.keys(query).filter(name => query[name] != null).map(name => `${name}=${query[name]}`).join('&')
+}
+
+function handleExport() {
+  window.open(`/api/task/export?${joinQuery(query)}`)
 }
 
 watch(() => popper.new, () => {
