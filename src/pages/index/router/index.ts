@@ -20,6 +20,10 @@ addRoutes([
         component: () => import('@p-index/views/datetime/index.vue'),
       },
       {
+        path: 'watermark',
+        component: () => import('@p-index/views/watermark/index.vue'),
+      },
+      {
         path: 'error',
         redirect: '/error/404',
         children: [

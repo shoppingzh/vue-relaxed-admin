@@ -15,6 +15,11 @@ const menus: any[] = [
     name: '日期时间',
   },
   {
+    path: '/watermark',
+    icon: 'yinzhang',
+    name: '水印'
+  },
+  {
     name: '错误页',
     icon: 'xiayu',
     children: [
