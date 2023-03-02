@@ -90,7 +90,7 @@
 import * as api from '@/api/task'
 import useLoad from '@p-index/hooks/useLoad'
 import { ElMessage } from 'element-plus'
-import { reactive, ref, watch } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 import New from './New.vue'
 import { Task } from '@/api/types'
 import Schedule from './Schedule/index.vue'
@@ -108,7 +108,19 @@ interface Query {
 const today = dayjs()
 
 const { query, data: list, loading, load } = useLoad<Task[], Query>(() => {
-  const q: Query = {
+  return api.list({
+    // eslint-disable-next-line no-use-before-define
+    ...params.value
+  })
+}, {
+  keyword: null,
+  startTime: null,
+  endTime: null,
+  categoryId: null,
+  timeRange: '0w',
+})
+const params = computed(() => {
+  const params: Query = {
     ...query
   }
   if (query.timeRange !== 'custom') {
@@ -125,21 +137,13 @@ const { query, data: list, loading, load } = useLoad<Task[], Query>(() => {
       end = lastMonthDay.endOf('month')
     }
     if (start && end) {
-      q.startTime = start.format('YYYY-MM-DD')
-      q.endTime = end.format('YYYY-MM-DD')
+      params.startTime = start.format('YYYY-MM-DD')
+      params.endTime = end.format('YYYY-MM-DD')
     }
   }
-
-  return api.list({
-    ...q
-  })
-}, {
-  keyword: null,
-  startTime: null,
-  endTime: null,
-  categoryId: null,
-  timeRange: '0w',
+  return params
 })
+
 const popper = reactive({
   new: false,
   schedule: false,
@@ -174,7 +178,7 @@ function joinQuery(query: Record<string, any>) {
 }
 
 function handleExport() {
-  window.open(`/api/task/export?${joinQuery(query)}`)
+  window.open(`/api/task/export?${joinQuery(params.value)}`)
 }
 
 watch(() => popper.new, () => {
