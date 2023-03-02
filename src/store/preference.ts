@@ -16,6 +16,7 @@ export default defineStore('preference', () => {
   const grayMode = useLocalStorage('grayMode', false, {})
   const weakMode = useLocalStorage('weakMode', false)
   const brandColor = useLocalStorage('brandColor', null)
+  const pageAnimation = useLocalStorage('pageAnimation', false)
 
   watch([grayMode, weakMode], updateBodyFilter, { immediate: true })
   watch(
@@ -50,5 +51,7 @@ export default defineStore('preference', () => {
     weakMode,
 
     brandColor,
+
+    pageAnimation,
   }
 })
