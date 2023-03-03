@@ -17,6 +17,21 @@
           v-model="model.target"
           type="textarea"/>
       </el-form-item>
+      <el-form-item label="任务分解" prop="wbs">
+        <el-input
+          v-model="model.wbs"
+          type="textarea" />
+      </el-form-item>
+      <el-form-item label="参与人" props="participants">
+        <el-select
+          v-model="participantNames"
+          allow-create
+          filterable
+          multiple
+          placeholder="输入按回车添加"
+          tag-type="success"
+          class="w-full" />
+      </el-form-item>
       <el-form-item label="分类">
         <el-radio-group v-model="model.category.id">
           <el-radio
@@ -66,6 +81,8 @@
 import * as api from '@/api/task'
 import useCategorySelect from './useCategorySelect'
 import useFastCreateUpdate from '../../hooks/useFastCreateUpdate'
+import dayjs from 'dayjs'
+import { computed } from 'vue'
 
 interface Props {
   id: number
@@ -94,16 +111,33 @@ const {
   id: props.id,
   title: null,
   description: null,
+  wbs: null,
+  participants: [],
   target: null,
   important: 0,
   urgent: 0,
   weight: 0,
-  startTime: new Date(),
-  endTime: null,
+  startTime: dayjs().format('YYYY-MM-DD'),
+  endTime: dayjs().format('YYYY-MM-DD'),
   category: {
     id: null
   }
 }, (model) => api.createOrUpdate(model), () => api.getById(props.id))
+
+const participantNames = computed({
+  set(newVal: string[]) {
+    model.participants = newVal.map((name, index) => {
+      const exist = model.participants[index]
+      if (exist) {
+        exist.name = name
+      }
+      return exist || { name }
+    })
+  },
+  get() {
+    return model.participants.map(o => o.name)
+  }
+})
 
 async function handleSubmit() {
   await submit()
