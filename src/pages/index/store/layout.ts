@@ -2,7 +2,7 @@ import { useLocalStorage, useWindowSize } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { ref, watch } from 'vue'
 
-export default defineStore('layout', () => {
+function usePreference() {
   const { width: windowWidth } = useWindowSize()
   const isAsideCollapse = useLocalStorage('isAsideCollapse', false)
   // 菜单折叠器的位置
@@ -25,10 +25,18 @@ export default defineStore('layout', () => {
 
   return {
     isAsideCollapse,
-    isSetting,
     asideCollapseTogglePlace,
     asideWidth,
     isHideHeader,
+    isSetting,
     asideTheme,
+  }
+}
+
+export default defineStore('layout', () => {
+  const prefs = usePreference()
+
+  return {
+    ...prefs,
   }
 })

@@ -6,6 +6,9 @@ module.exports = {
     es6: true,
     browser: true,
   },
+  globals: {
+    'defineOptions': 'readonly'
+  },
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
