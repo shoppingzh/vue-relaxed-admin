@@ -29,7 +29,7 @@ import Aside from './Aside.vue'
 import Main from './Main.vue'
 import useLayout from '@p-index/store/layout'
 import { storeToRefs } from 'pinia'
-import Settings from './components/Settings.vue'
+import Settings from './Settings.vue'
 import useFixedDrag from './useFixedDrag'
 import hotkeys from 'hotkeys-js'
 
