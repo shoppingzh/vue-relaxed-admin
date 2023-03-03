@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { ROOT_DIR, PAGES } from './config'
+import DefineOptions from 'unplugin-vue-define-options/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -39,6 +40,8 @@ export default defineConfig({
       iconDirs: [path.resolve(ROOT_DIR, 'src/icons/svg')],
       symbolId: 'svg-icon/[name]',
     }),
+    // vue define options
+    DefineOptions(),
   ],
   build: {
     rollupOptions: {
