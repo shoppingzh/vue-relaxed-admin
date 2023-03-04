@@ -37,21 +37,26 @@
     </div>
 
     <el-table v-loading="loading" :data="list" class="mt-4">
-      <el-table-column label="分类" prop="category.name" align="center" />
-      <el-table-column label="标题" prop="title" header-align="center" />
+      <el-table-column label="分类" prop="category.name" align="center">
+        <template #default="{ row }">
+          <div class="w-full flex items-center justify-center">
+            <span class="w-3 h-3 rounded-full bg-gray-400" :style="{ backgroundColor: row.category.color }" />
+            <div class="ml-2">{{ row.category.name }}</div>
+          </div>
+        </template>
+      </el-table-column>
+      <el-table-column label="标题" prop="title" />
       <el-table-column label="描述" prop="description" show-overflow-tooltip />
       <el-table-column label="目标" prop="target" show-overflow-tooltip />
+      <el-table-column label="任务分解" prop="wbs" show-overflow-tooltip />
+      <el-table-column label="优先级" align="center">
+        <template #default="{ row }">
+          {{ getPriority(row) }}
+        </template>
+      </el-table-column>
       <el-table-column label="权重" prop="weight" align="center" />
-      <el-table-column label="开始时间" prop="startTime" align="center">
-        <template #default="{ row }">
-          {{ $dayjs(row.startTime).format('YYYY-MM-DD') }}
-        </template>
-      </el-table-column>
-      <el-table-column label="结束时间" prop="endTime" align="center">
-        <template #default="{ row }">
-          {{ $dayjs(row.endTime).format('YYYY-MM-DD') }}
-        </template>
-      </el-table-column>
+      <el-table-column label="开始时间" prop="startTime" align="center" :formatter="createDateFormatter()" />
+      <el-table-column label="结束时间" prop="endTime" align="center" :formatter="createDateFormatter()" />
       <el-table-column label="操作" align="center" min-width="120px">
         <template #default="{ row }">
           <el-button
@@ -96,6 +101,8 @@ import { Task } from '@/api/types'
 import Schedule from './Schedule/index.vue'
 import useCategorySelect from './useCategorySelect'
 import dayjs, { Dayjs } from 'dayjs'
+import { createDateFormatter } from '@/utils/ui'
+import { getPriority } from '@p-index/utils/task'
 
 interface Query {
   keyword: string

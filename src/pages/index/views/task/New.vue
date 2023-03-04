@@ -83,6 +83,8 @@ import useCategorySelect from './useCategorySelect'
 import useFastCreateUpdate from '../../hooks/useFastCreateUpdate'
 import dayjs from 'dayjs'
 import { computed } from 'vue'
+import useSession from '@p-index/store/session'
+import { storeToRefs } from 'pinia'
 
 interface Props {
   id: number
@@ -90,6 +92,7 @@ interface Props {
 
 const props = defineProps<Props>()
 const emit = defineEmits(['success'])
+const { globals } = storeToRefs(useSession())
 
 const { list: categoryList } = useCategorySelect()
 const rules: any = {
@@ -112,7 +115,7 @@ const {
   title: null,
   description: null,
   wbs: null,
-  participants: [],
+  participants: globals.value && globals.value.owner ? [{ name: globals.value.owner }] : [], // FIXME
   target: null,
   important: 0,
   urgent: 0,
