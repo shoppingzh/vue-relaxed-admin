@@ -13,13 +13,13 @@
     </div>
     <div class="flex-1" />
     <div class="px-4 flex items-center">
-      <span class="nav-button" @click="openRepo">
+      <!-- <span class="nav-button" @click="openRepo">
         <svg-icon name="github" />
       </span>
       <span class="nav-button" @click="openDocs()">
         <svg-icon name="wendang" />
       </span>
-      <span class="line" />
+      <span class="line" /> -->
       <span class="nav-button" @click="darkMode = !darkMode">
         <svg-icon :name="darkMode ? 'yewan' : 'baitian'" />
       </span>
