@@ -20,6 +20,10 @@ addRoutes([
         component: () => import('@p-index/views/datetime/index.vue'),
       },
       {
+        path: 'globals',
+        component: () => import('@p-index/views/globals/index.vue'),
+      },
+      {
         path: 'category',
         component: () => import('@p-index/views/category/index.vue'),
       },

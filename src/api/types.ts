@@ -4,6 +4,10 @@ interface Base {
   gmtModify?: Date
 }
 
+export interface Globals extends Base {
+  owner?: string
+}
+
 export interface Category extends Base {
   name?: string
   color?: string

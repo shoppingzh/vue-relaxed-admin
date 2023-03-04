@@ -15,11 +15,11 @@ const DEFAULT_OPTIONS: Options = {
 
 export default function<T extends object>(
   initialModel: T,
-  doSubmit: (model: T) => Promise<void>,
+  doSubmit: (model: T) => Promise<any>,
   doLoad?: () => Promise<T>,
   options?: Options
 ) {
-  const model = reactive(initialModel)
+  const model = reactive<T>(initialModel)
   const elFormIns = ref<FormInstance>()
   const opts = merge({} as Options, DEFAULT_OPTIONS, options)
   const { input: firstFocusInputIns } = useAutoFocus(null, opts.autoFocusTimeout)
@@ -55,7 +55,6 @@ export default function<T extends object>(
 
   async function load() {
     if (!doLoad) return
-    console.log('load')
     const data = await doLoad()
     merge(model, data)
   }
@@ -70,6 +69,7 @@ export default function<T extends object>(
     elFormIns,
     firstFocusInputIns,
 
+    load,
     submit,
   }
 }
