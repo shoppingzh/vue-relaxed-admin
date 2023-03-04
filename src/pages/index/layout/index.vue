@@ -26,7 +26,7 @@
     <el-button type="primary" class="px-3 py-3 rounded-none rounded-tl-sm rounded-bl-sm" @click="openSettings()">
       <svg-icon name="shezhi2" class="text-h6" />
     </el-button>
-  </div> -->
+  </div>
 </template>
 
 <script lang="ts" setup>
