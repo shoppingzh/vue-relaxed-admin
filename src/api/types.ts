@@ -6,6 +6,7 @@ interface Base {
 
 export interface Category extends Base {
   name?: string
+  color?: string
 }
 
 export interface TaskParticipant extends Base {

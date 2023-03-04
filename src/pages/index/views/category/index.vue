@@ -9,12 +9,19 @@
     </div>
 
     <el-table :data="list" class="mt-4">
-      <el-table-column label="名称" prop="name" align="center"></el-table-column>
-      <el-table-column label="创建时间" prop="gmtCreate" align="center">
-        <template #default="{ row }">
+      <el-table-column label="主题色" align="center" width="80px">
+        <template #default="{ row}">
+          <span class="inline-block w-3 h-3 rounded-full bg-gray-400" :style="{ backgroundColor: row.color }" />
+        </template>
+
+      </el-table-column>
+      <el-table-column label="名称" prop="name" align="center" />
+      <el-table-column label="创建时间" prop="gmtCreate" align="center" :formatter="datetimeFormat" />
+      <el-table-column label="最后修改时间" prop="gmtModify" align="center" :formatter="datetimeFormat" />
+        <!-- <template #default="{ row }">
           {{ $dayjs(row.gmtCreate).format('YYYY-MM-DD') }}
         </template>
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column label="操作" align="center">
         <template #default="{ row }">
           <el-button
@@ -32,7 +39,10 @@
     </el-table>
   </div>
 
-  <el-dialog v-model="popper.create" :title="`${updateItem ? '修改' : '新增'}分类`">
+  <el-dialog
+    v-model="popper.create"
+    :title="`${updateItem ? '修改' : '新增'}分类`"
+    width="400px">
     <New
       v-if="popper.create"
       :id="updateItem ? updateItem.id : null"
@@ -48,6 +58,7 @@ import useLoad from '@p-index/hooks/useLoad'
 import { reactive, ref, watch } from 'vue'
 import New from './New.vue'
 import { Category } from '@/api/types'
+import dayjs from 'dayjs'
 
 const popper = reactive({
   create: false
@@ -73,6 +84,10 @@ function handleCreateSuccess() {
 function handleUpdate(item: Category) {
   updateItem.value = item
   popper.create = true
+}
+
+function datetimeFormat(row: any, column: any, cellValue: Date) {
+  return cellValue ? dayjs(cellValue).format('YYYY-MM-DD HH:mm:ss') : '-'
 }
 
 load()
