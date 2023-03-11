@@ -26,5 +26,5 @@ export function list(params?: any) {
 }
 
 export function getById(id: number) {
-  return service.get('schedule/one', { params: { id } })
+  return service.get<any, Schedule>('schedule/one', { params: { id } })
 }

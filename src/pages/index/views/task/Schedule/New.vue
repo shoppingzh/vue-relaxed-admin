@@ -4,7 +4,7 @@
       <el-input ref="inputIns" v-model="form.description" type="textarea" :rows="6" />
     </el-form-item>
     <el-form-item label="进度" prop="percent">
-      <el-input-number v-model="form.percent" />
+      <el-slider v-model="form.percent" :min="0" :max="100" :step="5" />
     </el-form-item>
     <el-form-item label="完成时间" prop="time">
       <el-date-picker v-model="form.time" />
@@ -22,8 +22,7 @@
 import * as api from '@/api/schedule'
 import { Schedule } from '@/api/types'
 import { merge } from 'lodash'
-import { onMounted, reactive, ref } from 'vue'
-import useAutoFocus from '@/hooks/useAutoFocus'
+import useFastCreateUpdate from '@/pages/index/hooks/useFastCreateUpdate'
 
 interface Props {
   taskId: number
@@ -32,15 +31,15 @@ interface Props {
 const props = defineProps<Props>()
 const emit = defineEmits(['success'])
 
-const form = reactive<Schedule>({
+const { model: form, firstFocusInputIns: inputIns } = useFastCreateUpdate<Schedule>({
+  id: props.id,
   percent: 0,
   description: '',
   time: new Date(),
   task: {
     id: props.taskId
   }
-})
-const { input: inputIns } = useAutoFocus()
+}, submit, load, {})
 
 async function submit() {
   await api.createOrUpdate(form)
@@ -50,8 +49,7 @@ async function submit() {
 async function load() {
   const data = await api.getById(props.id)
   merge(form, data)
+  return data
 }
-
-props.id && load()
 
 </script>
