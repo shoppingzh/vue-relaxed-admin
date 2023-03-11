@@ -29,6 +29,8 @@ export interface Task extends Base {
   endTime?: Date | string
   category?: Category
   participants?: TaskParticipant[]
+  // eslint-disable-next-line no-use-before-define
+  scheduleList?: Schedule[]
 }
 
 export interface Schedule extends Base {

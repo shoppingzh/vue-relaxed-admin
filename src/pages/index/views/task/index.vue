@@ -37,10 +37,21 @@
     </div>
 
     <el-table v-loading="loading" :data="list" class="mt-4">
+      <el-table-column label="进度" width="50px" align="center">
+        <template #default="{ row, $index }">
+          <el-progress
+            class="cursor-pointer"
+            :percentage="progressList[$index]"
+            :show-text="false"
+            :stroke-width="4"
+            :status="progressList[$index] >= 100 ? 'success' : (progressList[$index] < 50 ? 'warning' : undefined)"
+            @click="handleViewSchedule(row)" />
+        </template>
+      </el-table-column>
       <el-table-column label="分类" prop="category.name" align="center">
         <template #default="{ row }">
           <div class="w-full flex items-center justify-center">
-            <span class="w-3 h-3 rounded-full bg-gray-400" :style="{ backgroundColor: row.category.color }" />
+            <!-- <span class="w-1 h-1 rounded-full bg-gray-400" :style="{ backgroundColor: row.category.color }" /> -->
             <div class="ml-2">{{ row.category.name }}</div>
           </div>
         </template>
@@ -125,6 +136,12 @@ const { query, data: list, loading, load } = useLoad<Task[], Query>(() => {
   endTime: null,
   categoryId: null,
   timeRange: '0w',
+})
+const progressList = computed<number[]>(() => {
+  return list.value.map(o => {
+    if (!o.scheduleList || !o.scheduleList.length) return 0
+    return o.scheduleList[o.scheduleList.length - 1].percent
+  })
 })
 const params = computed(() => {
   const params: Query = {

@@ -4,7 +4,6 @@
       <el-timeline-item
         v-for="(item, index) in list"
         :key="item.id"
-        :timestamp="item.gmtCreate"
         placement="bottom"
         center
         type="primary"
@@ -12,8 +11,11 @@
         <el-card>
           <div class="flex items-center">
             <div class="flex-1">
-              {{ item.description }}
-              <div class="mt-2">
+              <div class="flex items-center">
+                <div class="flex-1">{{ item.description }}</div>
+                <div class="text-sm text-secondary">完成时间：{{ $dayjs(item.time).format('YYYY-MM-DD') }}</div>
+              </div>
+              <div class="mt-4">
                 <el-progress :percentage="item.percent" :stroke-width="3" />
               </div>
             </div>
