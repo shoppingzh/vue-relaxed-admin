@@ -4,19 +4,25 @@
     <network-detector />
     <!-- 主区 -->
     <section class="flex-1 h-0 flex overflow-hidden">
+      <!-- 侧边栏 -->
       <Aside class="h-full border-r border-r-gray-200" />
       <section class="flex flex-col flex-1 w-0">
+        <!-- 头部 -->
         <Header v-show="!isHideHeader" class="z-10" />
+        <!-- 内容区 -->
         <Main class="flex-1 h-0 w-full bg-gray-200" />
       </section>
     </section>
-    <el-drawer v-model="isSetting" size="300px" title="设置">
-      <Settings />
-    </el-drawer>
+
   </section>
 
+  <!-- 设置区 -->
+  <el-drawer v-model="isSetting" size="300px" title="设置">
+    <Settings />
+  </el-drawer>
+
   <!-- 悬浮设置按钮 -->
-  <div ref="floatBtn" class="fixed right-0 bottom-2/3 z-[200]">
+  <div v-if="isHideHeader" ref="floatBtn" class="fixed right-0 bottom-2/3 z-[200]">
     <el-button type="primary" class="px-3 py-3 rounded-none rounded-tl-sm rounded-bl-sm" @click="openSettings()">
       <svg-icon name="shezhi2" class="text-h6" />
     </el-button>
@@ -29,7 +35,7 @@ import Aside from './Aside.vue'
 import Main from './Main.vue'
 import useLayout from '@p-index/store/layout'
 import { storeToRefs } from 'pinia'
-import Settings from './components/Settings.vue'
+import Settings from './Settings.vue'
 import useFixedDrag from './useFixedDrag'
 import hotkeys from 'hotkeys-js'
 

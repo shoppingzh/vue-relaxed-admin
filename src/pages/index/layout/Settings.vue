@@ -53,6 +53,10 @@
               <el-radio :label="true">暗色</el-radio>
             </el-radio-group>
           </div>
+          <div class="set-item flex">
+            <div class="flex-1">页面切换动画</div>
+            <el-switch v-model="pageAnimation" />
+          </div>
         </div>
       </div>
     </div>
@@ -67,7 +71,7 @@ import usePrefs from '@/store/preference'
 import useLayout from '@p-index/store/layout'
 import { storeToRefs } from 'pinia'
 
-const { darkMode, grayMode, weakMode, brandColor } = storeToRefs(usePrefs())
+const { darkMode, grayMode, weakMode, brandColor, pageAnimation } = storeToRefs(usePrefs())
 const { asideWidth, asideCollapseTogglePlace, isHideHeader, asideTheme } = storeToRefs(useLayout())
 const brandColors = [
   ['blue', 'blue'],
