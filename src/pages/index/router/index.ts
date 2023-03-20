@@ -3,7 +3,7 @@ import Layout from '../layout/index.vue'
 
 addRoutes([{
   path: '/login',
-  component: () => import('@/views/login/index.vue'),
+  component: () => import('@p-index/views/login/index.vue'),
 }, {
   name: 'Layout',
   path: '/',
