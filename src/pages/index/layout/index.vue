@@ -8,7 +8,9 @@
       <Aside class="h-full border-r border-r-gray-200" />
       <section class="flex flex-col flex-1 w-0">
         <!-- 头部 -->
-        <Header v-show="!isHideHeader" class="z-10" />
+        <Header v-show="!isHideHeader" class="z-10 border-b border-b-gray-100" />
+        <!-- 标签页 -->
+        <Tags />
         <!-- 内容区 -->
         <Main class="flex-1 h-0 w-full bg-gray-200" />
       </section>
@@ -31,6 +33,7 @@
 
 <script lang="ts" setup>
 import Header from './Header.vue'
+import Tags from './Tags.vue'
 import Aside from './Aside.vue'
 import Main from './Main.vue'
 import useLayout from '@p-index/store/layout'
