@@ -4,7 +4,7 @@
 
     <!-- 左侧 -->
     <div
-      class="brand-wrap hidden md:block w-[540px] bg-gray-200">
+      class="brand-wrap hidden md:block w-[540px] bg-[#080a0f]">
       <!--  -->
     </div>
 
@@ -15,11 +15,16 @@
         <div class="mt-6">
           <el-form size="large" label-position="top" label-width="120px" label-suffix="：">
             <el-form-item label="用户名">
-              <el-input />
+              <el-input
+                v-model="username" />
             </el-form-item>
             <el-form-item label="密码">
               <el-input
+                v-model="password"
                 type="password" />
+            </el-form-item>
+            <el-form-item>
+              <el-checkbox v-model="remember">记住用户名与密码</el-checkbox>
             </el-form-item>
           </el-form>
           <div class="mt-8">
@@ -44,8 +49,10 @@
 <script setup lang="ts">
 import useApp from '@/store/app'
 import { storeToRefs } from 'pinia'
+import useLogin from './useLogin'
 
 const { name: appName } = storeToRefs(useApp())
+const { username, password, remember } = useLogin()
 </script>
 
 <style scoped>
