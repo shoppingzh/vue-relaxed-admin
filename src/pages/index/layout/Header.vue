@@ -21,7 +21,9 @@
       </span>
       <span class="line" />
       <span class="nav-button" @click="darkMode = !darkMode">
-        <svg-icon :name="darkMode ? 'yewan' : 'baitian'" />
+        <transition name="rise">
+          <svg-icon :key="darkMode" :name="darkMode ? 'yewan' : 'baitian'" />
+        </transition>
       </span>
       <span class="nav-button" @click="isSetting = !isSetting">
         <svg-icon name="shezhi2" />
@@ -68,5 +70,17 @@ function search() {
 }
 .line {
   @apply inline-block mx-2 w-[1px] h-4 bg-gray-300;
+}
+
+.rise {
+  &-enter-from, &-leave-to {
+    @apply translate-y-full absolute;
+  }
+  &-leave-to {
+    @apply -translate-y-full opacity-30;
+  }
+  &-enter-active, &-leave-active {
+    @apply transition-all duration-300;
+  }
 }
 </style>
