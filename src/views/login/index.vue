@@ -32,7 +32,8 @@
               type="primary"
               size="large"
               round
-              class="!px-20">登录</el-button>
+              class="!px-20"
+              @click="handleLogin">登录</el-button>
             <el-button
               size="large"
               plain
@@ -49,10 +50,16 @@
 <script setup lang="ts">
 import useApp from '@/store/app'
 import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
 import useLogin from './useLogin'
 
 const { name: appName } = storeToRefs(useApp())
 const { username, password, remember } = useLogin()
+const router = useRouter()
+
+function handleLogin() {
+  router.replace('/')
+}
 </script>
 
 <style scoped>
