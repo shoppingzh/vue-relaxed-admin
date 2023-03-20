@@ -20,6 +20,11 @@ const menus: any[] = [
     name: '水印'
   },
   {
+    path: '/ui',
+    icon: 'sheji',
+    name: 'UI规范'
+  },
+  {
     name: '错误页',
     icon: 'xiayu',
     children: [
