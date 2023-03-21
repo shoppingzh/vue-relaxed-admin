@@ -50,6 +50,9 @@ export default defineConfig({
         map[name] = path.resolve(ROOT_DIR, `${name}.html`)
         return map
       }, {}),
+      output: {
+        inlineDynamicImports: true,
+      }
     },
   },
 })
