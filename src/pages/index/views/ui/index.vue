@@ -1,122 +1,125 @@
 <template>
-  <el-alert class="mb-5" type="warning" title="注：">
-    <div class="">1. 所有带有复制标记的文本可点击复制。</div>
-    <div>2. 该规范为Arco Design的TailwindCSS实现。</div>
-  </el-alert>
-
-  <Example title="色彩">
-    <div class="flex">
-      <div v-for="color in colors" :key="color.name" class="mb-4 w-[240px] shrink-1 mr-2">
-        <div v-for="(cls, idx) in color.list" :key="cls" class="p-4 transition-all duration-150 truncate" :class="[cls, { 'text-gray-200': idx > 6, 'text-gray-300': idx <= 6 && idx > 3 }]">
-          <Copy :text="cls" />
-        </div>
-      </div>
-    </div>
-  </Example>
-
-  <Example title="主题色">
-    <div v-for="[colors, name] in bgColors" :key="name" class="mb-4 flex w-[600px]">
-      <div class="flex">
-        <div v-for="color in colors" :key="color">
-          <div class="w-[150px] h-[50px]" :class="[color, , `dark: bg-b-dark-primary`]" />
-          <div class="mt-1 text-sm">
-            <Copy :text="color" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </Example>
-
-  <!-- <Example title="色彩的应用">
-    <el-alert :closable="false">
-      调色盘与主题色中的色值可以用于任何可以设置颜色的地方（如文本、边框、背景等）。
+  <div class="page-wrap">
+    <el-alert class="mb-5" type="warning" title="注：">
+      <div class="">1. 所有带有复制标记的文本可点击复制。</div>
+      <div>2. 该规范为Arco Design的TailwindCSS实现。</div>
     </el-alert>
-    <div class="mt-5">
-      <div class="text-h6 font-semibold">文字</div>
-      <div
-        v-for="[color] in primaryTextColors"
-        :key="color"
-        class="flex leading-relaxed font-semibold w-[600px]"
-        :class="color">
-        <Copy :text="color" />
-      </div>
-    </div>
 
-    <div class="mt-5">
-      <div class="text-h6 mb-2 font-semibold">边框</div>
+    <Example title="色彩">
       <div class="flex">
-        <div
-          v-for="cls in ['border-b-primary', 'border-b-success', 'border-b-warn', 'border-b-danger']"
-          :key="cls"
-          class="w-[160px] mr-2 border-2">
-          <div class="flex items-center justify-center h-[100px] border-solid font-semibold" :class="cls">
+        <div v-for="color in colors" :key="color.name" class="mb-4 w-[240px] shrink-1 mr-2">
+          <div v-for="(cls, idx) in color.list" :key="cls" class="p-4 transition-all duration-150 truncate" :class="[cls, { 'text-gray-200': idx > 6, 'text-gray-300': idx <= 6 && idx > 3 }]">
             <Copy :text="cls" />
           </div>
         </div>
       </div>
-    </div>
+    </Example>
 
-  </Example> -->
-
-  <Example title="文字颜色">
-    <div class="flex">
-      <div v-for="[cls, name] in textColors" :key="cls" class="w-[150px]" :class="cls">
-        <div class="h-[100px] bg-current" />
-        <div class="p-2 text-h6">
-          <div><Copy :text="cls" /></div>
-          <div>{{ name }}</div>
+    <Example title="主题色">
+      <div v-for="[colors, name] in bgColors" :key="name" class="mb-4 flex w-[600px]">
+        <div class="flex">
+          <div v-for="color in colors" :key="color">
+            <div class="w-[150px] h-[50px]" :class="[color, , `dark: bg-b-dark-primary`]" />
+            <div class="mt-1 text-sm">
+              <Copy :text="color" />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </Example>
+    </Example>
 
-  <Example title="边框色">
-    <div class="flex">
-      <div v-for="[cls, name] in borderColors" :key="cls">
-        <div class="w-[150px] h-[100px] mr-2 border border-solid rounded-md" :class="cls" />
-        <div class="mt-2 text-h6">
-          <div><Copy :text="cls" /></div>
-          <div>{{ name }}</div>
+    <!-- <Example title="色彩的应用">
+      <el-alert :closable="false">
+        调色盘与主题色中的色值可以用于任何可以设置颜色的地方（如文本、边框、背景等）。
+      </el-alert>
+      <div class="mt-5">
+        <div class="text-h6 font-semibold">文字</div>
+        <div
+          v-for="[color] in primaryTextColors"
+          :key="color"
+          class="flex leading-relaxed font-semibold w-[600px]"
+          :class="color">
+          <Copy :text="color" />
         </div>
       </div>
-    </div>
-  </Example>
 
-  <Example title="阴影">
-    <div class="flex bg-gray-100 p-4">
-      <div v-for="[cls, name] in shadows" :key="cls">
-        <div class="w-[150px] h-[100px] mr-2 bg-white dark:bg-gray-300" :class="cls" />
-        <div class="mt-2 text-h6">
-          <div><Copy :text="cls" /></div>
-          <div>{{ name }}</div>
+      <div class="mt-5">
+        <div class="text-h6 mb-2 font-semibold">边框</div>
+        <div class="flex">
+          <div
+            v-for="cls in ['border-b-primary', 'border-b-success', 'border-b-warn', 'border-b-danger']"
+            :key="cls"
+            class="w-[160px] mr-2 border-2">
+            <div class="flex items-center justify-center h-[100px] border-solid font-semibold" :class="cls">
+              <Copy :text="cls" />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </Example>
 
-  <Example title="间距">
-    <Spacing />
-  </Example>
+    </Example> -->
 
-  <Example title="文字大小">
-    <div v-for="[cls, name] in textSizes" :key="cls" class="font-semibold" :class="cls">{{ name }} <Copy :text="cls" /></div>
-  </Example>
-
-  <Example title="圆角">
-    <div class="flex p-4">
-      <div v-for="[cls, name] in radius" :key="cls">
-        <div class="w-[150px] h-[100px] mr-4 bg-blue-200" :class="cls" />
-        <div class="mt-2 text-h6">
-          <div><Copy :text="cls" /></div>
-          <div>{{ name }}</div>
+    <Example title="文字颜色">
+      <div class="flex">
+        <div v-for="[cls, name] in textColors" :key="cls" class="w-[150px]" :class="cls">
+          <div class="h-[100px] bg-current" />
+          <div class="p-2 text-h6">
+            <div><Copy :text="cls" /></div>
+            <div>{{ name }}</div>
+          </div>
         </div>
       </div>
-    </div>
-  </Example>
+    </Example>
+
+    <Example title="边框色">
+      <div class="flex">
+        <div v-for="[cls, name] in borderColors" :key="cls">
+          <div class="w-[150px] h-[100px] mr-2 border border-solid rounded-md" :class="cls" />
+          <div class="mt-2 text-h6">
+            <div><Copy :text="cls" /></div>
+            <div>{{ name }}</div>
+          </div>
+        </div>
+      </div>
+    </Example>
+
+    <Example title="阴影">
+      <div class="flex bg-gray-100 p-4">
+        <div v-for="[cls, name] in shadows" :key="cls">
+          <div class="w-[150px] h-[100px] mr-2 bg-white dark:bg-gray-300" :class="cls" />
+          <div class="mt-2 text-h6">
+            <div><Copy :text="cls" /></div>
+            <div>{{ name }}</div>
+          </div>
+        </div>
+      </div>
+    </Example>
+
+    <Example title="间距">
+      <Spacing />
+    </Example>
+
+    <Example title="文字大小">
+      <div v-for="[cls, name] in textSizes" :key="cls" class="font-semibold" :class="cls">{{ name }} <Copy :text="cls" /></div>
+    </Example>
+
+    <Example title="圆角">
+      <div class="flex p-4">
+        <div v-for="[cls, name] in radius" :key="cls">
+          <div class="w-[150px] h-[100px] mr-4 bg-blue-200" :class="cls" />
+          <div class="mt-2 text-h6">
+            <div><Copy :text="cls" /></div>
+            <div>{{ name }}</div>
+          </div>
+        </div>
+      </div>
+    </Example>
+  </div>
 </template>
 
 <script setup lang="ts">
-// import Spacing from './spacing.vue';
+import Copy from './Copy/index.vue'
+import Example from './Example/index.vue'
 
 const colors = [
   {
