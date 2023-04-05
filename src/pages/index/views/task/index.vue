@@ -52,7 +52,7 @@
         <template #default="{ row }">
           <div class="w-full flex items-center justify-center">
             <!-- <span class="w-1 h-1 rounded-full bg-gray-400" :style="{ backgroundColor: row.category.color }" /> -->
-            <div class="ml-2">{{ row.category.name }}</div>
+            <div v-if="row.category" class="ml-2">{{ row.category.name }}</div>
           </div>
         </template>
       </el-table-column>
