@@ -32,7 +32,7 @@
           tag-type="success"
           class="w-full" />
       </el-form-item>
-      <el-form-item label="分类">
+      <el-form-item label="分类" prop="category.id">
         <el-radio-group v-model="model.category.id">
           <el-radio
             v-for="item in categoryList"
@@ -85,6 +85,7 @@ import dayjs from 'dayjs'
 import { computed } from 'vue'
 import useSession from '@p-index/store/session'
 import { storeToRefs } from 'pinia'
+import { FormRules } from 'element-plus'
 
 interface Props {
   id: number
@@ -95,11 +96,12 @@ const emit = defineEmits(['success'])
 const { globals } = storeToRefs(useSession())
 
 const { list: categoryList } = useCategorySelect()
-const rules: any = {
+const rules: FormRules = {
   title: [{
     required: true,
     message: '请填写任务标题'
   }],
+  'category.id': [{ required: true, message: '请选择分类' }],
   target: [{ required: true, message: '请填写任务目标' }],
   startTime: [{ required: true, message: '请选择开始时间' }],
   endTime: [{ required: true, message: '请选择结束时间' }],
