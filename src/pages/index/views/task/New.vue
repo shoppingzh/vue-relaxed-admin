@@ -127,7 +127,13 @@ const {
   category: {
     id: null
   }
-}, (model) => api.createOrUpdate(model), () => api.getById(props.id))
+}, (model) => api.createOrUpdate(model), async() => {
+  const data = await api.getById(props.id)
+  if (!data.category) {
+    data.category = { id: null }
+  }
+  return data
+})
 
 const participantNames = computed({
   set(newVal: string[]) {
