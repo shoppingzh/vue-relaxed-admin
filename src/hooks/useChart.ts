@@ -1,62 +1,110 @@
-import { computed, onMounted, onUnmounted, Ref, ref, shallowRef, unref, watch } from 'vue'
+import { MaybeRef, useResizeObserver, useThrottleFn } from '@vueuse/core'
 import * as echarts from 'echarts'
-import { useResizeObserver } from '@vueuse/core'
-import { throttle } from 'lodash'
+import { Ref, ShallowRef, onMounted, onUnmounted, ref, shallowRef, watch } from 'vue'
+import { merge } from 'lodash'
 
-export default function(option?: Ref<echarts.EChartsOption> | echarts.EChartsOption, loading?: Ref<boolean> | boolean) {
-  const el = ref<HTMLElement>(null)
-  const chart = shallowRef<echarts.EChartsType>(null)
-  const optionRef = computed(() => unref(option))
-  const loadingRef = computed(() => unref(loading))
+export interface UseChartOptions {
+  el?: MaybeRef<HTMLElement>
+  loading?: MaybeRef<boolean>
+  option?: Ref<echarts.EChartsOption>
+  theme?: MaybeRef<string>
+  resizeDuration?: number
+  loadingOptions?: object
+}
 
-  const resetOption = () => {
-    if (!chart.value || !optionRef.value) return
-    chart.value.setOption(optionRef.value, {
+export interface UseChartReturn {
+  el: Ref<HTMLElement>
+  loading: Ref<boolean>
+  instance: ShallowRef<echarts.EChartsType>
+  option: Ref<echarts.EChartsOption>
+  theme: Ref<string>
+}
+
+const DEFAULT_OPTIONS: UseChartOptions = {
+  resizeDuration: 0,
+  loadingOptions: {
+    text: '加载中..',
+    spinnerRadius: 10,
+    lineWidth: 2,
+    textColor: '#333'
+  }
+}
+
+/**
+ * 基础图表hooks，支持以下功能：
+ * 1. 根据配置自动渲染图表，组件销毁时自动销毁图表实例
+ * 2. 加载状态
+ * 3. 当容器大小发生变化时，自动重绘图表
+ * 4. 当配置项发生变化时，自动重绘图表
+ * 5. 动态换肤
+ * @param options 
+ * @returns 
+ */
+export default function useChart(options: UseChartOptions = {}): UseChartReturn {
+  const opts = merge({}, DEFAULT_OPTIONS, options)
+  const el = ref(opts.el)
+  const instance = shallowRef<echarts.EChartsType>()
+  const loading = ref(opts.loading || false)
+  const option = ref(opts.option)
+  const theme = ref(opts.theme)
+
+  function init() {
+    instance.value = echarts.init(el.value, theme.value)
+  }
+
+  function destroy() {
+    if (!instance.value) return
+    if (instance.value.isDisposed()) return
+    instance.value.dispose()
+    instance.value = null
+  }
+
+  function resize() {
+    if (!instance.value) return
+    instance.value.resize({
+      animation: {
+        duration: opts.resizeDuration,
+      }
+    })
+  }
+
+  function render() {
+    if (!instance.value || !option.value) return
+    instance.value.setOption(option.value, {
       notMerge: true,
       lazyUpdate: true,
     })
   }
 
-  const resetLoading = () => {
-    if (!chart.value) return
-    if (loadingRef.value) {
-      chart.value.showLoading()
+
+  function updateLoading() {
+    if (!instance.value) return
+    if (loading.value) {
+      instance.value.showLoading('default', opts.loadingOptions)
     } else {
-      chart.value.hideLoading()
+      instance.value.hideLoading()
     }
   }
 
-  const rerender = () => {
-    chart.value && chart.value.resize({
-      animation: {
-        duration: 500,
-      },
-    })
-  }
+  onMounted(init)
+  onUnmounted(destroy)
 
-  onMounted(() => {
-    chart.value = echarts.init(el.value)
-  })
-  onUnmounted(() => {
-    chart.value && chart.value.dispose()
-  })
-  // 容器大小发生改变，重绘
-  useResizeObserver(el, throttle(rerender, 500))
+  useResizeObserver(el, useThrottleFn(resize, 500))
 
-  watch(
-    [chart, optionRef],
-    () => {
-      resetOption()
-    },
-    { deep: true }
-  )
-
-  watch([chart, loadingRef], () => {
-    resetLoading()
+  watch([instance, option], render, { deep: true })
+  watch([instance, loading], updateLoading)
+  watch(theme, () => {
+    // FIXME 注：echarts暂不支持动态换肤，需要先销毁实例重新初始化
+    // 详情请见：https://github.com/apache/echarts/issues/4607
+    destroy()
+    init()
   })
 
   return {
     el,
-    chart: computed(() => chart.value),
+    loading,
+    instance,
+    option,
+    theme,
   }
 }
