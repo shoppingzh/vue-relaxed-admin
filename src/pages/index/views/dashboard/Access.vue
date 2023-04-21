@@ -13,6 +13,7 @@ import { storeToRefs } from 'pinia'
 
 const list = ref([])
 const options = computed<EChartsOption>(() => ({
+  backgroundColor: 'transparent',
   xAxis: {
     type: 'category',
     data: list.value.map((o) => dayjs(o.date).format('MM/DD')),
