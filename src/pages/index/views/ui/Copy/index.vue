@@ -7,6 +7,7 @@ import { useClipboard } from '@vueuse/core'
 import { toRef, watch } from 'vue'
 import icon from './icon.svg?raw'
 import { ElMessage } from 'element-plus'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 interface Props {
   text: string

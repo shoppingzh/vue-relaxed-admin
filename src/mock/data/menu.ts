@@ -25,11 +25,6 @@ const menus: any[] = [
     name: 'UI规范'
   },
   {
-    path: '/jsx',
-    icon: 'jsx',
-    name: 'JSX支持',
-  },
-  {
     name: '错误页',
     icon: 'xiayu',
     children: [

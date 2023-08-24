@@ -5,7 +5,6 @@ import App from './App.vue'
 import ElementPlus from '@/plugins/element-plus'
 import errorReport from '@/plugins/error-report'
 import dayjs from '@/plugins/dayjs'
-import components from '@/components'
 import router from './router'
 import pageComponents from './components'
 import './permission'
@@ -21,6 +20,5 @@ app
   .use(ElementPlus)
   .use(errorReport)
   .use(dayjs)
-  .use(components)
   .use(pageComponents)
   .mount('#app')

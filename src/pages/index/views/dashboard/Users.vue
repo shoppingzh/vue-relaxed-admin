@@ -33,6 +33,7 @@
 <script setup lang="ts">
 import * as api from '@/api/access'
 import { ref } from 'vue'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 const list = ref([])
 

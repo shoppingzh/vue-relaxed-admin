@@ -36,6 +36,7 @@
 import { computed, ref } from 'vue'
 import icons from './icons'
 import Copy from './Copy.vue'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 const keyword = ref('')
 const color = ref('')

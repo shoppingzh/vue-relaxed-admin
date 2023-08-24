@@ -70,6 +70,7 @@
 import usePrefs from '@/store/preference'
 import useLayout from '@p-index/store/layout'
 import { storeToRefs } from 'pinia'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 const { darkMode, grayMode, weakMode, brandColor, pageAnimation } = storeToRefs(usePrefs())
 const { asideWidth, asideCollapseTogglePlace, isHideHeader, asideTheme } = storeToRefs(useLayout())

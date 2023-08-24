@@ -4,6 +4,7 @@
 
 <script setup lang="ts">
 import { useNetwork } from '@vueuse/core'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 interface Props {
   tips?: string

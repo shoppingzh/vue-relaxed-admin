@@ -49,4 +49,5 @@ import Access from './Access.vue'
 import Users from './Users.vue'
 import Hot from './Hot.vue'
 import Stat from './Stat/index.vue'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 </script>

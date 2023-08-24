@@ -29,6 +29,7 @@ import p1 from './1.svg'
 import p2 from './2.svg'
 import p3 from './3.svg'
 import p4 from './4.svg'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 const images = [p1, p2, p3, p4]
 const list = ref([])

@@ -41,6 +41,7 @@ import { storeToRefs } from 'pinia'
 import Settings from './Settings.vue'
 import useFixedDrag from './useFixedDrag'
 import hotkeys from 'hotkeys-js'
+import NetworkDetector from '@/components/NetworkDetector/index.vue'
 
 const { isSetting, isHideHeader } = storeToRefs(useLayout())
 const { el: floatBtn } = useFixedDrag()

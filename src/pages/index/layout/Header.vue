@@ -41,6 +41,7 @@ import { storeToRefs } from 'pinia'
 import useLayout from '@p-index/store/layout'
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 const keyword = ref('')
 const prefs = usePrefs()
