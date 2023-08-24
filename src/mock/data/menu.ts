@@ -26,7 +26,7 @@ const menus: any[] = [
   },
   {
     path: '/jsx',
-    icon: 'dev',
+    icon: 'jsx',
     name: 'JSX支持',
   },
   {
