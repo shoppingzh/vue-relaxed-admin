@@ -4,6 +4,7 @@ import path from 'path'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { ROOT_DIR, PAGES } from './config'
 import DefineOptions from 'unplugin-vue-define-options/vite'
+import jsx from '@vitejs/plugin-vue-jsx'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -35,6 +36,7 @@ export default defineConfig({
 
   plugins: [
     vue(),
+    jsx(),
     // SVG雪碧图
     createSvgIconsPlugin({
       iconDirs: [path.resolve(ROOT_DIR, 'src/icons/svg')],

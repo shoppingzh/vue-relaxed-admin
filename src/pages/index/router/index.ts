@@ -30,6 +30,10 @@ addRoutes([{
       component: () => import('@p-index/views/ui/index.vue'),
     },
     {
+      path: 'jsx',
+      component: () => import('@p-index/views/jsx/index.vue')
+    },
+    {
       path: 'error',
       redirect: '/error/404',
       children: [
