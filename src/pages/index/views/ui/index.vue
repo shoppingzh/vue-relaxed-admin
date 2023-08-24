@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrap">
+  <div>
     <el-alert class="mb-5" type="warning" title="注：">
       <div class="">1. 所有带有复制标记的文本可点击复制。</div>
       <div>2. 该规范为Arco Design的TailwindCSS实现。</div>

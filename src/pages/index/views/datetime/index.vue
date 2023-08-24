@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrap">
+  <div>
     <div class="content-wrap">
       <div class="text-h6">格式化：</div>
       <div class="mt-2">

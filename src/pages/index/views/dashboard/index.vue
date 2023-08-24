@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrap">
+  <div>
     <div class="flex">
       <Stat />
     </div>
