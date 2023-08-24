@@ -11,7 +11,7 @@ type BaseColumn = Partial<Pick<TableColumnCtx<unknown>, BaseColumnKeys>>
 
 export interface Column extends BaseColumn {
   children?: Column[]
-  render?: (...args: any[]) => any
+  render?: (...args: any[]) => any // FIXME 类型丢了
 }
 
 export default defineComponent({
@@ -32,7 +32,7 @@ export default defineComponent({
       }
       return (
         <ElTableColumn {...col}>{{
-          default: (scope: any) => renderInner(scope)
+          default: (...args: any[]) => renderInner(...args)
         }}</ElTableColumn>
       )
     }
