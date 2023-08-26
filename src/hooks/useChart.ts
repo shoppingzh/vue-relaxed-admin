@@ -1,6 +1,6 @@
 import { MaybeRef, useResizeObserver, useThrottleFn } from '@vueuse/core'
 import * as echarts from 'echarts'
-import { Ref, ShallowRef, onMounted, onUnmounted, ref, shallowRef, watch } from 'vue'
+import { Ref, ShallowRef, onUnmounted, ref, shallowRef, watch } from 'vue'
 import { merge } from 'lodash'
 
 export interface UseChartOptions {
@@ -40,7 +40,7 @@ const DEFAULT_OPTIONS: UseChartOptions = {
  * @param options 
  * @returns 
  */
-export default function useChart(options: UseChartOptions = {}): UseChartReturn {
+export default function(options: UseChartOptions = {}): UseChartReturn {
   const opts = merge({}, DEFAULT_OPTIONS, options)
   const el = ref(opts.el)
   const instance = shallowRef<echarts.EChartsType>()
@@ -49,6 +49,7 @@ export default function useChart(options: UseChartOptions = {}): UseChartReturn 
   const theme = ref(opts.theme)
 
   function init() {
+    if (!el.value) return
     instance.value = echarts.init(el.value, theme.value)
   }
 
@@ -86,7 +87,8 @@ export default function useChart(options: UseChartOptions = {}): UseChartReturn 
     }
   }
 
-  onMounted(init)
+  watch(el, init, { immediate: true })
+  // FIXME watch el el变为空，也需要销毁
   onUnmounted(destroy)
 
   useResizeObserver(el, useThrottleFn(resize, 500))

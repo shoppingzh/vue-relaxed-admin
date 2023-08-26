@@ -13,6 +13,10 @@ import { storeToRefs } from 'pinia'
 
 const list = ref([])
 const options = computed<EChartsOption>(() => ({
+  grid: {
+    left: 40,
+    right: 20,
+  },
   backgroundColor: 'transparent',
   xAxis: {
     type: 'category',

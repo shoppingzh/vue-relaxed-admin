@@ -1,5 +1,5 @@
 <template>
-  <el-table :data="list" size="medium">
+  <el-table :data="list" size="medium" max-height="450">
     <!-- <el-table-column label="序号" type="index" width="50px" /> -->
     <el-table-column label="用户" prop="name" />
     <el-table-column label="阅读文章" prop="article">
