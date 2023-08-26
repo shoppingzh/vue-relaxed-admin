@@ -1,7 +1,7 @@
 import router, { addRoutes } from '@/router'
 import Layout from '../layout/index.vue'
 
-addRoutes([{
+addRoutes(router, [{
   path: '/login',
   component: () => import('@p-index/views/login/index.vue'),
 }, {
@@ -28,10 +28,6 @@ addRoutes([{
     {
       path: 'ui',
       component: () => import('@p-index/views/ui/index.vue'),
-    },
-    {
-      path: 'table',
-      component: () => import('@p-index/views/table/index.vue')
     },
     {
       path: 'error',

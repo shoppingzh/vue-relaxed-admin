@@ -15,7 +15,7 @@
 - husky/commitlint 集成
 - JSX支持
 - 兼容性
-- 多页支持
+- 多页支持（支持多页history路由！）
 - svg 雪碧图与自动下载 iconfont 方案
 
 **开发基础**
