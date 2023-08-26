@@ -24,6 +24,13 @@ function readPages(srcDir: string): Page[] {
   return pages
 }
 
-export const ROOT_DIR = path.resolve(__dirname, '..')
+const ROOT_DIR = path.resolve(__dirname, '..')
 
-export const PAGES = readPages(path.resolve(ROOT_DIR, 'src'))
+const PAGES = readPages(path.resolve(ROOT_DIR, 'src'))
+
+export default {
+  rootDir: ROOT_DIR,
+  pages: PAGES,
+  // 修改此配置，单页下的router base也要相应修改！！
+  multiPageRewrite: true,
+}
