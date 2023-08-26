@@ -120,6 +120,7 @@
 <script setup lang="ts">
 import Copy from './Copy/index.vue'
 import Example from './Example/index.vue'
+import Spacing from './spacing.vue'
 
 const colors = [
   {
