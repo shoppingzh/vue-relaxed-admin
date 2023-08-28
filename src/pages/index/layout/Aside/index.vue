@@ -12,7 +12,7 @@
       <Menu class="flex-1 h-0 border-r-0 overflow-auto" />
 
       <!-- 个人标记 -->
-      <div class="aside-brand p-2 text-center text-secondary text-xs border-t border-t-gray-200">by xpzheng</div>
+      <PersonalBadge />
     </div>
 
     <!-- 折叠按钮 -->
@@ -28,6 +28,7 @@ import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import Menu from './Menu.vue'
 import useApp from '@/store/app'
+import PersonalBadge from './PersonalBadge.vue'
 
 const app = useApp()
 
@@ -65,9 +66,6 @@ const styles = computed<any>(() => {
     }
     .aside-logo {
       border-bottom-color: #262626;
-    }
-    .aside-brand {
-      border-top-color: #262626;
     }
   }
 }

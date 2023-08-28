@@ -34,7 +34,7 @@
 <script lang="ts" setup>
 import Header from './Header.vue'
 import Tags from './Tags.vue'
-import Aside from './Aside.vue'
+import Aside from './Aside/index.vue'
 import Main from './Main.vue'
 import useLayout from '@p-index/store/layout'
 import { storeToRefs } from 'pinia'

@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import MenuItem from './components/MenuItem.vue'
+import MenuItem from './MenuItem.vue'
 import useSession from '@p-index/store/session'
 import { useRouter } from 'vue-router'
 import useLayout from '@p-index/store/layout'

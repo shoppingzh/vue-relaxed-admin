@@ -1,21 +1,26 @@
 <template>
   <ElTooltip
-    :disabled="!isAsideCollapse && depth > 0"
+    :disabled="!isAsideCollapse || depth > 0"
     :content="item.name"
     :placement="hasChild ? 'top' : 'right'"
     :enterable="false">
     <template v-if="hasChild">
-      <el-sub-menu>
+      <ElSubMenu :index="item.path">
         <template #title>
           <MenuContent :icon="item.icon" :title="item.name" />
         </template>
-        <MenuItem v-for="child in item.children" :key="child.path" :item="child" :depth="depth + 1" />
-      </el-sub-menu>
+        <MenuItem
+          v-for="child in item.children"
+          :key="child.path"
+          :item="child"
+          :depth="depth + 1"
+          @click="(...args: any[]) => emit('click', ...args)" />
+      </ElSubMenu>
     </template>
     <template v-else>
-      <el-menu-item :index="item.path" @click="click">
+      <ElMenuItem :index="item.path" @click="click">
         <MenuContent :icon="item.icon" :title="item.name" />
-      </el-menu-item>
+      </ElMenuItem>
     </template>
   </ElTooltip>
 </template>
