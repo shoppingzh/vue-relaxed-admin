@@ -25,6 +25,11 @@ const menus: any[] = [
     name: 'UI规范'
   },
   {
+    path: '/table',
+    icon: 'biaoge',
+    name: '配置化表格',
+  },
+  {
     name: '错误页',
     icon: 'xiayu',
     children: [

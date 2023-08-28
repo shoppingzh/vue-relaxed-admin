@@ -30,6 +30,10 @@ addRoutes(router, [{
       component: () => import('@p-index/views/ui/index.vue'),
     },
     {
+      path: 'table',
+      component: () => import('@p-index/views/table/index.vue'),
+    },
+    {
       path: 'error',
       redirect: '/error/404',
       children: [
