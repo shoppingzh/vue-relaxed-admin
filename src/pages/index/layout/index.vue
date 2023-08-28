@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts" setup>
-import Header from './Header.vue'
+import Header from './Header/index.vue'
 import Tags from './Tags.vue'
 import Aside from './Aside/index.vue'
 import Main from './Main.vue'
