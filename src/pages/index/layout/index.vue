@@ -10,7 +10,7 @@
         <!-- 头部 -->
         <Header v-show="!isHideHeader" class="z-10 border-b border-b-gray-100" />
         <!-- 标签页 -->
-        <Tags />
+        <!-- <Tags /> -->
         <!-- 内容区 -->
         <Main class="flex-1 h-0 w-full bg-gray-200" />
       </section>
