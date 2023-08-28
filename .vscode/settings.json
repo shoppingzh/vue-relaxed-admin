@@ -4,5 +4,9 @@
   },
   "emmet.includeLanguages": {
     "postcss": "css"
+  },
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
   }
 }

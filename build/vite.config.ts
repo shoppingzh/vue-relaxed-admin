@@ -2,21 +2,23 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import { ROOT_DIR, PAGES } from './config'
+import config from './config'
 import DefineOptions from 'unplugin-vue-define-options/vite'
+import jsx from '@vitejs/plugin-vue-jsx'
+import multiPageRewritePlugin from './multi-page-rewrite-plugin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   // 开发相关
   envPrefix: 'APP_',
   resolve: {
-    alias: PAGES.reduce(
+    alias: config.pages.reduce(
       (map, o) => {
-        map[`@p-${o.name}`] = path.resolve(ROOT_DIR, `src/pages/${o.name}`)
+        map[`@p-${o.name}`] = path.resolve(config.rootDir, `src/pages/${o.name}`)
         return map
       },
       {
-        '@': path.resolve(ROOT_DIR, 'src'),
+        '@': path.resolve(config.rootDir, 'src'),
       }
     ),
   },
@@ -34,10 +36,18 @@ export default defineConfig({
   },
 
   plugins: [
+    // 多页应用路径重写（注：index单页不需要重写）
+    config.multiPageRewrite && multiPageRewritePlugin({
+      rewrites: config.pages.filter(o => o.name !== 'index').map(o => ({
+        from: new RegExp(`^\\/mpa\\/${o.name}`),
+        to: `/${o.name}.html`,
+      }))
+    }),
     vue(),
+    jsx(),
     // SVG雪碧图
     createSvgIconsPlugin({
-      iconDirs: [path.resolve(ROOT_DIR, 'src/icons/svg')],
+      iconDirs: [path.resolve(config.rootDir, 'src/icons/svg')],
       symbolId: 'svg-icon/[name]',
     }),
     // vue define options
@@ -46,8 +56,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       // 多页支持
-      input: PAGES.reduce((map, { name }) => {
-        map[name] = path.resolve(ROOT_DIR, `${name}.html`)
+      input: config.pages.reduce((map, { name }) => {
+        map[name] = path.resolve(config.rootDir, `${name}.html`)
         return map
       }, {}),
       output: {

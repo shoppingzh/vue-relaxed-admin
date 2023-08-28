@@ -1,5 +1,5 @@
 <template>
-  <div ref="el" class="h-[350px] overflow-hidden" />
+  <div ref="el" class="w-full h-[350px] overflow-hidden" />
 </template>
 
 <script setup lang="ts">
@@ -8,14 +8,16 @@ import { EChartsOption } from 'echarts'
 import { computed, ref } from 'vue'
 import * as api from '@/api/access'
 import dayjs from 'dayjs'
+import usePrefs from '@/store/preference'
+import { storeToRefs } from 'pinia'
 
 const list = ref([])
-const loading = ref(false)
 const options = computed<EChartsOption>(() => ({
   grid: {
-    left: 60,
-    right: 60,
+    left: 40,
+    right: 20,
   },
+  backgroundColor: 'transparent',
   xAxis: {
     type: 'category',
     data: list.value.map((o) => dayjs(o.date).format('MM/DD')),
@@ -45,11 +47,21 @@ const options = computed<EChartsOption>(() => ({
     },
   ],
 }))
-const { el } = useChart(options, loading)
+const { darkMode } = storeToRefs(usePrefs())
+const { el, loading } = useChart({
+  option: options,
+  resizeDuration: 300,
+  theme: computed(() => darkMode.value ? 'dark' : 'light'),
+})
 
 async function load() {
-  const data: any = await api.listLatest()
-  list.value = data
+  try {
+    loading.value = true
+    const data: any = await api.listLatest()
+    list.value = data
+  } finally {
+    loading.value = false
+  }
 }
 
 load()

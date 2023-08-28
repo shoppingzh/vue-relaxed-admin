@@ -10,7 +10,7 @@
         <!-- 头部 -->
         <Header v-show="!isHideHeader" class="z-10 border-b border-b-gray-100" />
         <!-- 标签页 -->
-        <Tags />
+        <!-- <Tags /> -->
         <!-- 内容区 -->
         <Main class="flex-1 h-0 w-full bg-gray-200" />
       </section>
@@ -32,15 +32,16 @@
 </template>
 
 <script lang="ts" setup>
-import Header from './Header.vue'
+import Header from './Header/index.vue'
 import Tags from './Tags.vue'
-import Aside from './Aside.vue'
+import Aside from './Aside/index.vue'
 import Main from './Main.vue'
 import useLayout from '@p-index/store/layout'
 import { storeToRefs } from 'pinia'
 import Settings from './Settings.vue'
 import useFixedDrag from './useFixedDrag'
 import hotkeys from 'hotkeys-js'
+import NetworkDetector from '@/components/NetworkDetector/index.vue'
 
 const { isSetting, isHideHeader } = storeToRefs(useLayout())
 const { el: floatBtn } = useFixedDrag()

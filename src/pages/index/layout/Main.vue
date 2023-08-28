@@ -1,5 +1,5 @@
 <template>
-  <div id="main" class="w-full h-full overflow-auto">
+  <div id="main" class="p-5 w-full h-full overflow-auto">
     <Transition name="fade">
       <RouterView />
     </Transition>

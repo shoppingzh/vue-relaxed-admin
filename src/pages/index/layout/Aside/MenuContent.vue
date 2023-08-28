@@ -8,6 +8,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import useLayout from '@p-index/store/layout'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 interface Props {
   icon?: string

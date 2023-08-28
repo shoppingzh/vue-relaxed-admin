@@ -1,7 +1,7 @@
 import router, { addRoutes } from '@/router'
 import Layout from '../layout/index.vue'
 
-addRoutes([
+addRoutes(router, [
   {
     name: 'Layout',
     path: '/',

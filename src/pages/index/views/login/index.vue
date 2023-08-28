@@ -16,12 +16,14 @@
           <el-form size="large" label-position="top" label-width="120px" label-suffix="：">
             <el-form-item label="用户名">
               <el-input
-                v-model="username" />
+                v-model="username"
+                placeholder="请输入用户名" />
             </el-form-item>
             <el-form-item label="密码">
               <el-input
                 v-model="password"
-                type="password" />
+                type="password"
+                placeholder="请输入密码" />
             </el-form-item>
             <el-form-item>
               <el-checkbox v-model="remember">记住用户名与密码</el-checkbox>

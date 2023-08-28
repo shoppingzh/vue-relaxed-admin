@@ -1,6 +1,13 @@
 <template>
-  <div v-for="(item, index) in list" :key="index" :class="{ 'ml-2': index > 0 }" class="relative flex items-center flex-1 bg-normal p-3 rounded-sm">
-    <div class="flex items-center justify-center w-[44px] h-[44px] p-2 rounded-full bg-gray-200">
+  <div
+    v-for="(item, index) in list"
+    :key="index"
+    :class="{ 'ml-2': index > 0 }"
+    class="
+      relative flex items-center flex-1 bg-normal p-3 py-4 rounded-sm transition-all duration-200 cursor-pointer
+      hover:bg-b-primary hover:text-white
+    ">
+    <div class="flex items-center justify-center w-[52px] h-[52px] p-2 rounded-full bg-gray-200">
       <img :src="images[index]" class="w-full h-full" />
     </div>
     <div class="ml-6">
@@ -29,6 +36,7 @@ import p1 from './1.svg'
 import p2 from './2.svg'
 import p3 from './3.svg'
 import p4 from './4.svg'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 const images = [p1, p2, p3, p4]
 const list = ref([])

@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrap">
+  <div>
     <div class="flex">
       <Stat />
     </div>
@@ -15,7 +15,7 @@
               <el-radio-button>2023</el-radio-button>
             </el-radio-group>
           </div>
-          <Access />
+          <Access class="mt-4" />
         </div>
 
         <div class="mt-4 p-3 rounded-sm overflow-hidden bg-normal">
@@ -49,4 +49,5 @@ import Access from './Access.vue'
 import Users from './Users.vue'
 import Hot from './Hot.vue'
 import Stat from './Stat/index.vue'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 </script>

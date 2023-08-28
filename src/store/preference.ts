@@ -42,16 +42,11 @@ export default defineStore('preference', () => {
   return {
     darkMode,
     toggleDarkMode,
-
     isFullscreen,
     toggleFullscreen,
-
     grayMode,
-
     weakMode,
-
     brandColor,
-
     pageAnimation,
   }
 })

@@ -1,10 +1,13 @@
 <template>
-  <aside class="aside relative transition-[width] duration-200 ease-in-out" :class="{ '!w-[60px]': isAsideCollapse, 'is-dark': asideTheme.dark }" :style="styles">
+  <aside
+    class="aside relative transition-[width] duration-200 ease-in-out"
+    :class="{ '!w-[60px]': isAsideCollapse, 'is-dark': asideTheme.dark }"
+    :style="styles">
     <div class="flex flex-col w-full h-full overflow-hidden">
       <!-- LOGO区 -->
       <div class="aside-logo h-[52px] p-4 text-center whitespace-nowrap border-b border-b-gray-200" :class="{ '!p-2': isAsideCollapse }">
         <RouterLink to="/" class="flex items-center appearance-none text-inherit no-underline hover:text-inherit" :class="{ 'justify-center': isAsideCollapse }">
-          <img src="@/assets/logo.svg" class="w-6 h-6 transition-all duration-200" :class="{ 'w-8 h-8': isAsideCollapse }" />
+          <img :src="logoPng" class="w-6 h-6 transition-all duration-200" :class="{ 'w-8 h-8': isAsideCollapse }" />
           <span v-show="!layout.isAsideCollapse" class="ml-2 font-semibold">{{ app.name }}</span>
         </RouterLink>
       </div>
@@ -12,11 +15,17 @@
       <Menu class="flex-1 h-0 border-r-0 overflow-auto" />
 
       <!-- 个人标记 -->
-      <div class="aside-brand p-2 text-center text-secondary text-xs border-t border-t-gray-200">by xpzheng</div>
+      <PersonalBadge />
     </div>
 
     <!-- 折叠按钮 -->
-    <div v-if="asideCollapseTogglePlace === 'aside'" class="absolute flex items-center justify-center w-[24px] h-[24px] right-0 top-[20%] translate-x-[50%] bg-normal z-10 rounded-full border border-gray-300 cursor-pointer hover:!bg-gray-100" @click="isAsideCollapse = !isAsideCollapse">
+    <div
+      v-if="asideCollapseTogglePlace === 'aside'"
+      class="
+        absolute flex items-center justify-center w-[24px] h-[24px] right-0 top-[20%] translate-x-[50%] bg-normal z-10 rounded-full
+        border border-gray-300 cursor-pointer hover:!bg-gray-100"
+      :class="{ 'bg-black border-black hover:!bg-gray-800': asideTheme.dark }"
+      @click="isAsideCollapse = !isAsideCollapse">
       <el-icon class="transition-all duration-300" :class="{ 'rotate-180': isAsideCollapse }"><ArrowLeft /></el-icon>
     </div>
   </aside>
@@ -28,6 +37,8 @@ import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import Menu from './Menu.vue'
 import useApp from '@/store/app'
+import PersonalBadge from './PersonalBadge.vue'
+import logoPng from '@/assets/logo.png'
 
 const app = useApp()
 
@@ -62,12 +73,6 @@ const styles = computed<any>(() => {
       --el-menu-bg-color: #141414;
       --el-menu-hover-bg-color: #1f1f1f;
       --el-menu-text-color: theme('colors.white');
-    }
-    .aside-logo {
-      border-bottom-color: #262626;
-    }
-    .aside-brand {
-      border-top-color: #262626;
     }
   }
 }
