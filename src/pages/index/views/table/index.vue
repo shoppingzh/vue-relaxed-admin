@@ -7,7 +7,7 @@
     <div>
       <div class="title">自由</div>
       <div class="mt-2">
-        <Table :data="data" max-height="500">
+        <Table :data="data">
           <ElTableColumn label="序号" type="index" align="center" width="100"></ElTableColumn>
           <ElTableColumn label="简介" prop="name">
             <template #default="{ row }">
@@ -22,21 +22,21 @@
     <div class="mt-4">
       <div class="title">配置化</div>
       <div class="mt-2">
-        <Table :data="data" :columns="columns" max-height="500" />
+        <Table :data="data" :columns="columns" />
       </div>
     </div>
 
     <div class="mt-4">
       <div class="title">默认空</div>
       <div class="mt-2">
-        <Table :data="[]" :columns="columns" max-height="500" />
+        <Table :data="[]" :columns="columns" />
       </div>
     </div>
 
     <div class="mt-4">
       <div class="title">自定义空</div>
       <div class="mt-2">
-        <Table :data="[]" :columns="columns" max-height="500">
+        <Table :data="[]" :columns="columns">
           <template #empty>没有数据哦~</template>
         </Table>
       </div>
