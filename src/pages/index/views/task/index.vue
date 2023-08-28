@@ -14,7 +14,7 @@
           <el-radio-button label="0w">本周</el-radio-button>
           <el-radio-button label="0m">本月</el-radio-button>
           <el-radio-button label="-1m">上月</el-radio-button>
-          <el-radio-button label="all">所有</el-radio-button>
+          <!-- <el-radio-button label="all">所有</el-radio-button> -->
         </el-radio-group>
         <el-select v-model="query.categoryId" class="ml-2" clearable placeholder="请选择分类">
           <el-option

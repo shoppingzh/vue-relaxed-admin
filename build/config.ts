@@ -26,7 +26,7 @@ function readPages(srcDir: string): Page[] {
 
 const ROOT_DIR = path.resolve(__dirname, '..')
 
-const PAGES = readPages(path.resolve(ROOT_DIR, 'src'))
+const PAGES = readPages(path.resolve(ROOT_DIR, 'src')).filter(o => o.name !== 'dev')
 
 export default {
   rootDir: ROOT_DIR,
