@@ -1,48 +1,44 @@
 <template>
+  <!-- <div class="text-right">
+    <ElLink type="primary" @click="load()">刷新</ElLink>
+  </div> -->
+
   <div>
-    <!-- <div class="text-right">
-      <ElLink type="primary" @click="load()">刷新</ElLink>
-    </div> -->
-
-    <div>
-      <div class="title">自由</div>
-      <div class="mt-2">
-        <Table :data="data" max-height="500">
-          <ElTableColumn label="序号" type="index" align="center" width="100"></ElTableColumn>
-          <ElTableColumn label="简介" prop="name">
-            <template #default="{ row }">
-              我叫{{ row.name }}，今年{{ row.age }}岁，家住{{ row.province }}{{ row.city }}
-            </template>
-          </ElTableColumn>
-          <ElTableColumn label="个人简介" prop="desc" show-overflow-tooltip />
-        </Table>
-      </div>
+    <div class="title">自由</div>
+    <div class="mt-2">
+      <Table :data="data" max-height="500">
+        <ElTableColumn label="序号" type="index" align="center" width="100"></ElTableColumn>
+        <ElTableColumn label="简介" prop="name">
+          <template #default="{ row }">
+            我叫{{ row.name }}，今年{{ row.age }}岁，家住{{ row.province }}{{ row.city }}
+          </template>
+        </ElTableColumn>
+        <ElTableColumn label="个人简介" prop="desc" show-overflow-tooltip />
+      </Table>
     </div>
+  </div>
 
-    <div class="mt-4">
-      <div class="title">配置化</div>
-      <div class="mt-2">
-        <Table :data="data" :columns="columns" max-height="500" />
-      </div>
+  <div class="mt-4">
+    <div class="title">配置化</div>
+    <div class="mt-2">
+      <Table :data="data" :columns="columns" max-height="500" />
     </div>
+  </div>
 
-    <div class="mt-4">
-      <div class="title">默认空</div>
-      <div class="mt-2">
-        <Table :data="[]" :columns="columns" max-height="500" />
-      </div>
+  <div class="mt-4">
+    <div class="title">默认空</div>
+    <div class="mt-2">
+      <Table :data="[]" :columns="columns" max-height="500" />
     </div>
+  </div>
 
-    <div class="mt-4">
-      <div class="title">自定义空</div>
-      <div class="mt-2">
-        <Table :data="[]" :columns="columns" max-height="500">
-          <template #empty>没有数据哦~</template>
-        </Table>
-      </div>
+  <div class="mt-4">
+    <div class="title">自定义空</div>
+    <div class="mt-2">
+      <Table :data="[]" :columns="columns" max-height="500">
+        <template #empty>没有数据哦~</template>
+      </Table>
     </div>
-
-
   </div>
 </template>
 
