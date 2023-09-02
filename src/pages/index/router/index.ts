@@ -9,7 +9,7 @@ addRoutes(router, [
     children: [
       {
         path: '',
-        component: () => import('@p-index/views/dashboard/index.vue'),
+        redirect: '/globals',
       },
       {
         path: 'icon',
@@ -47,6 +47,10 @@ addRoutes(router, [
       },
     ],
   },
+  {
+    path: '/login',
+    component: () => import('@p-index/views/login/index.vue')
+  }
 ])
 
 export default router

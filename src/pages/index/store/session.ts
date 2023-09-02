@@ -22,12 +22,9 @@ export default defineStore('session', () => {
           resolve()
           return
         }
-        user.value = await userApi.getCurrent()
+        // user.value = await userApi.getCurrent()
         menus.value = await api.list()
         await initGlobals()
-
-        // eslint-disable-next-line no-promise-executor-return
-        if (!user.value) return reject('')
 
         inited.value = true
         resolve()

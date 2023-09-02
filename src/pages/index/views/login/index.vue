@@ -61,8 +61,6 @@ import * as api from '@/api/user'
 
 const { name: appName } = storeToRefs(useApp())
 const { form, remember } = useLogin({
-  username: 'admin',
-  password: 'admin',
 })
 const router = useRouter()
 

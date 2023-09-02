@@ -10,11 +10,7 @@ interface LoginData {
   password: string
 }
 export async function login(data: LoginData) {
-  Cookies.set('session-user', JSON.stringify(data))
-  await new Promise(resolve => {
-    setTimeout(resolve, 500)
-  })
-  return data
+  return service.post<any, any>('login', data)
 }
 
 /**
