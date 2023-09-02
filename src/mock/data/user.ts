@@ -1,4 +1,5 @@
 import * as Mock from 'mockjs'
+import { MockItem } from '../types'
 
 export default [
   {
@@ -16,5 +17,5 @@ export default [
         },
       ],
     }).list,
-  },
-]
+  }
+] as MockItem[]

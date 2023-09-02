@@ -1,6 +1,5 @@
 import { MaybeRef } from '@vueuse/core'
-import { merge } from 'lodash'
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 
 interface Options {
   username?: MaybeRef<string>
@@ -8,15 +7,18 @@ interface Options {
   remember?: MaybeRef<boolean>
 }
 
-export default function(options?: Options) {
-  const opts = merge({} as Options, options)
-  const username = ref(opts.username)
-  const password = ref(opts.password)
-  const remember = ref(opts.remember)
+export default function(options: Options = {}) {
+  const username = ref(options.username)
+  const password = ref(options.password)
+  const remember = ref(options.remember)
 
-  return {
+  const form = reactive({
     username,
     password,
+  })
+
+  return {
+    form,
     remember,
   }
 }

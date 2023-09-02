@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import * as api from '@/api/menu'
+import * as userApi from '@/api/user'
 
 export default defineStore('session', () => {
   const inited = ref(false)
+  const user = ref()
   const menus = ref()
 
   function init() {
@@ -13,8 +15,11 @@ export default defineStore('session', () => {
           resolve()
           return
         }
-
+        user.value = await userApi.getCurrent()
         menus.value = await api.list()
+
+        // eslint-disable-next-line no-promise-executor-return
+        if (!user.value) return reject('')
 
         inited.value = true
         resolve()
@@ -25,7 +30,9 @@ export default defineStore('session', () => {
   }
 
   return {
+    user,
     menus,
+    inited,
     init,
   }
 })

@@ -5,7 +5,7 @@ const modules = import.meta.glob('./data/**/*.ts', { eager: true })
 
 function setup() {
   Mock.setup({
-    // timeout: '300 - 1500'
+    timeout: '100 - 500'
   })
 
   Object.entries(modules).forEach(([path, mod]: [string, any]) => {
@@ -14,7 +14,7 @@ function setup() {
       return console.warn(`${path}没有导出mock数据！`)
     }
     list.forEach((item) => {
-      Mock.mock(item.url, undefined as any, {
+      Mock.mock(item.url, item.type, {
         code: 0,
         data: item.data(Mock.mock),
       })
