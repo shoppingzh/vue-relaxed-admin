@@ -13,15 +13,15 @@
       <div class="w-[450px] mx-auto relative -top-20 p-8 bg-normal">
         <div class="text-h5 font-semibold">登录{{ appName }}</div>
         <div class="mt-6">
-          <el-form size="large" label-position="top" label-width="120px" label-suffix="：">
-            <el-form-item label="用户名">
+          <el-form ref="formIns" :model="form" :rules="rules" size="large" label-position="top" label-width="120px" label-suffix="：">
+            <el-form-item label="用户名" prop="username">
               <el-input
-                v-model="username"
+                v-model="form.username"
                 placeholder="请输入用户名" />
             </el-form-item>
-            <el-form-item label="密码">
+            <el-form-item label="密码" prop="password">
               <el-input
-                v-model="password"
+                v-model="form.password"
                 type="password"
                 placeholder="请输入密码" />
             </el-form-item>
@@ -39,6 +39,7 @@
             <el-button
               size="large"
               plain
+              disabled
               round
               class="!px-10">注册</el-button>
           </div>
@@ -54,12 +55,26 @@ import useApp from '@/store/app'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
 import useLogin from './useLogin'
+import { computed, ref } from 'vue'
+import { FormInstance, FormRules } from 'element-plus'
+import * as api from '@/api/user'
 
 const { name: appName } = storeToRefs(useApp())
-const { username, password, remember } = useLogin()
+const { form, remember } = useLogin({
+  username: 'admin',
+  password: 'admin',
+})
 const router = useRouter()
 
-function handleLogin() {
+const formIns = ref<FormInstance>()
+const rules = computed(() => ({
+  username: { required: true, message: '请输入用户名' },
+  password: { required: true, message: '请输入密码' },
+} as FormRules))
+
+async function handleLogin() {
+  await formIns.value.validate()
+  await api.login(form)
   router.replace('/')
 }
 </script>
