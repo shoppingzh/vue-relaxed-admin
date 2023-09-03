@@ -61,5 +61,6 @@ export default defineConfig({
         return map
       }, {}),
     },
+    minify: 'terser'
   },
 })
