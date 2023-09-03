@@ -64,5 +64,6 @@ export default defineConfig({
         inlineDynamicImports: true,
       }
     },
+    minify: 'terser'
   },
 })
