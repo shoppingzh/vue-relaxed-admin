@@ -9,7 +9,6 @@ import multiPageRewritePlugin from './multi-page-rewrite-plugin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  esbuild: false,
   // 开发相关
   envPrefix: 'APP_',
   resolve: {
