@@ -88,7 +88,7 @@ async function handleLogin() {
       toStore()
     }
 
-    router.replace('/')
+    await router.replace('/')
   } finally {
     loading.value = false
   }
