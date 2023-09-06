@@ -17,13 +17,16 @@
             <el-form-item label="用户名" prop="username">
               <el-input
                 v-model="form.username"
-                placeholder="请输入用户名" />
+                placeholder="请输入用户名"
+                @keydown.enter="handleLogin" />
             </el-form-item>
             <el-form-item label="密码" prop="password">
               <el-input
                 v-model="form.password"
                 type="password"
-                placeholder="请输入密码" />
+                placeholder="请输入密码"
+                show-password
+                @keydown.enter="handleLogin" />
             </el-form-item>
             <el-form-item>
               <el-checkbox v-model="remember">记住用户名与密码</el-checkbox>
@@ -34,6 +37,7 @@
               type="primary"
               size="large"
               round
+              :loading="loading"
               class="!px-20"
               @click="handleLogin">登录</el-button>
             <el-button
@@ -60,9 +64,11 @@ import { FormInstance, FormRules } from 'element-plus'
 import * as api from '@/api/user'
 
 const { name: appName } = storeToRefs(useApp())
-const { form, remember } = useLogin({
+const { form, remember, toStore } = useLogin({
+  remember: true,
 })
 const router = useRouter()
+const loading = ref(false)
 
 const formIns = ref<FormInstance>()
 const rules = computed(() => ({
@@ -71,9 +77,21 @@ const rules = computed(() => ({
 } as FormRules))
 
 async function handleLogin() {
-  await formIns.value.validate()
-  await api.login(form)
-  router.replace('/')
+  try {
+    loading.value = true
+    await formIns.value.validate()
+    await api.login(form)
+
+    // 记住密码时，存储登录信息
+    // FIXME 明文存储有一定安全隐患
+    if (remember.value) {
+      toStore()
+    }
+
+    await router.replace('/')
+  } finally {
+    loading.value = false
+  }
 }
 </script>
 
