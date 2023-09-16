@@ -2,7 +2,9 @@
 module.exports = {
   content: ['src/**/*.{html,vue,jsx,js,ts,tsx}', 'index.html'],
   darkMode: 'class',
-  plugins: ['@tailwindcss/aspect-ratio', require('@tailwindcss/line-clamp')],
+  plugins: [
+    '@tailwindcss/aspect-ratio',
+  ],
   corePlugins: {
     preflight: false,
   },
