@@ -5,14 +5,18 @@ const menus: any[] = [
     icon: 'xitong'
   },
   {
-    path: '/category',
-    name: '分类管理',
-    icon: 'fenlei',
-  },
-  {
-    path: '/task',
-    name: '任务管理',
-    icon: 'renwu',
+    name: '工作管理',
+    icon: 'gongzuo',
+    children: [{
+      path: '/category',
+      name: '分类管理',
+      icon: 'fenlei',
+    },
+    {
+      path: '/task',
+      name: '任务管理',
+      icon: 'renwu',
+    }]
   },
 ]
 
