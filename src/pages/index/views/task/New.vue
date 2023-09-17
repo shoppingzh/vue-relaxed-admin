@@ -110,6 +110,7 @@ const rules: FormRules = {
 const {
   model,
   firstFocusInputIns: titleInputIns,
+
   elFormIns: formIns,
   submit,
 } = useFastCreateUpdate({
@@ -133,6 +134,8 @@ const {
     data.category = { id: null }
   }
   return data
+}, {
+  autoFocusTimeout: 200,
 })
 
 const participantNames = computed({
