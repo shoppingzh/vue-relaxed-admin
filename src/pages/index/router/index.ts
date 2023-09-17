@@ -36,6 +36,9 @@ addRoutes(router, [
         children: [{
           path: 'category',
           component: () => import('@p-index/views/knowledge/category/index.vue')
+        }, {
+          path: 'doc',
+          component: () => import('@p-index/views/knowledge/doc/index.vue')
         }]
       },
       {

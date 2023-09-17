@@ -26,6 +26,10 @@ const menus: any[] = [
       path: '/knowledge/category',
       name: '分类管理',
       icon: 'fenlei',
+    }, {
+      path: '/knowledge/doc',
+      name: '文档管理',
+      icon: 'wendang',
     }]
   }
 ]
