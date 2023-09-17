@@ -24,16 +24,11 @@
       </el-table-column> -->
       <el-table-column label="操作" align="center">
         <template #default="{ row }">
-          <el-button
+          <ElLink
             type="primary"
             size="small"
-            plain
-            @click="handleUpdate(row)">
-            <el-icon><Edit /></el-icon>
-          </el-button>
-          <el-button size="small" type="danger" plain @click="remove(row)">
-            <el-icon><Delete /></el-icon>
-          </el-button>
+            @click="handleUpdate(row)">编辑</ElLink>
+          <ElLink type="danger" plain @click="remove(row)">删除</ElLink>
         </template>
       </el-table-column>
     </el-table>

@@ -70,21 +70,15 @@
       <el-table-column label="结束时间" prop="endTime" align="center" :formatter="createDateFormatter()" />
       <el-table-column label="操作" align="center" min-width="120px">
         <template #default="{ row }">
-          <el-button
-            type="warning"
-            size="small"
-            plain
-            @click="handleViewSchedule(row)"><el-icon><Clock /></el-icon></el-button>
-          <el-button
+          <el-link
+            type="success"
+            @click="handleViewSchedule(row)">进度管理</el-link>
+          <el-link
             type="primary"
-            size="small"
-            plain
-            @click="update(row)"><el-icon><Edit /></el-icon></el-button>
-          <el-button
+            @click="update(row)">编辑</el-link>
+          <el-link
             type="danger"
-            size="small"
-            plain
-            @click="remove(row)"><el-icon><Delete /></el-icon></el-button>
+            @click="remove(row)">删除</el-link>
         </template>
       </el-table-column>
     </el-table>

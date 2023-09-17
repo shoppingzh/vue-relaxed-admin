@@ -39,3 +39,9 @@ export interface Schedule extends Base {
   time?: Date
   task?: Task
 }
+
+export interface KnowledgeCategory extends Base {
+  name?: string
+  children?: KnowledgeCategory[]
+  parent?: KnowledgeCategory
+}

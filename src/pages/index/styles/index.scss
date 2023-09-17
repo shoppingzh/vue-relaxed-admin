@@ -3,3 +3,9 @@
 .content-wrap {
   @apply p-4 bg-normal rounded-xs;
 }
+
+.el-table {
+  .el-link + .el-link {
+    @apply ml-3;
+  }
+}
