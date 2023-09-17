@@ -32,6 +32,13 @@ addRoutes(router, [
         component: () => import('@p-index/views/task/index.vue'),
       },
       {
+        path: 'knowledge',
+        children: [{
+          path: 'category',
+          component: () => import('@p-index/views/knowledge/category/index.vue')
+        }]
+      },
+      {
         path: 'error',
         redirect: '/error/404',
         children: [

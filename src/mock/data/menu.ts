@@ -18,6 +18,16 @@ const menus: any[] = [
       icon: 'renwu',
     }]
   },
+  {
+    name: '知识库',
+    path: '/knowledge',
+    icon: 'zhishi',
+    children: [{
+      path: '/knowledge/category',
+      name: '分类管理',
+      icon: 'fenlei',
+    }]
+  }
 ]
 
 export default [
