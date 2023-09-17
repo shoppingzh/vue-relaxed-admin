@@ -55,7 +55,8 @@
       v-if="popper.new"
       :task-id="id"
       :id="updateItem ? updateItem.id : null"
-      @success="handleNewSuccess" />
+      @success="handleNewSuccess"
+      @cancel="popper.new = false" />
   </el-dialog>
 </template>
 

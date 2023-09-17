@@ -15,6 +15,8 @@
     <el-button
       type="primary"
       @click="submit">提交</el-button>
+    <el-button
+      @click="emit('cancel')">关闭</el-button>
   </div>
 </template>
 
@@ -29,7 +31,7 @@ interface Props {
   id?: number
 }
 const props = defineProps<Props>()
-const emit = defineEmits(['success'])
+const emit = defineEmits(['success', 'cancel'])
 
 const { model: form, firstFocusInputIns: inputIns } = useFastCreateUpdate<Schedule>({
   id: props.id,
