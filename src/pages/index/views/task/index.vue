@@ -72,13 +72,13 @@
         <template #default="{ row }">
           <el-link
             type="success"
-            @click="handleViewSchedule(row)">进度管理</el-link>
+            @click="handleViewSchedule(row)"><SvgIcon name="jindu" class="text-h6" /></el-link>
           <el-link
             type="primary"
-            @click="update(row)">编辑</el-link>
+            @click="update(row)"><SvgIcon name="bianji" class="text-h6" /></el-link>
           <el-link
             type="danger"
-            @click="remove(row)">删除</el-link>
+            @click="remove(row)"><SvgIcon name="shanchu" class="text-h6" /></el-link>
         </template>
       </el-table-column>
     </el-table>
@@ -108,6 +108,7 @@ import useCategorySelect from './useCategorySelect'
 import dayjs, { Dayjs } from 'dayjs'
 import { createDateFormatter } from '@/utils/ui'
 import { getPriority } from '@p-index/utils/task'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 interface Query {
   keyword: string

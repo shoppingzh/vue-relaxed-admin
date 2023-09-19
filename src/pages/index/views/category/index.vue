@@ -27,8 +27,8 @@
           <ElLink
             type="primary"
             size="small"
-            @click="handleUpdate(row)">编辑</ElLink>
-          <ElLink type="danger" plain @click="remove(row)">删除</ElLink>
+            @click="handleUpdate(row)"><SvgIcon name="bianji" class="text-h6" /></ElLink>
+          <ElLink type="danger" plain @click="remove(row)"><SvgIcon name="shanchu" class="text-h6" /></ElLink>
         </template>
       </el-table-column>
     </el-table>
@@ -54,6 +54,7 @@ import { reactive, ref, watch } from 'vue'
 import New from './New.vue'
 import { Category } from '@/api/types'
 import dayjs from 'dayjs'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 const popper = reactive({
   create: false
