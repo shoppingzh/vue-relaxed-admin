@@ -8,8 +8,8 @@
           placeholder="关键字"
           clearable
           class="w-[300px]"
-          @clear="load"
-          @keydown.enter="load" />
+          @clear="load()"
+          @keydown.enter="load()" />
         <el-radio-group v-model="query.timeRange" class="ml-2">
           <el-radio-button label="0w">本周</el-radio-button>
           <el-radio-button label="0m">本月</el-radio-button>
@@ -26,7 +26,7 @@
         <el-button
           class="ml-2"
           type="primary"
-          @click="load">筛选</el-button>
+          @click="load()">筛选</el-button>
       </div>
       <el-button
         type="primary"
@@ -98,7 +98,7 @@
 
 <script setup lang="ts">
 import * as api from '@/api/task'
-import useLoad from '@p-index/hooks/useLoad'
+import useLoad from 'magic-hooks/lib/useLoad'
 import { ElMessage } from 'element-plus'
 import { computed, reactive, ref, watch } from 'vue'
 import New from './New.vue'
@@ -119,17 +119,19 @@ interface Query {
 
 const today = dayjs()
 
-const { query, data: list, loading, load } = useLoad<Task[], Query>(() => {
+const { query, result: list, loading, load } = useLoad(() => {
   return api.list({
     // eslint-disable-next-line no-use-before-define
     ...params.value
   })
 }, {
-  keyword: null,
-  startTime: null,
-  endTime: null,
-  categoryId: null,
-  timeRange: '0w',
+  initialQuery: {
+    keyword: null,
+    startTime: null,
+    endTime: null,
+    categoryId: null,
+    timeRange: '0w',
+  } as Query
 })
 const progressList = computed<number[]>(() => {
   return list.value.map(o => {
@@ -205,7 +207,7 @@ watch(() => popper.new, () => {
   }
 })
 
-watch(() => [query.startTime, query.endTime, query.timeRange, query.categoryId], load)
+watch(() => [query.startTime, query.endTime, query.timeRange, query.categoryId], () => load())
 
 load()
 </script>

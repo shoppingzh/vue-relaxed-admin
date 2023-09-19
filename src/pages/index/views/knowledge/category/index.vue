@@ -11,7 +11,7 @@
       </template>
       <template #default="{ row }">
         <ElLink type="primary" @click="handleAdd(row)">添加</ElLink>
-        <!-- <ElLink type="primary" @click="handleEdit(row)">编辑</ElLink> -->
+        <ElLink type="primary" @click="handleEdit(row)">编辑</ElLink>
         <ElLink type="danger" @click="handleRemove(row)">删除</ElLink>
       </template>
     </ElTableColumn>
@@ -24,6 +24,7 @@
     <Add
       v-if="popper.add"
       :parent="addParent"
+      :id="editItem ? editItem.id : null"
       @success="handleAddSuccess"
       @cancel="popper.add = false" />
   </ElDialog>
@@ -31,7 +32,7 @@
 
 <script setup lang="ts">
 import useLoad from 'magic-hooks/lib/useLoad'
-import * as api from '@/api/knowledge-category'
+import * as api from '@/api/knowledge/category'
 import Add from './Add.vue'
 import { reactive, ref } from 'vue'
 import { KnowledgeCategory } from '@/api/types'
@@ -59,6 +60,7 @@ const popper = reactive({
   add: false,
 })
 const addParent = ref<KnowledgeCategory>()
+const editItem = ref<KnowledgeCategory>()
 
 function handleAdd(parent?: KnowledgeCategory) {
   addParent.value = parent
@@ -67,6 +69,7 @@ function handleAdd(parent?: KnowledgeCategory) {
 
 function handleEdit(item: KnowledgeCategory) {
   addParent.value = item.parent
+  editItem.value = item
   popper.add = true
 }
 

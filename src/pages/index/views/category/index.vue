@@ -49,7 +49,7 @@
 <script setup lang="ts">
 import * as api from '@/api/category'
 import { ElMessage } from 'element-plus'
-import useLoad from '@p-index/hooks/useLoad'
+import useLoad from 'magic-hooks/lib/useLoad'
 import { reactive, ref, watch } from 'vue'
 import New from './New.vue'
 import { Category } from '@/api/types'
@@ -59,7 +59,7 @@ const popper = reactive({
   create: false
 })
 const updateItem = ref<Category>()
-const { data: list, load } = useLoad(() => api.list())
+const { result: list, load } = useLoad(() => api.list())
 
 async function remove(row: any) {
   await api.removeById(row.id)

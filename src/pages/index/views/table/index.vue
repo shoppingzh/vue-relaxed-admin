@@ -44,7 +44,7 @@
 
 <script setup lang="ts">
 import Table, { Column } from '@/components/Table/index.vue'
-import useLoad from '@/hooks/useLoad'
+import useLoad from 'magic-hooks/lib/useLoad'
 import * as api from '@/api/user'
 
 const { result: data } = useLoad(() => api.list(), {

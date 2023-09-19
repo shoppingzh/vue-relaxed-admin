@@ -61,7 +61,7 @@
 </template>
 
 <script setup lang="ts">
-import useLoad from '@p-index/hooks/useLoad'
+import useLoad from 'magic-hooks/lib/useLoad'
 import * as api from '@/api/schedule'
 import { Schedule } from '@/api/types'
 import { reactive, ref, watch } from 'vue'
@@ -74,7 +74,7 @@ const props = defineProps<Props>()
 const popper = reactive({
   new: false,
 })
-const { data: list, loading, load } = useLoad<Schedule[], any>(() => api.list({ taskId: props.id }))
+const { result: list, loading, load } = useLoad<Schedule[], any>(() => api.list({ taskId: props.id }))
 const updateItem = ref<Schedule>()
 
 async function add() {

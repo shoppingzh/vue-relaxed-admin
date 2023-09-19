@@ -5,6 +5,10 @@ export function list(params?: any) {
   return service.get<any, KnowledgeCategory[]>('knowledge/categories', { params })
 }
 
+export function getById(id: any) {
+  return service.get<any, KnowledgeCategory>('knowledge/category', { params: { id } })
+}
+
 export function add(data: KnowledgeCategory) {
   return service.post('knowledge/category', data)
 }

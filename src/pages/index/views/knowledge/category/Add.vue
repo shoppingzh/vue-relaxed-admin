@@ -20,22 +20,26 @@
 
 <script setup lang="ts">
 import useFastCreateUpdate from '@/pages/index/hooks/useFastCreateUpdate'
-import * as api from '@/api/knowledge-category'
+import * as api from '@/api/knowledge/category'
 import { KnowledgeCategory } from '@/api/types'
 import { computed } from 'vue'
 import { FormRules } from 'element-plus'
 
 const props = defineProps<{
   parent: KnowledgeCategory
-  item?: KnowledgeCategory
+  id?: any
 }>()
 const emit = defineEmits(['success', 'cancel'])
 
-const { model, elFormIns, firstFocusInputIns, submit, } = useFastCreateUpdate({
-  parent: {
-    id: props.parent ? props.parent.id : null,
-  }
-} as KnowledgeCategory, (model) => api.addOrUpdate(model))
+const { model, elFormIns, firstFocusInputIns, submit, load, } = useFastCreateUpdate({
+  parent: props.parent ? {
+    id: props.parent.id,
+  } : null
+} as KnowledgeCategory, (model) => api.addOrUpdate(model), async() => {
+  if (!props.id) return
+  return await api.getById(props.id)
+})
+
 const rules = computed(() => ({
   name: { required: true, message: '请输入名称' }
 } as FormRules))
@@ -44,4 +48,6 @@ async function handleSubmit() {
   await submit()
   emit('success')
 }
+
+load()
 </script>
