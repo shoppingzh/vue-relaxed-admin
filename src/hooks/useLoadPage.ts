@@ -8,16 +8,16 @@ export interface PageQuery {
   pageSize: number
 }
 
-export type PageProps<T, LK> = {
+export type PageProps<T extends object, LK extends keyof T> = {
   total?: keyof T
   list?: LK
 }
 
-export interface UseLoadPageOptions<Query, Result, LK> {
-  onLoad: LoadFn<Query & PageQuery, Result>
-  query?: MaybeRef<Query>
+export interface UseLoadPageOptions<Q, R extends object, LK extends keyof R = keyof R, L extends R[LK] = R[LK]> {
+  onLoad: LoadFn<Q & PageQuery, R>
+  query?: MaybeRef<Q>
   autoLoad?: boolean
-  pageProps?: PageProps<Result, LK>
+  pageProps?: PageProps<R, LK>
 }
 
 export interface UseLoadPageReturn<Query, Result, LK, L> extends Pick<UseLoadReturn<Query, Result>, 'query' | 'loading'> {
@@ -48,7 +48,7 @@ const DEFAULT_PAGE_PROPS: PageProps<any, any> = {
 
 const PAGE_START = 1
 
-export default function useLoadPage<Q extends object, R, LK extends keyof R, L extends R[LK]>(options: UseLoadPageOptions<Q, R, LK>): UseLoadPageReturn<Q, R, LK, L> {
+export default function useLoadPage<Q extends object, R extends object, LK extends keyof R = keyof R, L extends R[LK] = R[LK]>(options: UseLoadPageOptions<Q, R, LK, L>): UseLoadPageReturn<Q, R, LK, L> {
   const { onLoad, autoLoad, pageProps } = options
   const pageQuery = reactive<PageQuery>({
     page: PAGE_START,
@@ -125,3 +125,34 @@ export default function useLoadPage<Q extends object, R, LK extends keyof R, L e
     nextPage,
   }
 }
+
+// type Page<T = any> = {
+//   total: number
+//   data: T[]
+// }
+// type Query = {
+//   keyword?: string
+// }
+// const { query, pageQuery, list, total } = useLoadPage({
+//   onLoad: (query) => Promise.resolve({
+//     total: 1000,
+//     data: new Array(1000).fill('x').filter(o => String(o) === query.keyword),
+//   } as Page<string>),
+//   query: {
+//     keyword: 'hello'
+//   } as Query,
+//   autoLoad: true,
+//   pageProps: {
+//     list: 'data' as keyof Page<string>,
+//   },
+// })
+// query.keyword
+// pageQuery.page
+// pageQuery.pageSize
+// const a = total.value + 1
+
+
+// type Func = (a: boolean, b: number) => Promise<string>
+
+// type P = Parameters<Func>
+// type A = P[0]
