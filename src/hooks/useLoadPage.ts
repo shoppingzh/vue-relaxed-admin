@@ -13,14 +13,14 @@ export type PageProps<T, LK> = {
   list?: LK
 }
 
-export interface UseLoadListOptions<Query, Result, LK> {
+export interface UseLoadPageOptions<Query, Result, LK> {
   onLoad: LoadFn<Query & PageQuery, Result>
   query?: MaybeRef<Query>
   autoLoad?: boolean
   pageProps?: PageProps<Result, LK>
 }
 
-export interface UseLoadListReturn<Query, Result, LK, L> extends Pick<UseLoadReturn<Query, Result>, 'query' | 'loading'> {
+export interface UseLoadPageReturn<Query, Result, LK, L> extends Pick<UseLoadReturn<Query, Result>, 'query' | 'loading'> {
   /** 分页查询条件 */
   pageQuery: PageQuery
   /** 当前页数据 */
@@ -48,14 +48,14 @@ const DEFAULT_PAGE_PROPS: PageProps<any, any> = {
 
 const PAGE_START = 1
 
-export default function useLoadList<Q extends object, R, LK extends keyof R, L extends R[LK]>(options: UseLoadListOptions<Q, R, LK>): UseLoadListReturn<Q, R, LK, L> {
+export default function useLoadPage<Q extends object, R, LK extends keyof R, L extends R[LK]>(options: UseLoadPageOptions<Q, R, LK>): UseLoadPageReturn<Q, R, LK, L> {
   const { onLoad, autoLoad, pageProps } = options
   const pageQuery = reactive<PageQuery>({
     page: PAGE_START,
     pageSize: 10,
   })
 
-  const { query, result: list, loading, load } = useLoad(onLoadList, {
+  const { query, result: list, loading, load } = useLoad(onLoadPage, {
     autoLoad,
     initialQuery: toReactive(options.query || {} as Q),
     initialResult: [],
@@ -65,7 +65,7 @@ export default function useLoadList<Q extends object, R, LK extends keyof R, L e
   const hasPrevPage = computed(() => pageQuery.page > PAGE_START)
   const hasNextPage = computed(() => pageQuery.page < totalPage.value)
 
-  function onLoadList(query: Q) {
+  function onLoadPage(query: Q) {
     return new Promise<L[]>(async(resolve, reject) => {
       try {
         const props: PageProps<R, LK> = merge({}, DEFAULT_PAGE_PROPS, pageProps)

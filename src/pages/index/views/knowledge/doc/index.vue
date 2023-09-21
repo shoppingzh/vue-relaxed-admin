@@ -21,10 +21,13 @@
 
 <script setup lang="ts">
 import * as api from '@/api/knowledge/document'
-import useLoadList from '@/hooks/useLoadList'
+import useLoadPage from '@/hooks/useLoadPage'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 
-const { list, pageQuery, total, } = useLoadList({
+const { list, pageQuery, total, query, } = useLoadPage({
+  query: {
+    a: 1,
+  },
   onLoad: (query) => api.list({
     page: query.page,
     pageSize: query.pageSize,
@@ -36,4 +39,6 @@ const { list, pageQuery, total, } = useLoadList({
   }
 })
 
+
 </script>
+@/hooks/useLoadPage
