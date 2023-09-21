@@ -1,6 +1,6 @@
 
 <template>
-  <div class="p-4 bg-white shadow-md rounded-md">
+  <div class="p-4 bg-white dark:bg-gray-100 shadow-md rounded-md">
     <ElTable :data="list" max-height="600">
       <ElTableColumn label="标题" prop="title" show-overflow-tooltip></ElTableColumn>
       <ElTableColumn label="编号" prop="no"></ElTableColumn>
