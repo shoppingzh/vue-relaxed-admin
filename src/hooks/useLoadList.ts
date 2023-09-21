@@ -21,6 +21,8 @@ export interface UseLoadListOptions<Query, Result, LK> {
 }
 
 export interface UseLoadListReturn<Query, Result, LK, L> extends Pick<UseLoadReturn<Query, Result>, 'query' | 'loading'> {
+  /** 分页查询条件 */
+  pageQuery: PageQuery
   /** 当前页数据 */
   list: Ref<L[]>
   /** 总数 */
@@ -44,18 +46,18 @@ const DEFAULT_PAGE_PROPS: PageProps<any, any> = {
   list: 'data',
 }
 
-const PAGE_START = 0
+const PAGE_START = 1
 
 export default function useLoadList<Q extends object, R, LK extends keyof R, L extends R[LK]>(options: UseLoadListOptions<Q, R, LK>): UseLoadListReturn<Q, R, LK, L> {
   const { onLoad, autoLoad, pageProps } = options
   const pageQuery = reactive<PageQuery>({
-    page: 0,
-    pageSize: 0,
+    page: PAGE_START,
+    pageSize: 10,
   })
 
   const { query, result: list, loading, load } = useLoad(onLoadList, {
     autoLoad,
-    initialQuery: toReactive(options.query),
+    initialQuery: toReactive(options.query || {} as Q),
     initialResult: [],
   })
   const total = ref(0)
@@ -103,9 +105,12 @@ export default function useLoadList<Q extends object, R, LK extends keyof R, L e
     toPage(pageQuery.page + 1)
   }
 
-  watch(pageQuery, () => reload())
+  watch(pageQuery, () => reload(true), {
+    deep: true,
+  })
 
   return {
+    pageQuery,
     query,
     loading,
     list,
