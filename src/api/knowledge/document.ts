@@ -1,8 +1,8 @@
 import service from '@/service'
-import { KnowledgeDocument } from '../types'
+import { KnowledgeDocument, Page } from '../types'
 
 export function list(params?: any) {
-  return service.get<any, any>('knowledge/documents', { params })
+  return service.get<any, Page<KnowledgeDocument>>('knowledge/documents', { params })
 }
 
 export function add(data: KnowledgeDocument) {

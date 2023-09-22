@@ -43,17 +43,28 @@ import SvgIcon from '@/components/SvgIcon/index.vue'
 import { reactive } from 'vue'
 import Add from './Add/index.vue'
 
+interface Query {
+  title?: string
+}
+
 const { list, pageQuery, total, query, reload, loading, } = useLoadPage({
   query: {
     title: '',
-  },
-  onLoad: (query) => api.list(query),
-  autoLoad: true,
+  } as Query,
+  onLoad: (q: any) => api.list(q),
+  // autoLoad: true,
   pageProps: {
-    total: 'total',
+    // total: 'total',
+    // list: listKey,
     list: 'data',
   }
+  // pageProps: {
+  //   total: 'total',
+  //   list: 'data',
+  // }
 })
+
+
 const popper = reactive({
   add: false,
 })

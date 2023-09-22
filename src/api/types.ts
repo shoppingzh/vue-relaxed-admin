@@ -4,6 +4,13 @@ interface Base {
   gmtModify?: Date
 }
 
+export interface Page<T> {
+  page?: number
+  pageSize?: number
+  total?: number
+  data?: T[]
+}
+
 export interface Globals extends Base {
   owner?: string
 }
@@ -13,6 +20,7 @@ export interface File extends Base {
   contentType?: string
   size?: number
 }
+
 
 export interface Category extends Base {
   name?: string

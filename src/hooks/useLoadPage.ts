@@ -8,23 +8,23 @@ export interface PageQuery {
   pageSize: number
 }
 
-export type PageProps<T extends object, LK extends keyof T> = {
-  total?: keyof T
+export interface PageProps<TK, LK> {
+  total?: TK
   list?: LK
 }
 
-export interface UseLoadPageOptions<Q, R extends object, LK extends keyof R = keyof R, L extends R[LK] = R[LK]> {
-  onLoad: LoadFn<Q & PageQuery, R>
+export interface UseLoadPageOptions<Q, R, LK, LV> {
+  onLoad: (query: Q & PageQuery) => Promise<R>
   query?: MaybeRef<Q>
   autoLoad?: boolean
-  pageProps?: PageProps<R, LK>
+  pageProps?: PageProps<keyof R, LK>
 }
 
-export interface UseLoadPageReturn<Query, Result, LK, L> extends Pick<UseLoadReturn<Query, Result>, 'query' | 'loading'> {
+export interface UseLoadPageReturn<Query, Result, LK, LV> extends Pick<UseLoadReturn<Query, Result>, 'query' | 'loading'> {
   /** 分页查询条件 */
   pageQuery: PageQuery
   /** 当前页数据 */
-  list: Ref<L[]>
+  list: Ref<LV>
   /** 总数 */
   total: Ref<number>
   /** 总页数 */
@@ -48,7 +48,7 @@ const DEFAULT_PAGE_PROPS: PageProps<any, any> = {
 
 const PAGE_START = 1
 
-export default function useLoadPage<Q extends object, R extends object, LK extends keyof R = keyof R, L extends R[LK] = R[LK]>(options: UseLoadPageOptions<Q, R, LK, L>): UseLoadPageReturn<Q, R, LK, L> {
+export default function useLoadPage<Q extends object, R extends object, LK extends keyof R, LV extends R[LK]>(options: UseLoadPageOptions<Q, R, LK, LV>): UseLoadPageReturn<Q, R, LK, LV> {
   const { onLoad, autoLoad, pageProps } = options
   const pageQuery = reactive<PageQuery>({
     page: PAGE_START,
@@ -58,7 +58,7 @@ export default function useLoadPage<Q extends object, R extends object, LK exten
   const { query, result: list, loading, load } = useLoad(onLoadPage, {
     autoLoad,
     initialQuery: toReactive(options.query || {} as Q),
-    initialResult: [],
+    initialResult: [] as LV,
   })
   const total = ref(0)
   const totalPage = computed(() => Math.ceil(total.value / pageQuery.pageSize))
@@ -66,13 +66,13 @@ export default function useLoadPage<Q extends object, R extends object, LK exten
   const hasNextPage = computed(() => pageQuery.page < totalPage.value)
 
   function onLoadPage(query: Q) {
-    return new Promise<L[]>(async(resolve, reject) => {
+    return new Promise<LV>(async(resolve, reject) => {
       try {
-        const props: PageProps<R, LK> = merge({}, DEFAULT_PAGE_PROPS, pageProps)
+        const props: PageProps<keyof R, LK> = merge({}, DEFAULT_PAGE_PROPS, pageProps)
         const page = await onLoad(merge({}, query, pageQuery))
         total.value = page[props.total] as number
 
-        resolve(page[props.list] as L[])
+        resolve(page[props.list] as LV)
       } catch (err) {
         reject(err)
       }
@@ -126,33 +126,8 @@ export default function useLoadPage<Q extends object, R extends object, LK exten
   }
 }
 
-// type Page<T = any> = {
-//   total: number
-//   data: T[]
-// }
-// type Query = {
-//   keyword?: string
-// }
-// const { query, pageQuery, list, total } = useLoadPage({
-//   onLoad: (query) => Promise.resolve({
-//     total: 1000,
-//     data: new Array(1000).fill('x').filter(o => String(o) === query.keyword),
-//   } as Page<string>),
-//   query: {
-//     keyword: 'hello'
-//   } as Query,
-//   autoLoad: true,
-//   pageProps: {
-//     list: 'data' as keyof Page<string>,
-//   },
-// })
-// query.keyword
-// pageQuery.page
-// pageQuery.pageSize
-// const a = total.value + 1
+// 以上函数调用时，当onLoad中不指定参数时，一切工作正常。
 
+// 当onLoad中指定参数时，pageProps中的list字段会报错：不能将类型“string”分配给类型“never”
 
-// type Func = (a: boolean, b: number) => Promise<string>
-
-// type P = Parameters<Func>
-// type A = P[0]
+// 为什么？
