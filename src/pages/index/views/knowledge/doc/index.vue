@@ -1,6 +1,19 @@
 
 <template>
   <div class="p-4 bg-white dark:bg-gray-100 shadow-md rounded-md">
+    <div class="flex items-center">
+      <div class="flex-1 shrink-0">
+        <ElForm inline>
+          <ElFormItem>
+            <ElInput v-model="query.title" placeholder="标题" class="w-[400px]" />
+          </ElFormItem>
+          <ElFormItem>
+            <ElButton type="primary"><SvgIcon name="sousuo2" class="mr-1" /> 搜索</ElButton>
+          </ElFormItem>
+        </ElForm>
+      </div>
+      <ElButton type="primary" @click="handleAddOrUpdate()"><SvgIcon name="tianjia" class="mr-1" /> 新增知识</ElButton>
+    </div>
     <ElTable :data="list" max-height="600">
       <ElTableColumn label="标题" prop="title" show-overflow-tooltip></ElTableColumn>
       <ElTableColumn label="编号" prop="no"></ElTableColumn>
@@ -17,16 +30,22 @@
       <ElPagination v-model:current-page="pageQuery.page" v-model:page-size="pageQuery.pageSize" :total="total" background />
     </div>
   </div>
+
+  <ElDrawer v-model="popper.add" size="70%">
+    <Add v-if="popper.add" @success="handleAddOrUpdateSuccess" />
+  </ElDrawer>
 </template>
 
 <script setup lang="ts">
 import * as api from '@/api/knowledge/document'
 import useLoadPage from '@/hooks/useLoadPage'
 import SvgIcon from '@/components/SvgIcon/index.vue'
+import { reactive } from 'vue'
+import Add from './Add/index.vue'
 
-const { list, pageQuery, total, query, } = useLoadPage({
+const { list, pageQuery, total, query, reload, } = useLoadPage({
   query: {
-    a: 1,
+    title: '',
   },
   onLoad: (query) => api.list({
     page: query.page,
@@ -38,7 +57,17 @@ const { list, pageQuery, total, query, } = useLoadPage({
     list: 'data',
   }
 })
+const popper = reactive({
+  add: false,
+})
 
+async function handleAddOrUpdate() {
+  popper.add = true
+}
+
+function handleAddOrUpdateSuccess() {
+  reload()
+  popper.add = false
+}
 
 </script>
-@/hooks/useLoadPage

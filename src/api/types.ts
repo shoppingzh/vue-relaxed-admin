@@ -8,6 +8,12 @@ export interface Globals extends Base {
   owner?: string
 }
 
+export interface File extends Base {
+  filename?: string
+  contentType?: string
+  size?: number
+}
+
 export interface Category extends Base {
   name?: string
   color?: string
@@ -44,4 +50,16 @@ export interface KnowledgeCategory extends Base {
   name?: string
   children?: KnowledgeCategory[]
   parent?: KnowledgeCategory
+}
+
+export interface KnowledgeDocument extends Base {
+  type?: 1 | 2
+  title?: string
+  no?: string
+  level?: number
+  time?: string
+  file?: File
+  fileId?: any
+  category?: KnowledgeCategory
+  categoryId?: any
 }
