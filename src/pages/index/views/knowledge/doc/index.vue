@@ -3,12 +3,12 @@
   <div class="p-4 bg-white dark:bg-gray-100 shadow-md rounded-md">
     <div class="flex items-center">
       <div class="flex-1 shrink-0">
-        <ElForm inline>
+        <ElForm inline @submit.prevent>
           <ElFormItem>
-            <ElInput v-model="query.title" placeholder="标题" class="w-[400px]" />
+            <ElInput v-model="query.title" placeholder="标题" clearable class="w-[400px]" @keydown.enter="reload()" @clear="reload()" />
           </ElFormItem>
           <ElFormItem>
-            <ElButton type="primary"><SvgIcon name="sousuo2" class="mr-1" /> 搜索</ElButton>
+            <ElButton type="primary" :loading="loading" @click="reload()"><SvgIcon name="sousuo2" class="mr-1" /> 搜索</ElButton>
           </ElFormItem>
         </ElForm>
       </div>
@@ -43,14 +43,11 @@ import SvgIcon from '@/components/SvgIcon/index.vue'
 import { reactive } from 'vue'
 import Add from './Add/index.vue'
 
-const { list, pageQuery, total, query, reload, } = useLoadPage({
+const { list, pageQuery, total, query, reload, loading, } = useLoadPage({
   query: {
     title: '',
   },
-  onLoad: (query) => api.list({
-    page: query.page,
-    pageSize: query.pageSize,
-  }),
+  onLoad: (query) => api.list(query),
   autoLoad: true,
   pageProps: {
     total: 'total',
