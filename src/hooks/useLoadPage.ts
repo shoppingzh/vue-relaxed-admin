@@ -3,24 +3,31 @@ import { MaybeRef, toReactive } from '@vueuse/core'
 import useLoad, { LoadFn, UseLoadReturn } from 'magic-hooks/lib/useLoad'
 import { computed, ComputedRef, reactive, Ref, ref, watch } from 'vue'
 
-export interface PageQuery {
+interface PageQuery {
   page: number
   pageSize: number
 }
 
-export interface PageProps<TK, LK> {
+interface PageProps<TK, LK> {
   total?: TK
   list?: LK
 }
 
-export interface UseLoadPageOptions<Q, R, LK, LV> {
-  onLoad: (query: Q & PageQuery) => Promise<R>
+interface DefaultPage<T = unknown> {
+  data?: T[]
+}
+type DefaultPageDataProp = (keyof DefaultPage)
+type Page<T> = T extends infer P ? P extends DefaultPage ? DefaultPage : P : never
+type PageDataProp<T> = T extends infer P ? P extends DefaultPage ? DefaultPageDataProp : keyof P : never
+
+export interface UseLoadPageOptions<Q, R, LK> {
+  onLoad: LoadFn<Q & PageQuery, R>
   query?: MaybeRef<Q>
   autoLoad?: boolean
   pageProps?: PageProps<keyof R, LK>
 }
 
-export interface UseLoadPageReturn<Query, Result, LK, LV> extends Pick<UseLoadReturn<Query, Result>, 'query' | 'loading'> {
+export interface UseLoadPageReturn<Q, R, LK, LV> extends Pick<UseLoadReturn<Q, R>, 'query' | 'loading'> {
   /** 分页查询条件 */
   pageQuery: PageQuery
   /** 当前页数据 */
@@ -48,7 +55,8 @@ const DEFAULT_PAGE_PROPS: PageProps<any, any> = {
 
 const PAGE_START = 1
 
-export default function useLoadPage<Q extends object, R extends object, LK extends keyof R, LV extends R[LK]>(options: UseLoadPageOptions<Q, R, LK, LV>): UseLoadPageReturn<Q, R, LK, LV> {
+
+export default function useLoadPage<Q extends object, OR extends object = any, R extends Page<OR> = Page<OR>, LK extends PageDataProp<R> = PageDataProp<R>>(options: UseLoadPageOptions<Q, R, LK>): UseLoadPageReturn<Q, R, LK, R[LK]> {
   const { onLoad, autoLoad, pageProps } = options
   const pageQuery = reactive<PageQuery>({
     page: PAGE_START,
@@ -58,7 +66,7 @@ export default function useLoadPage<Q extends object, R extends object, LK exten
   const { query, result: list, loading, load } = useLoad(onLoadPage, {
     autoLoad,
     initialQuery: toReactive(options.query || {} as Q),
-    initialResult: [] as LV,
+    initialResult: [] as R[LK],
   })
   const total = ref(0)
   const totalPage = computed(() => Math.ceil(total.value / pageQuery.pageSize))
@@ -66,13 +74,13 @@ export default function useLoadPage<Q extends object, R extends object, LK exten
   const hasNextPage = computed(() => pageQuery.page < totalPage.value)
 
   function onLoadPage(query: Q) {
-    return new Promise<LV>(async(resolve, reject) => {
+    return new Promise<R[LK]>(async(resolve, reject) => {
       try {
         const props: PageProps<keyof R, LK> = merge({}, DEFAULT_PAGE_PROPS, pageProps)
         const page = await onLoad(merge({}, query, pageQuery))
         total.value = page[props.total] as number
 
-        resolve(page[props.list] as LV)
+        resolve(page[props.list] as R[LK])
       } catch (err) {
         reject(err)
       }
@@ -125,9 +133,3 @@ export default function useLoadPage<Q extends object, R extends object, LK exten
     nextPage,
   }
 }
-
-// 以上函数调用时，当onLoad中不指定参数时，一切工作正常。
-
-// 当onLoad中指定参数时，pageProps中的list字段会报错：不能将类型“string”分配给类型“never”
-
-// 为什么？
