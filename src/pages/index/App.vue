@@ -1,9 +1,8 @@
 <template>
-  <el-config-provider :locale="zhCn">
-    <RouterView />
-  </el-config-provider>
+  <div class="p-10 font-semibold text-lg">
+    Hello, vue-relaxed-admin!
+  </div>
 </template>
 
 <script setup lang="ts">
-import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 </script>
