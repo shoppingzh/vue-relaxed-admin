@@ -1,6 +1,6 @@
 import '@/main'
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp, } from 'vue'
+import { createPinia, } from 'pinia'
 import App from './App.vue'
 import errorReport from '@/plugins/error-report'
 import dayjs from '@/plugins/dayjs'

@@ -1,31 +1,31 @@
-import stylistic from '@stylistic/eslint-plugin'
-import globals from 'globals'
-import js from '@eslint/js'
-import config from '@shoppingzh/eslint-config'
+import { javascript, stylistic, typescript, vue, } from '@shoppingzh/eslint-config'
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
-export default [{
-  ignores: [
-    'public',
-    'dist',
-    'src/assets',
-  ],
-  languageOptions: {
-    ecmaVersion: 'latest',
-    globals: {
-      ...globals.builtin,
-      ...globals.browser,
-      ...globals.node,
-      ...globals.es2021,
-      'defineOptions': 'readonly',
+export default [
+  {
+    ignores: [
+      'dist/**'
+    ],
+  },
+  ...javascript(),
+  ...stylistic({
+    overrides: {
+      'comma-dangle': [2, { arrays: 'ignore', functions: 'ignore', objects: 'always', imports: 'always', exports: 'ignore', }],
     },
-  },
-  plugins: {
-    '@stylistic': stylistic,
-  },
-  rules: {
-    ...js.configs.recommended.rules,
-    ...config.rules,
-    '@stylistic/indent': [2, 2],
-  }
-}]
+  }),
+  ...typescript({
+    files: [
+      '**/*.?([cm])[jt]s?(x)',
+      '**/*.vue'
+    ],
+    overrides: {
+      '@typescript-eslint/no-explicit-any': [0], // 谨慎
+    },
+  }),
+  ...vue({
+    typescript: true,
+    overrides: {
+      'vue/multi-word-component-names': [0],
+    },
+  }),
+]
