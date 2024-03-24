@@ -1,6 +1,6 @@
 import '@/main'
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp, } from 'vue'
+import { createPinia, } from 'pinia'
 import App from './App.vue'
 import ElementPlus from '@/plugins/element-plus'
 import errorReport from '@/plugins/error-report'

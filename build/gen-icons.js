@@ -1,7 +1,7 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
-import { downloadSvgs } from 'iconfont-downloader'
+import { existsSync, mkdirSync, readFileSync, writeFileSync, } from 'fs'
+import { downloadSvgs, } from 'iconfont-downloader'
 import path from 'path'
-import { fileURLToPath } from 'url'
+import { fileURLToPath, } from 'url'
 import prompt from 'prompt'
 import rimraf from 'rimraf'
 
@@ -10,12 +10,12 @@ const destDir = path.resolve(__dirname, '../src/icons/svg')
 const configFilePath = path.resolve(__dirname, '.gen-icons')
 
 if (!existsSync(destDir)) {
-  mkdirSync(destDir, { recursive: true })
+  mkdirSync(destDir, { recursive: true, })
 }
 
 function readConfig() {
   if (!existsSync(configFilePath)) return null
-  const content = readFileSync(configFilePath, { encoding: 'utf-8' })
+  const content = readFileSync(configFilePath, { encoding: 'utf-8', })
   const lines = content.split(/\r?\n/g).filter((line) => line && line.trim())
   return lines.reduce((conf, line) => {
     const parts = line.split('=')

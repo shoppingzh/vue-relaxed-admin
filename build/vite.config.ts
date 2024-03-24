@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
+import { defineConfig, } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import { createSvgIconsPlugin, } from 'vite-plugin-svg-icons'
 import config from './config'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 import jsx from '@vitejs/plugin-vue-jsx'
@@ -41,7 +41,7 @@ export default defineConfig({
       rewrites: config.pages.filter(o => o.name !== 'index').map(o => ({
         from: new RegExp(`^\\/mpa\\/${o.name}`),
         to: `/${o.name}.html`,
-      }))
+      })),
     }),
     vue(),
     jsx(),
@@ -56,11 +56,11 @@ export default defineConfig({
   build: {
     rollupOptions: {
       // 多页支持
-      input: config.pages.reduce((map, { name }) => {
+      input: config.pages.reduce((map, { name, }) => {
         map[name] = path.resolve(config.rootDir, `${name}.html`)
         return map
       }, {}),
     },
-    minify: 'terser'
+    minify: 'terser',
   },
 })

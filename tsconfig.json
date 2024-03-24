@@ -23,7 +23,6 @@
     },
     "types": [
       "unplugin-vue-define-options/macros-global",
-      "element-plus/global"
     ]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],

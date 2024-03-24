@@ -1,6 +1,6 @@
 <script lang="tsx">
-import { defineComponent, PropType, toRefs } from 'vue'
-import { ElTable, ElEmpty, ElTableColumn, TableColumnCtx } from 'element-plus'
+import { defineComponent, PropType, toRefs, } from 'vue'
+import { ElTable, ElEmpty, ElTableColumn, TableColumnCtx, } from 'element-plus'
 
 type BaseColumnBaseKeys = keyof Pick<TableColumnCtx<unknown>, 'label' | 'prop' | 'type'>
 type BaseColumnUIKeys = keyof Pick<TableColumnCtx<unknown>, 'align' | 'width' | 'minWidth' | 'fixed' | 'resizable' | 'showOverflowTooltip' | 'headerAlign' | 'className' | 'labelClassName'>
@@ -17,11 +17,11 @@ export interface Column extends BaseColumn {
 export default defineComponent({
   props: {
     columns: {
-      type: Object as PropType<Column[]>
-    }
+      type: Object as PropType<Column[]>,
+    },
   },
-  setup(props, { slots }) {
-    const { columns } = toRefs(props)
+  setup(props, { slots, }) {
+    const { columns, } = toRefs(props)
 
     function renderColumn(col: Column) {
       const renderInner = (...args: any[]) => {
@@ -32,7 +32,7 @@ export default defineComponent({
       }
       return (
         <ElTableColumn {...col}>{{
-          default: (...args: any[]) => renderInner(...args)
+          default: (...args: any[]) => renderInner(...args),
         }}</ElTableColumn>
       )
     }
@@ -56,6 +56,6 @@ export default defineComponent({
         empty: renderEmpty,
       }}</ElTable>
     )
-  }
+  },
 })
 </script>

@@ -1,5 +1,5 @@
 import path from 'path'
-import { readdirSync } from 'fs'
+import { readdirSync, } from 'fs'
 
 export interface Page {
   name: string
@@ -9,9 +9,9 @@ export interface Page {
 
 function readPages(srcDir: string): Page[] {
   const pagesDir = path.resolve(srcDir, 'pages')
-  let pages: Page[] = readdirSync(pagesDir, { withFileTypes: true })
+  let pages: Page[] = readdirSync(pagesDir, { withFileTypes: true, })
     .filter((o) => o.isDirectory() && !/^[._]/.test(o.name))
-    .map((o) => ({ name: o.name, path: path.join('pages', o.name) }))
+    .map((o) => ({ name: o.name, path: path.join('pages', o.name), }))
   if (!pages.length) {
     pages = [
       {

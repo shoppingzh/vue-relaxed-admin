@@ -1,5 +1,5 @@
 import history from 'connect-history-api-fallback'
-import { PluginOption } from 'vite'
+import { PluginOption, } from 'vite'
 
 interface Rewrite {
   from: RegExp
@@ -23,6 +23,6 @@ export default function(options: Options = {}): PluginOption {
           // 
         },
       }))
-    }
+    },
   }
 }

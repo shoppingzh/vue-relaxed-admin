@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ElNotification } from 'element-plus'
+import { ElNotification, } from 'element-plus'
 import useApp from '@/store/app'
 
 interface Result {
@@ -29,7 +29,7 @@ function showErrorMessage(message: string): void {
 instance.interceptors.request.use((config) => {
   // 根据需要，携带一些应用级的公共信息到服务端，避免在URL或请求体中反复携带
   if (config.headers) {
-    // eslint-disable-next-line no-param-reassign
+
     config.headers['_appId'] = useApp().id
   }
   return config
@@ -40,7 +40,7 @@ instance.interceptors.response.use(
     const result: Result = response.data
     if (!result) return result
     if (typeof result !== 'object') return result
-    const { code, msg, data } = result
+    const { code, msg, data, } = result
     if (code !== 0) {
       showErrorMessage(msg || '未知错误')
       const err: ResultError = new Error(msg)

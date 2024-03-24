@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
-import { App } from 'vue'
+import { App, } from 'vue'
 
 declare module 'vue' {
   interface ComponentCustomProperties {
