@@ -43,16 +43,25 @@
 </template>
 
 <script setup lang="ts">
-import Table, { Column } from '@/components/Table/index.vue'
+import Table, { Column, } from '@/components/Table/index.vue'
 import useLoad from '@/hooks/useLoad'
 import * as api from '@/api/user'
 
-const { result: data } = useLoad(() => api.list(), {
+interface Person {
+  name?: string
+  age?: number
+  desc?: string
+  province?: string
+  city?: string
+  gender?: boolean
+}
+
+const { result: data, } = useLoad(() => api.list(), {
   autoLoad: true,
   initialResult: [],
 })
 
-const columns: Column[] = [{
+const columns: Column<Person>[] = [{
   type: 'selection',
   fixed: true,
 }, {
@@ -71,10 +80,10 @@ const columns: Column[] = [{
 }, {
   label: '性别',
   prop: 'gender',
-  render: ({ row }) => row.gender ? '男' : '女',
+  render: ({ row, }) => row.gender ? '男' : '女',
   filters: [
-    { text: '男', value: 'true' },
-    { text: '女', value: 'false' }
+    { text: '男', value: 'true', },
+    { text: '女', value: 'false', }
   ],
   filterMethod: (value, row: any) => value === String(row.gender),
   filterMultiple: false,
@@ -91,7 +100,7 @@ const columns: Column[] = [{
     prop: 'city',
     align: 'center',
     resizable: true,
-  }]
+  }],
 }, {
   label: '个人简介',
   prop: 'desc',

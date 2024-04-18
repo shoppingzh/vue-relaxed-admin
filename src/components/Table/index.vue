@@ -1,38 +1,27 @@
-<script lang="tsx">
+<script lang="tsx" generic="T">
 import { defineComponent, PropType, toRefs, } from 'vue'
-import { ElTable, ElEmpty, ElTableColumn, TableColumnCtx, } from 'element-plus'
+import { ElTable, ElEmpty, ElTableColumn, } from 'element-plus'
+import { Column, ColumnRenderScope, } from './column'
 
-type BaseColumnBaseKeys = keyof Pick<TableColumnCtx<unknown>, 'label' | 'prop' | 'type'>
-type BaseColumnUIKeys = keyof Pick<TableColumnCtx<unknown>, 'align' | 'width' | 'minWidth' | 'fixed' | 'resizable' | 'showOverflowTooltip' | 'headerAlign' | 'className' | 'labelClassName'>
-type BaseColumnDataKeys = keyof Pick<TableColumnCtx<unknown>, 'index' | 'columnKey' | 'renderHeader' | 'sortable' | 'sortMethod' | 'sortBy' | 'sortOrders' | 'formatter' | 'selectable' | 'reserveSelection' | 'filters' | 'filterMethod' | 'filterPlacement' | 'filterMultiple' | 'filteredValue'>
-
-type BaseColumnKeys = BaseColumnBaseKeys | BaseColumnUIKeys | BaseColumnDataKeys
-type BaseColumn = Partial<Pick<TableColumnCtx<unknown>, BaseColumnKeys>>
-
-export interface Column extends BaseColumn {
-  children?: Column[]
-  render?: (...args: any[]) => any // FIXME 类型丢了
+export type { Column }
+interface Props {
+  columns: Column[]
 }
 
-export default defineComponent({
-  props: {
-    columns: {
-      type: Object as PropType<Column[]>,
-    },
-  },
-  setup(props, { slots, }) {
+export default defineComponent(
+  (props, { slots, }) => {
     const { columns, } = toRefs(props)
 
     function renderColumn(col: Column) {
-      const renderInner = (...args: any[]) => {
-        if (col.render) return col.render(...args)
+      const renderInner = (scope: ColumnRenderScope) => {
+        if (col.render) return col.render(scope)
         if (col.children && col.children.length) {
           return col.children.map(child => renderColumn(child))
         }
       }
       return (
         <ElTableColumn {...col}>{{
-          default: (...args: any[]) => renderInner(...args),
+          default: (scope: ColumnRenderScope) => renderInner(scope),
         }}</ElTableColumn>
       )
     }
@@ -57,5 +46,13 @@ export default defineComponent({
       }}</ElTable>
     )
   },
-})
+  {
+    props: {
+      columns: {
+        type: Object as PropType<Props['columns']>,
+      },
+    },
+  },
+)
+
 </script>
