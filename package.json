@@ -60,5 +60,8 @@
     "vite-plugin-svg-icons": "^2.0.1",
     "vue-eslint-parser": "^9.3.1",
     "vue-tsc": "^0.38.9"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
