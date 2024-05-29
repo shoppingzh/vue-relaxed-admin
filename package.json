@@ -34,7 +34,7 @@
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
     "@commitlint/types": "^19.0.3",
-    "@shoppingzh/eslint-config": "^3.0.0",
+    "@shoppingzh/eslint-config": "^3.0.2",
     "@stylistic/eslint-plugin": "^1.7.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/line-clamp": "^0.4.4",
