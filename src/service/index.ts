@@ -1,15 +1,10 @@
 import axios from 'axios'
-import { ElNotification, } from 'element-plus'
-import useApp from '@/store/app'
+import { addResponseBaseInterceptor, } from './interceptors'
 
 interface Result {
   code: number
   msg: string
   data: any
-}
-
-interface ResultError extends Error {
-  result?: Result
 }
 
 const instance = axios.create({
@@ -18,41 +13,26 @@ const instance = axios.create({
 })
 
 function showErrorMessage(message: string): void {
-  ElNotification({
-    type: 'error',
-    title: '错误',
-    message,
-    duration: 5000,
-  })
+  console.error(message)
 }
 
 instance.interceptors.request.use((config) => {
   // 根据需要，携带一些应用级的公共信息到服务端，避免在URL或请求体中反复携带
   if (config.headers) {
-
-    config.headers['_appId'] = useApp().id
   }
   return config
 })
 
-instance.interceptors.response.use(
-  (response) => {
-    const result: Result = response.data
-    if (!result) return result
-    if (typeof result !== 'object') return result
-    const { code, msg, data, } = result
-    if (code !== 0) {
-      showErrorMessage(msg || '未知错误')
-      const err: ResultError = new Error(msg)
-      err.result = result
-      return Promise.reject(err)
+
+addResponseBaseInterceptor(instance, {
+  toGeneralResult: async(data: Result) => {
+    return {
+      success: data.code === 0,
+      data: data,
+      message: data.msg || '网络错误，请稍后重试！',
     }
-    return data
   },
-  (error) => {
-    showErrorMessage('网络错误，请稍后重试！')
-    return Promise.reject(error)
-  }
-)
+  onError: error => showErrorMessage(error.message),
+})
 
 export default instance
