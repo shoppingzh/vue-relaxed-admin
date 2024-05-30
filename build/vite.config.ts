@@ -62,5 +62,6 @@ export default defineConfig({
       }, {}),
     },
     minify: 'terser',
+    sourcemap: true,
   },
 })
