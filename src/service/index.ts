@@ -12,6 +12,10 @@ const instance = axios.create({
   timeout: 60 * 1000,
 })
 
+function isBlob(data: any) {
+  return typeof data === 'object' && Object.prototype.toString.call(data) === '[object Blob]'
+}
+
 function showErrorMessage(message: string): void {
   console.error(message)
 }
@@ -26,10 +30,25 @@ instance.interceptors.request.use((config) => {
 
 addResponseBaseInterceptor(instance, {
   toGeneralResult: async(data: Result) => {
+    if (typeof data === 'object' && 'code' in data) {
+      return {
+        success: data.code === 0,
+        data: data.data,
+        message: data.msg,
+      }
+    }
+    if (isBlob(data)) {
+      return {
+        success: true,
+        data: {
+          blob: data,
+          filename: null, // TODO 解析文件名
+        },
+      }
+    }
     return {
-      success: data.code === 0,
+      success: true,
       data: data,
-      message: data.msg || '网络错误，请稍后重试！',
     }
   },
   onError: error => showErrorMessage(error.message),

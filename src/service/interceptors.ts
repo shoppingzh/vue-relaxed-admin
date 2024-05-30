@@ -1,14 +1,18 @@
 import { AxiosInstance, } from 'axios'
 
 type MaybePromise<T> = T | Promise<T>
+type RemoveInterceptorFn = () => void
+
 interface GeneralResult<T> {
   success: boolean
-  message: string
-  data: T
+  message?: string
+  data?: T
 }
 
 interface ResponeDataOptions<T> {
+  /** 转换为通用结果对象 */
   toGeneralResult: (data: any) => MaybePromise<GeneralResult<T>>
+  /** 错误回调 */
   onError?: (error: Error) => MaybePromise<void>
 }
 
@@ -18,12 +22,14 @@ interface ResponeDataOptions<T> {
  * 
  * @param instance 
  * @param options 
+ * 
+ * @returns 卸载方法
  */
-export function addResponseBaseInterceptor<T>(instance: AxiosInstance, options: ResponeDataOptions<T>) {
+export function addResponseBaseInterceptor<T>(instance: AxiosInstance, options: ResponeDataOptions<T>): RemoveInterceptorFn {
   if (!instance) throw new Error()
   const { toGeneralResult, onError, } = options ?? {}
 
-  instance.interceptors.response.use(
+  const id1 = instance.interceptors.response.use(
     async(response) => {
       const result = await toGeneralResult(response.data)
       const { success, data, message, } = result
@@ -36,7 +42,7 @@ export function addResponseBaseInterceptor<T>(instance: AxiosInstance, options: 
     }
   )
 
-  instance.interceptors.response.use(
+  const id2 = instance.interceptors.response.use(
     data => data,
     async(error) => {
       if (onError) {
@@ -45,4 +51,9 @@ export function addResponseBaseInterceptor<T>(instance: AxiosInstance, options: 
       return Promise.reject(error)
     }
   )
+
+  return () => {
+    instance.interceptors.response.eject(id1)
+    instance.interceptors.response.eject(id2)
+  }
 }
