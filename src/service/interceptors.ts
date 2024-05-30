@@ -5,8 +5,8 @@ type RemoveInterceptorFn = () => void
 
 interface GeneralResult<T> {
   success: boolean
-  message: string
-  data: T
+  message?: string
+  data?: T
 }
 
 interface ResponeDataOptions<T> {

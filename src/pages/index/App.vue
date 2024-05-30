@@ -7,9 +7,10 @@
 <script setup lang="ts">
 import service from '@/service/index'
 
-service.get('/hello').then(res => {
+service.get('/', { params: { }, }).then(res => {
   console.log(res)
 }).catch((err: Error) => {
   console.error(err.cause)
 })
+
 </script>
