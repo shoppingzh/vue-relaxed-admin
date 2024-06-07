@@ -6,6 +6,7 @@ import config from './config'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 import jsx from '@vitejs/plugin-vue-jsx'
 import multiPageRewritePlugin from './multi-page-rewrite-plugin'
+import legacy from '@vitejs/plugin-legacy'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -45,6 +46,9 @@ export default defineConfig({
     }),
     vue(),
     jsx(),
+    legacy({
+      // targets: ['chrome>=96'], // 根据情况设置自己的浏览器版本，或在根目录下新建.browserslistrc文件设置
+    }),
     // SVG雪碧图
     createSvgIconsPlugin({
       iconDirs: [path.resolve(config.rootDir, 'src/icons/svg')],
