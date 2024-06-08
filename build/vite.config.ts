@@ -47,7 +47,9 @@ export default defineConfig({
     vue(),
     jsx(),
     legacy({
-      // targets: ['chrome>=96'], // 根据情况设置自己的浏览器版本，或在根目录下新建.browserslistrc文件设置
+      // 根据情况设置自己的浏览器版本，或在根目录下新建.browserslistrc文件设置
+      // 为了让其他插件共享配置，更推荐配置文件的方式
+      // targets: ['chrome>=96'],
     }),
     // SVG雪碧图
     createSvgIconsPlugin({
