@@ -7,6 +7,7 @@ import DefineOptions from 'unplugin-vue-define-options/vite'
 import jsx from '@vitejs/plugin-vue-jsx'
 import multiPageRewritePlugin from './multi-page-rewrite-plugin'
 import legacy from '@vitejs/plugin-legacy'
+import compression from 'vite-plugin-compression'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -56,8 +57,12 @@ export default defineConfig({
       iconDirs: [path.resolve(config.rootDir, 'src/icons/svg')],
       symbolId: 'svg-icon/[name]',
     }),
-    // vue define options
+    // vue defineXXX支持
     DefineOptions(),
+    // gzip压缩，保证运行时性能
+    compression({
+      algorithm: 'gzip',
+    }),
   ],
   build: {
     rollupOptions: {
