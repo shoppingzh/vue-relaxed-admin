@@ -63,11 +63,11 @@ export default defineConfig(({ mode, }) => {
       // vue defineXXX支持
       DefineOptions(),
       // gzip压缩，保证运行时性能
-      isProdMode && compression({
+      isProdMode && config.gzip && compression({
         algorithm: 'gzip',
       }),
       // 打包后分析依赖图
-      isProdMode && visualizer({})
+      isProdMode && visualizer({}),
     ],
     build: {
       rollupOptions: {
