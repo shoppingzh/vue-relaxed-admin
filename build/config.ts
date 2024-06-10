@@ -32,6 +32,6 @@ export default {
   rootDir: ROOT_DIR,
   pages: PAGES,
   // 修改此配置，单页下的router base也要相应修改！！
-  multiPageRewrite: false,
+  multiPageRewrite: true,
   gzip: false,
 }
