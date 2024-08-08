@@ -38,5 +38,8 @@ export default {
   gzip: false,
   chunks: {
     'app': ['vue', 'vue-router'],
+    'echarts': ['echarts'],
+    'ui': ['element-plus'],
+    'utility': ['lodash', 'lodash-es'],
   } as Chunks,
 }
