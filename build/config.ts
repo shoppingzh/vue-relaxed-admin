@@ -7,6 +7,8 @@ export interface Page {
   template?: string
 }
 
+type Chunks = Record<string, string[]>
+
 function readPages(srcDir: string): Page[] {
   const pagesDir = path.resolve(srcDir, 'pages')
   let pages: Page[] = readdirSync(pagesDir, { withFileTypes: true, })
@@ -34,4 +36,7 @@ export default {
   // 修改此配置，单页下的router base也要相应修改！！
   multiPageRewrite: false,
   gzip: false,
+  chunks: {
+    'app': ['vue', 'vue-router'],
+  } as Chunks,
 }

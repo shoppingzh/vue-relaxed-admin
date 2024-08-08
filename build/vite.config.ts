@@ -79,6 +79,15 @@ export default defineConfig(({ mode, }) => {
           map[name] = path.resolve(config.rootDir, `${name}.html`)
           return map
         }, {}),
+        output: {
+          manualChunks(id) {
+            for (const [name, packages] of Object.entries(config.chunks)) {
+              const pass = packages.some(packageName => id.includes(`node_modules/${packageName}\/`))
+              if (pass) return name
+            }
+            if (id.includes('node_modules')) return 'vendor'
+          },
+        },
       },
       minify: 'terser',
       sourcemap: true,
