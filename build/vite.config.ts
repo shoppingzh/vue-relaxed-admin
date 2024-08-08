@@ -67,7 +67,10 @@ export default defineConfig(({ mode, }) => {
         algorithm: 'gzip',
       }),
       // 打包后分析依赖图
-      isProdMode && visualizer({}),
+      isProdMode && visualizer({
+        open: true,
+        sourcemap: true,
+      }),
     ],
     build: {
       rollupOptions: {
