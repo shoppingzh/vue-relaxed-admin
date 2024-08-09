@@ -17,6 +17,7 @@
 - 兼容性
 - 多页支持（支持多页history路由！）
 - svg 雪碧图与自动下载 iconfont 方案
+- 性能优化
 
 **开发基础**
 - Vue3/Element Plus/Pinia
