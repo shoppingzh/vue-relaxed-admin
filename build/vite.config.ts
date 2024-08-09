@@ -9,6 +9,7 @@ import multiPageRewritePlugin from './multi-page-rewrite-plugin'
 import legacy from '@vitejs/plugin-legacy'
 import compression from 'vite-plugin-compression'
 import { visualizer, } from 'rollup-plugin-visualizer'
+import cdn from 'vite-plugin-cdn-import'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode, }) => {
@@ -71,6 +72,14 @@ export default defineConfig(({ mode, }) => {
         open: true,
         sourcemap: true,
       }),
+      // CDN
+      cdn({
+        modules: [{
+          name: 'vue',
+          var: 'Vue',
+          path: 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.37/vue.global.min.js',
+        }],
+      })
     ],
     build: {
       rollupOptions: {
