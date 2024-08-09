@@ -61,10 +61,6 @@ export default {
   multiPageRewrite: false,
   gzip: false,
   chunks: {
-    'app': ['vue', 'vue-router'],
-    'echarts': ['echarts'],
-    'ui': ['element-plus'],
-    'utility': ['lodash', 'lodash-es'],
   },
   cdns: [
     {
