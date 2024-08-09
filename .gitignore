@@ -27,6 +27,6 @@ dist-ssr
 # package lock
 package-lock.json
 yarn.lock
-pnpm-lock.yaml
+# pnpm-lock.yaml
 
 stats.html
