@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
+    "debug": "vite build --debug",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "eslint . --fix",
