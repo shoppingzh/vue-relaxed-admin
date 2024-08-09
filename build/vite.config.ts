@@ -9,6 +9,9 @@ import multiPageRewritePlugin from './multi-page-rewrite-plugin'
 import legacy from '@vitejs/plugin-legacy'
 import compression from 'vite-plugin-compression'
 import { visualizer, } from 'rollup-plugin-visualizer'
+import cdn from 'vite-plugin-cdn-import'
+
+const useCdn = config.cdns.length > 0
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode, }) => {
@@ -71,6 +74,14 @@ export default defineConfig(({ mode, }) => {
         open: true,
         sourcemap: true,
       }),
+      // CDN
+      isProdMode && useCdn && cdn({
+        modules: config.cdns.map(o => ({
+          name: o.name,
+          var: o.global,
+          path: o.url,
+        })),
+      })
     ],
     build: {
       rollupOptions: {
