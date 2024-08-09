@@ -1,13 +1,37 @@
 import path from 'path'
 import { readdirSync, } from 'fs'
 
+
 export interface Page {
   name: string
   path?: string // 如'pages/dev'
   template?: string
 }
+export type Chunks = Record<string, string[]>
+export interface CdnItem {
+  /** 包名，如lodash */
+  name: string
+  /** 全局变量名，如lodash对应"_" */
+  global: string
+  /** 链接 */
+  url: string
+}
 
-type Chunks = Record<string, string[]>
+export interface Config {
+  /** 根目录 */
+  rootDir: string
+  /** 单页集合 */
+  pages: Page[]
+  /** 在多页场景下，是否重写路径 */
+  multiPageRewrite: boolean
+  /** 是否压缩gzip包 */
+  gzip: boolean
+  /** 打包分包 */
+  chunks: Chunks
+  /** CDN配置 */
+  cdns: CdnItem[]
+}
+
 
 function readPages(srcDir: string): Page[] {
   const pagesDir = path.resolve(srcDir, 'pages')
@@ -38,5 +62,12 @@ export default {
   gzip: false,
   chunks: {
     'app': ['vue', 'vue-router'],
-  } as Chunks,
-}
+  },
+  cdns: [
+    {
+      name: 'vue',
+      global: 'Vue',
+      url: 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.37/vue.global.min.js',
+    }
+  ],
+} as Config

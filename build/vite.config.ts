@@ -11,6 +11,8 @@ import compression from 'vite-plugin-compression'
 import { visualizer, } from 'rollup-plugin-visualizer'
 import cdn from 'vite-plugin-cdn-import'
 
+const useCdn = config.cdns.length > 0
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode, }) => {
   const isProdMode = mode === 'production'
@@ -73,12 +75,12 @@ export default defineConfig(({ mode, }) => {
         sourcemap: true,
       }),
       // CDN
-      cdn({
-        modules: [{
-          name: 'vue',
-          var: 'Vue',
-          path: 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.37/vue.global.min.js',
-        }],
+      isProdMode && useCdn && cdn({
+        modules: config.cdns.map(o => ({
+          name: o.name,
+          var: o.global,
+          path: o.url,
+        })),
       })
     ],
     build: {
