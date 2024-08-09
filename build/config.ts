@@ -61,7 +61,6 @@ export default {
   multiPageRewrite: false,
   gzip: false,
   chunks: {
-    'app': ['vue', 'vue-router'],
   },
   cdns: [
     {
