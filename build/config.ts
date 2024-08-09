@@ -71,6 +71,46 @@ export default {
       name: 'vue',
       global: 'Vue',
       url: 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.37/vue.global.min.js',
+    },
+    {
+      name: 'vue-router',
+      global: 'VueRouter',
+      url: 'https://cdnjs.cloudflare.com/ajax/libs/vue-router/4.4.3/vue-router.global.min.js',
+    },
+    {
+      name: 'vue-demi',
+      global: 'VueDemi',
+      url: 'https://cdnjs.cloudflare.com/ajax/libs/vue-demi/0.14.10/index.iife.min.js',
+    },
+    {
+      name: 'pinia',
+      global: 'Pinia',
+      url: 'https://cdnjs.cloudflare.com/ajax/libs/pinia/2.2.1/pinia.iife.prod.min.js',
+    },
+    {
+      name: 'lodash',
+      global: '_',
+      url: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js',
+    },
+    {
+      name: 'element-plus',
+      global: 'ElementPlus',
+      url: 'https://cdnjs.cloudflare.com/ajax/libs/element-plus/2.8.0/index.full.min.js',
+    },
+    {
+      name: 'echarts',
+      global: 'echarts',
+      url: 'https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js',
+    },
+    {
+      name: 'axios',
+      global: 'axios',
+      url: 'https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.3/axios.min.js',
+    },
+    {
+      name: 'mockjs',
+      global: 'Mock',
+      url: 'https://cdnjs.cloudflare.com/ajax/libs/Mock.js/1.0.0/mock-min.js',
     }
   ],
 } as Config
