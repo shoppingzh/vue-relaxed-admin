@@ -71,7 +71,6 @@ export default defineConfig(({ mode, }) => {
       }),
       // 打包后分析依赖图
       isProdMode && visualizer({
-        open: true,
         sourcemap: true,
       }),
       // CDN
