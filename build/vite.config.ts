@@ -8,7 +8,7 @@ import jsx from '@vitejs/plugin-vue-jsx'
 import multiPageRewritePlugin from './multi-page-rewrite-plugin'
 // import legacy from '@vitejs/plugin-legacy'
 import compression from 'vite-plugin-compression'
-import { visualizer, } from 'rollup-plugin-visualizer'
+// import { visualizer, } from 'rollup-plugin-visualizer'
 import cdn from 'vite-plugin-cdn-import'
 
 const useCdn = config.cdns.length > 0
@@ -70,9 +70,9 @@ export default defineConfig(({ mode, }) => {
         algorithm: 'gzip',
       }),
       // 打包后分析依赖图
-      isProdMode && visualizer({
-        sourcemap: true,
-      }),
+      // isProdMode && visualizer({
+      //   sourcemap: true,
+      // }),
       // CDN
       isProdMode && useCdn && cdn({
         modules: config.cdns.map(o => ({
@@ -100,7 +100,7 @@ export default defineConfig(({ mode, }) => {
         },
       },
       minify: 'terser',
-      sourcemap: true,
+      // sourcemap: true,
     },
   }
 })
