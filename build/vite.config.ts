@@ -99,8 +99,9 @@ export default defineConfig(({ mode, }) => {
           },
         },
       },
-      minify: 'terser',
+      minify: 'esbuild',
       // sourcemap: true,
+      reportCompressedSize: false,
     },
   }
 })
