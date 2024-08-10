@@ -101,6 +101,7 @@ export default defineConfig(({ mode, }) => {
       },
       minify: 'esbuild',
       sourcemap: true,
+      reportCompressedSize: false,
     },
   }
 })
