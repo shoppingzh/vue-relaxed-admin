@@ -14,8 +14,8 @@ import cdn from 'vite-plugin-cdn-import'
 const useCdn = config.cdns.length > 0
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode, }) => {
-  const isProdMode = mode === 'production'
+export default defineConfig(({ mode, command, }) => {
+  const isBuildCommand = command === 'build'
   const isAnalyseMode = mode === 'analyse'
   return {
     // 开发相关
@@ -71,11 +71,11 @@ export default defineConfig(({ mode, }) => {
       // vue defineXXX支持
       DefineOptions(),
       // gzip压缩，保证运行时性能
-      isProdMode && config.gzip && compression({
+      isBuildCommand && config.gzip && compression({
         algorithm: 'gzip',
       }),
       // CDN
-      isProdMode && useCdn && cdn({
+      isBuildCommand && useCdn && cdn({
         modules: config.cdns.map(o => ({
           name: o.name,
           var: o.global,
