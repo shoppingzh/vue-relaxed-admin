@@ -59,7 +59,7 @@ export default {
   pages: PAGES,
   // 修改此配置，单页下的router base也要相应修改！！
   multiPageRewrite: false,
-  gzip: false,
+  gzip: true,
   chunks: {
   },
   cdns: [
