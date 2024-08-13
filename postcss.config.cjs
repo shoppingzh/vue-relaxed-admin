@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+
 /** @type {import('postcss').Postcss} */
 module.exports = {
-  plugins: {
-    // CSS类名嵌套语法支持
-    'tailwindcss/nesting': {},
-    tailwindcss: {},
-    autoprefixer: {},
-  },
+  plugins: [
+    require('tailwindcss/nesting'),
+    require('tailwindcss'),
+    require('autoprefixer')
+  ],
 }
