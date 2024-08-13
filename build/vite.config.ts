@@ -16,6 +16,7 @@ const useCdn = config.cdns.length > 0
 // https://vitejs.dev/config/
 export default defineConfig(({ mode, }) => {
   const isProdMode = mode === 'production'
+  const isAnalyseMode = mode === 'analyse'
   return {
     // 开发相关
     envPrefix: 'APP_',
@@ -29,6 +30,10 @@ export default defineConfig(({ mode, }) => {
           '@': path.resolve(config.rootDir, 'src'),
         }
       ),
+    },
+    logLevel: isAnalyseMode ? 'info' : 'error',
+    css: {
+      preprocessorMaxWorkers: 8,
     },
     server: {
       port: 5173,
@@ -69,10 +74,6 @@ export default defineConfig(({ mode, }) => {
       isProdMode && config.gzip && compression({
         algorithm: 'gzip',
       }),
-      // 打包后分析依赖图
-      isProdMode && visualizer({
-        sourcemap: true,
-      }),
       // CDN
       isProdMode && useCdn && cdn({
         modules: config.cdns.map(o => ({
@@ -80,7 +81,12 @@ export default defineConfig(({ mode, }) => {
           var: o.global,
           path: o.url,
         })),
-      })
+      }),
+
+      // 打包后分析依赖图
+      isAnalyseMode && visualizer({
+        sourcemap: true,
+      }),
     ],
     build: {
       rollupOptions: {
@@ -100,7 +106,7 @@ export default defineConfig(({ mode, }) => {
         },
       },
       minify: 'esbuild',
-      sourcemap: true,
+      sourcemap: isAnalyseMode,
       reportCompressedSize: false,
     },
   }
