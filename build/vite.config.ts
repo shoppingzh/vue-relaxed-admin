@@ -15,6 +15,7 @@ const useCdn = config.cdns.length > 0
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode, command, }) => {
+  const isDevCommand = command === 'serve'
   const isBuildCommand = command === 'build'
   const isAnalyseMode = mode === 'analyse'
   return {
@@ -31,7 +32,7 @@ export default defineConfig(({ mode, command, }) => {
         }
       ),
     },
-    logLevel: isAnalyseMode ? 'info' : 'error',
+    logLevel: isDevCommand || isAnalyseMode ? 'info' : 'error',
     css: {
       preprocessorMaxWorkers: 8,
     },
