@@ -1,0 +1,26 @@
+@tokens url('../theme/default.json') format('style-dictionary3');
+
+:root {
+  --color-blue-1: token('color.blue.100');
+  --color-blue-2: token('color.blue.200');
+  --color-blue-3: token('color.blue.200');
+  --color-blue-4: token('color.blue.400');
+  --color-blue-5: token('color.blue.500');
+  --color-blue-6: token('color.blue.600');
+  --color-blue-7: token('color.blue.700');
+  --color-blue-8: token('color.blue.800');
+  --color-blue-9: token('color.blue.900');
+  --color-blue-10: token('color.blue.1000');
+
+  --color-orange-1: token('color.orange.100');
+  --color-orange-2: token('color.orange.200');
+  --color-orange-3: token('color.orange.200');
+  --color-orange-4: token('color.orange.400');
+  --color-orange-5: token('color.orange.500');
+  --color-orange-6: token('color.orange.600');
+  --color-orange-7: token('color.orange.700');
+  --color-orange-8: token('color.orange.800');
+  --color-orange-9: token('color.orange.900');
+  --color-orange-10: token('color.orange.1000');
+  
+}

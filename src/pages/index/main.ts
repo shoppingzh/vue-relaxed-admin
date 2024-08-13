@@ -9,7 +9,7 @@ import router from './router'
 import pageComponents from './components'
 import './permission'
 import '@/mock'
-import './styles/index.scss'
+import './styles/index.css'
 
 const app = createApp(App)
 

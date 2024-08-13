@@ -1,4 +1,4 @@
-@import '@/styles/index.scss';
+@import '@/styles/index.css';
 
 .content-wrap {
   @apply p-4 bg-normal rounded-xs;

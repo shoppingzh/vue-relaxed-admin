@@ -1,11 +1,11 @@
 import '@/main'
-import { createApp } from 'vue'
+import { createApp, } from 'vue'
 import App from './App.vue'
 import ElementPlus from '@/plugins/element-plus'
 import errorReport from '@/plugins/error-report'
 import dayjs from '@/plugins/dayjs'
 import router from './router'
-import './styles/index.scss'
+import './styles/index.css'
 
 const app = createApp(App)
 
