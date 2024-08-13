@@ -18,9 +18,9 @@ const props = defineProps<Props>()
 const symbolId = computed(() => `#svg-icon/${props.name}`)
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .svg-icon {
-  // 为什么往下偏移12.5%？请参考ant-design的图标方案
+  /* 为什么往下偏移12.5%？请参考ant-design的图标方案 */
   @apply inline-flex items-center justify-center w-[1em] h-[1em] align-[-0.125em];
   :deep(svg) {
     @apply w-[1em] h-[1em] fill-current;
