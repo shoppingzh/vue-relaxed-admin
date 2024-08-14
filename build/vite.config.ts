@@ -10,6 +10,7 @@ import multiPageRewritePlugin from './multi-page-rewrite-plugin'
 import compression from 'vite-plugin-compression'
 import { visualizer, } from 'rollup-plugin-visualizer'
 import cdn from 'vite-plugin-cdn-import'
+import imagemin from 'vite-plugin-imagemin'
 
 const useCdn = config.cdns.length > 0
 
@@ -82,6 +83,15 @@ export default defineConfig(({ mode, command, }) => {
           var: o.global,
           path: o.url,
         })),
+      }),
+      // 图片压缩
+      config.imageCompression && isBuildCommand && imagemin({
+        mozjpeg: {
+          quality: 10,
+        },
+        pngquant: {
+          quality: [0.5, 0.5],
+        },
       }),
 
       // 打包后分析依赖图
