@@ -30,6 +30,8 @@ export interface Config {
   chunks: Chunks
   /** CDN配置 */
   cdns: CdnItem[]
+  /** 是否开启图片压缩 */
+  imageCompression: boolean
 }
 
 
@@ -69,4 +71,5 @@ export default {
       url: 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.37/vue.global.min.js',
     }
   ],
+  imageCompression: true,
 } as Config

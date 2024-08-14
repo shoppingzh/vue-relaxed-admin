@@ -61,11 +61,15 @@
     "vite": "^5.4.0",
     "vite-plugin-cdn-import": "^1.0.1",
     "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-imagemin": "^0.6.1",
     "vite-plugin-svg-icons": "^2.0.1",
     "vue-eslint-parser": "^9.4.3",
     "vue-tsc": "^0.38.9"
   },
   "lint-staged": {
     "*": "eslint --fix"
+  },
+  "resolutions": {
+    "bin-wrapper": "npm:bin-wrapper-china"
   }
 }
