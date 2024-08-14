@@ -1,3 +1,8 @@
+/*
+注意！！
+不要改动此文件，这里的变量是在已设计好的design tokens下，通过style-dictionary自动生成的。
+*/
+
 :root {
   --color-blue-1: #E8F3FF;
   --color-blue-2: #BEDAFF;
