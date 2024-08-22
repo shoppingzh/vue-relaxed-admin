@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <i v-if="name" class="svg-icon inline-block">
     <svg aria-hidden="true">
