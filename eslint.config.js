@@ -28,4 +28,12 @@ export default [
       'vue/multi-word-component-names': [0],
     },
   }),
+  {
+    files: [
+      '**/*.cjs',
+    ],
+    rules: {
+      '@typescript-eslint/no-require-imports': [0],
+    },
+  },
 ]
